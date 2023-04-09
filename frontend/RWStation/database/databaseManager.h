@@ -1,6 +1,8 @@
 #include <QSqlDatabase>
 #include <string>
 
+#include "database/databaseConfiguration.h"
+
 #ifndef DATABASEMANAGER_H
 #define DATABASEMANAGER_H
 
@@ -9,7 +11,7 @@ class DatabaseManager
 private:
     QSqlDatabase db;
 public:
-    DatabaseManager();
+    DatabaseManager(DatabaseConfiguration config);
     ~DatabaseManager();
     bool openConnection();
     QSqlDatabase* database();

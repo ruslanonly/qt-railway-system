@@ -10,9 +10,10 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
 
-    DatabaseManager databaseManager;
+    DatabaseConfiguration dbConfig("QPSQL", "localhost", 5436, "railway", "rw_user", "rw_pwd");
+    DatabaseManager dbManager(dbConfig);
 
-    MainWindow w(&databaseManager);
-    w.show();
+    MainWindow mainWindow(&dbManager);
+    mainWindow.show();
     return a.exec();
 }

@@ -5,7 +5,7 @@
 #include "databaseManager.h"
 #include "databaseConfiguration.h"
 
-DatabaseManager::DatabaseManager()
+DatabaseManager::DatabaseManager(DatabaseConfiguration config)
 {
 
 }

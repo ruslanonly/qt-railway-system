@@ -4,7 +4,15 @@
 
 class DatabaseConfiguration {
 public:
-    DatabaseConfiguration(const QString& host, const int port, const QString& dbName, const QString& username, const QString& password);
+    DatabaseConfiguration(
+        const QString& dbDriver,
+        const QString& host,
+        const int port,
+        const QString& dbName,
+        const QString& username,
+        const QString& password
+    );
+    QString dbDriver;
     QString host;
     int port;
     QString dbName;
