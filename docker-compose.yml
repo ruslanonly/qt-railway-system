@@ -5,13 +5,10 @@ services:
     image: postgres
     restart: always
     environment:
-      POSTGRES_USER: cw_user
-      POSTGRES_PASSWORD: cw_pwd
+      POSTGRES_USER: rw_user
+      POSTGRES_PASSWORD: rw_pwd
       POSTGRES_DB: railway
     ports:
-      - "5432:5432"
+      - "5436:5432"
     volumes:
-      - db_data:/var/lib/postgresql/data
-
-volumes:
-  db_data:
+      - ./.database/postgres/data:/var/lib/postgresql/data
