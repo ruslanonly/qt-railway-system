@@ -25,10 +25,10 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
-CREATE OR REPLACE PROCEDURE delete_station(id INTEGER)
+CREATE OR REPLACE PROCEDURE delete_station(delete_id INT)
 AS $$
 BEGIN
-  DELETE FROM station WHERE id = $1;
+  DELETE FROM station WHERE id = delete_id;
 END;
 $$ LANGUAGE plpgsql;
 
@@ -69,10 +69,10 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
-CREATE OR REPLACE PROCEDURE delete_route(id INTEGER)
+CREATE OR REPLACE PROCEDURE delete_route(delete_id INT)
 AS $$
 BEGIN
-  DELETE FROM route WHERE id = $1;
+  DELETE FROM route WHERE id = delete_id;
 END;
 $$ LANGUAGE plpgsql;
 
@@ -119,10 +119,10 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
-CREATE OR REPLACE PROCEDURE delete_train(id INTEGER)
+CREATE OR REPLACE PROCEDURE delete_train(delete_id INT)
 AS $$
 BEGIN
-  DELETE FROM train WHERE id = $1;
+  DELETE FROM train WHERE id = delete_id;
 END;
 $$ LANGUAGE plpgsql;
 
@@ -166,10 +166,10 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
-CREATE OR REPLACE PROCEDURE delete_ticket(id INTEGER)
+CREATE OR REPLACE PROCEDURE delete_ticket(delete_id INT)
 AS $$
 BEGIN
-  DELETE FROM ticket WHERE id = $1;
+  DELETE FROM ticket WHERE id = delete_id;
 END;
 $$ LANGUAGE plpgsql;
 
@@ -214,9 +214,9 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
-CREATE OR REPLACE PROCEDURE delete_passenger(id INTEGER)
+CREATE OR REPLACE PROCEDURE delete_passenger(delete_id INT)
 AS $$
 BEGIN
-  DELETE FROM passenger WHERE id = $1;
+  DELETE FROM passenger WHERE id = delete_id;
 END;
 $$ LANGUAGE plpgsql;

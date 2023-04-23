@@ -11,18 +11,23 @@ CONFIG += c++17
 SOURCES += \
     database/databaseConfiguration.cpp \
     database/databaseManager.cpp \
+    dialogs/logindialog.cpp \
     main.cpp \
     mainwindow.cpp
 
 HEADERS += \
     database/databaseConfiguration.h \
     database/databaseManager.h \
+    dialogs/logindialog.h \
     mainwindow.h
 
 FORMS += \
+    dialogs/logindialog.ui \
     mainwindow.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+DISTFILES +=
