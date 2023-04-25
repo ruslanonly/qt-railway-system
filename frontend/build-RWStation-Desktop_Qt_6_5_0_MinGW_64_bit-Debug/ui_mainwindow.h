@@ -13,12 +13,15 @@
 #include <QtGui/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QHBoxLayout>
+#include <QtWidgets/QHeaderView>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QStackedWidget>
 #include <QtWidgets/QStatusBar>
+#include <QtWidgets/QTableView>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
@@ -28,12 +31,16 @@ class Ui_MainWindow
 {
 public:
     QWidget *centralwidget;
-    QVBoxLayout *verticalLayout;
     QHBoxLayout *horizontalLayout;
-    QPushButton *pushButton_2;
-    QStackedWidget *pages;
-    QWidget *page;
-    QWidget *page_2;
+    QStackedWidget *stackedWidget;
+    QWidget *HomePage;
+    QHBoxLayout *horizontalLayout_2;
+    QVBoxLayout *verticalLayout;
+    QTableView *tableView;
+    QHBoxLayout *horizontalLayout_8;
+    QSpacerItem *horizontalSpacer;
+    QPushButton *pushButton_4;
+    QWidget *TicketsPage;
     QMenuBar *menubar;
     QMenu *menuHome;
     QStatusBar *statusbar;
@@ -42,37 +49,59 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName("MainWindow");
-        MainWindow->resize(800, 600);
+        MainWindow->resize(683, 600);
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName("centralwidget");
-        verticalLayout = new QVBoxLayout(centralwidget);
-        verticalLayout->setObjectName("verticalLayout");
-        horizontalLayout = new QHBoxLayout();
+        horizontalLayout = new QHBoxLayout(centralwidget);
         horizontalLayout->setObjectName("horizontalLayout");
-        horizontalLayout->setSizeConstraint(QLayout::SetMinimumSize);
-        pushButton_2 = new QPushButton(centralwidget);
-        pushButton_2->setObjectName("pushButton_2");
+        stackedWidget = new QStackedWidget(centralwidget);
+        stackedWidget->setObjectName("stackedWidget");
+        HomePage = new QWidget();
+        HomePage->setObjectName("HomePage");
+        QSizePolicy sizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(HomePage->sizePolicy().hasHeightForWidth());
+        HomePage->setSizePolicy(sizePolicy);
+        horizontalLayout_2 = new QHBoxLayout(HomePage);
+        horizontalLayout_2->setObjectName("horizontalLayout_2");
+        verticalLayout = new QVBoxLayout();
+        verticalLayout->setSpacing(20);
+        verticalLayout->setObjectName("verticalLayout");
+        tableView = new QTableView(HomePage);
+        tableView->setObjectName("tableView");
 
-        horizontalLayout->addWidget(pushButton_2);
+        verticalLayout->addWidget(tableView);
+
+        horizontalLayout_8 = new QHBoxLayout();
+        horizontalLayout_8->setObjectName("horizontalLayout_8");
+        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_8->addItem(horizontalSpacer);
+
+        pushButton_4 = new QPushButton(HomePage);
+        pushButton_4->setObjectName("pushButton_4");
+
+        horizontalLayout_8->addWidget(pushButton_4);
 
 
-        verticalLayout->addLayout(horizontalLayout);
+        verticalLayout->addLayout(horizontalLayout_8);
 
-        pages = new QStackedWidget(centralwidget);
-        pages->setObjectName("pages");
-        page = new QWidget();
-        page->setObjectName("page");
-        pages->addWidget(page);
-        page_2 = new QWidget();
-        page_2->setObjectName("page_2");
-        pages->addWidget(page_2);
+        verticalLayout->setStretch(0, 1);
 
-        verticalLayout->addWidget(pages);
+        horizontalLayout_2->addLayout(verticalLayout);
+
+        stackedWidget->addWidget(HomePage);
+        TicketsPage = new QWidget();
+        TicketsPage->setObjectName("TicketsPage");
+        stackedWidget->addWidget(TicketsPage);
+
+        horizontalLayout->addWidget(stackedWidget);
 
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName("menubar");
-        menubar->setGeometry(QRect(0, 0, 800, 25));
+        menubar->setGeometry(QRect(0, 0, 683, 25));
         menuHome = new QMenu(menubar);
         menuHome->setObjectName("menuHome");
         MainWindow->setMenuBar(menubar);
@@ -84,16 +113,13 @@ public:
 
         retranslateUi(MainWindow);
 
-        pages->setCurrentIndex(0);
-
-
         QMetaObject::connectSlotsByName(MainWindow);
     } // setupUi
 
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
-        pushButton_2->setText(QCoreApplication::translate("MainWindow", "PushButton", nullptr));
+        pushButton_4->setText(QCoreApplication::translate("MainWindow", "\320\224\320\276\320\261\320\260\320\262\320\270\321\202\321\214", nullptr));
         menuHome->setTitle(QCoreApplication::translate("MainWindow", "Home", nullptr));
     } // retranslateUi
 
