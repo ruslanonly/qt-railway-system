@@ -38,13 +38,11 @@ CREATE TABLE train (
 CREATE TABLE ticket (
   id SERIAL,
   route_id INT NOT NULL,
-  train_id INT NOT NULL,
   seat_no INT NOT NULL,
-  railcal_no SMALLINT NOT NULL,
+  railcar_no SMALLINT NOT NULL,
   railcar_class SMALLINT NOT NULL,
   PRIMARY KEY (id),
   CONSTRAINT route_fk FOREIGN KEY(route_id) REFERENCES route(id),
-  CONSTRAINT train_fk FOREIGN KEY(train_id) REFERENCES train(id),
   CHECK (railcar_class = 1 OR railcar_class = 2) 
 );
 
@@ -55,7 +53,10 @@ CREATE TABLE passenger (
   last_name VARCHAR(30) NOT NULL,
   passport_serial_no SMALLINT NOT NULL,
   passport_code INT NOT NULL,
+  birth_date DATE,
+  ticket_id INT,
   PRIMARY KEY (id),
+  CONSTRAINT ticket_fk FOREIGN KEY(ticket_id) REFERENCES ticket(id),
   CHECK (passport_serial_no BETWEEN 1000 AND 9999),
   CHECK (passport_code BETWEEN 100000 AND 999999)
 );

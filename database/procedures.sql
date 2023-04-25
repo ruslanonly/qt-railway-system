@@ -25,10 +25,10 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
-CREATE OR REPLACE PROCEDURE delete_station(delete_id INT)
+CREATE OR REPLACE PROCEDURE delete_station(p_id INT)
 AS $$
 BEGIN
-  DELETE FROM station WHERE id = delete_id;
+  DELETE FROM station WHERE id = p_id;
 END;
 $$ LANGUAGE plpgsql;
 
@@ -69,10 +69,10 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
-CREATE OR REPLACE PROCEDURE delete_route(delete_id INT)
+CREATE OR REPLACE PROCEDURE delete_route(p_id INT)
 AS $$
 BEGIN
-  DELETE FROM route WHERE id = delete_id;
+  DELETE FROM route WHERE id = p_id;
 END;
 $$ LANGUAGE plpgsql;
 
@@ -119,10 +119,10 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
-CREATE OR REPLACE PROCEDURE delete_train(delete_id INT)
+CREATE OR REPLACE PROCEDURE delete_train(p_id INT)
 AS $$
 BEGIN
-  DELETE FROM train WHERE id = delete_id;
+  DELETE FROM train WHERE id = p_id;
 END;
 $$ LANGUAGE plpgsql;
 
@@ -136,40 +136,38 @@ $$ LANGUAGE plpgsql;
 /* Ticket */
 CREATE OR REPLACE PROCEDURE add_ticket(
   route_id_in INT,
-  train_id_in INT,
   seat_no_in INT,
-  railcal_no_in SMALLINT,
+  railcar_no_in SMALLINT,
   railcar_class_in SMALLINT
 )
 LANGUAGE plpgsql
 AS $$
 BEGIN
-  INSERT INTO ticket (route_id, train_id, seat_no, railcal_no, railcar_class)
-  VALUES (route_id_in, train_id_in, seat_no_in, railcal_no_in, railcar_class_in);
+  INSERT INTO ticket (route_id, seat_no, railcar_no, railcar_class)
+  VALUES (route_id_in, seat_no_in, railcar_no_in, railcar_class_in);
 END;
 $$;
 
 CREATE OR REPLACE PROCEDURE update_ticket(
   p_id INT,
   p_route_id INT,
-  p_train_id INT,
   p_seat_no INT,
-  p_railcal_no SMALLINT,
+  p_railcar_no SMALLINT,
   p_railcar_class SMALLINT
 )
 AS $$
 BEGIN
   UPDATE ticket
-  SET route_id = p_route_id, train_id = p_train_id, seat_no = p_seat_no,
-    railcal_no = p_railcal_no, railcar_class = p_railcar_class
+  SET route_id = p_route_id, seat_no = p_seat_no,
+    railcar_no = p_railcar_no, railcar_class = p_railcar_class
   WHERE id = p_id;
 END;
 $$ LANGUAGE plpgsql;
 
-CREATE OR REPLACE PROCEDURE delete_ticket(delete_id INT)
+CREATE OR REPLACE PROCEDURE delete_ticket(p_id INT)
 AS $$
 BEGIN
-  DELETE FROM ticket WHERE id = delete_id;
+  DELETE FROM ticket WHERE id = p_id;
 END;
 $$ LANGUAGE plpgsql;
 
@@ -214,9 +212,9 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
-CREATE OR REPLACE PROCEDURE delete_passenger(delete_id INT)
+CREATE OR REPLACE PROCEDURE delete_passenger(p_id INT)
 AS $$
 BEGIN
-  DELETE FROM passenger WHERE id = delete_id;
+  DELETE FROM passenger WHERE id = p_id;
 END;
 $$ LANGUAGE plpgsql;

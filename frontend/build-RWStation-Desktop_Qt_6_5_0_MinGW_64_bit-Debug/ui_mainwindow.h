@@ -17,7 +17,7 @@
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
-#include <QtWidgets/QSpacerItem>
+#include <QtWidgets/QStackedWidget>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
@@ -29,11 +29,11 @@ class Ui_MainWindow
 public:
     QWidget *centralwidget;
     QVBoxLayout *verticalLayout;
-    QSpacerItem *verticalSpacer;
     QHBoxLayout *horizontalLayout;
-    QSpacerItem *horizontalSpacer;
-    QPushButton *pushButton;
     QPushButton *pushButton_2;
+    QStackedWidget *pages;
+    QWidget *page;
+    QWidget *page_2;
     QMenuBar *menubar;
     QMenu *menuHome;
     QStatusBar *statusbar;
@@ -47,21 +47,9 @@ public:
         centralwidget->setObjectName("centralwidget");
         verticalLayout = new QVBoxLayout(centralwidget);
         verticalLayout->setObjectName("verticalLayout");
-        verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
-
-        verticalLayout->addItem(verticalSpacer);
-
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setObjectName("horizontalLayout");
-        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        horizontalLayout->addItem(horizontalSpacer);
-
-        pushButton = new QPushButton(centralwidget);
-        pushButton->setObjectName("pushButton");
-
-        horizontalLayout->addWidget(pushButton);
-
+        horizontalLayout->setSizeConstraint(QLayout::SetMinimumSize);
         pushButton_2 = new QPushButton(centralwidget);
         pushButton_2->setObjectName("pushButton_2");
 
@@ -69,6 +57,17 @@ public:
 
 
         verticalLayout->addLayout(horizontalLayout);
+
+        pages = new QStackedWidget(centralwidget);
+        pages->setObjectName("pages");
+        page = new QWidget();
+        page->setObjectName("page");
+        pages->addWidget(page);
+        page_2 = new QWidget();
+        page_2->setObjectName("page_2");
+        pages->addWidget(page_2);
+
+        verticalLayout->addWidget(pages);
 
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
@@ -85,14 +84,16 @@ public:
 
         retranslateUi(MainWindow);
 
+        pages->setCurrentIndex(0);
+
+
         QMetaObject::connectSlotsByName(MainWindow);
     } // setupUi
 
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
-        pushButton->setText(QCoreApplication::translate("MainWindow", "Connect", nullptr));
-        pushButton_2->setText(QCoreApplication::translate("MainWindow", "Select", nullptr));
+        pushButton_2->setText(QCoreApplication::translate("MainWindow", "PushButton", nullptr));
         menuHome->setTitle(QCoreApplication::translate("MainWindow", "Home", nullptr));
     } // retranslateUi
 

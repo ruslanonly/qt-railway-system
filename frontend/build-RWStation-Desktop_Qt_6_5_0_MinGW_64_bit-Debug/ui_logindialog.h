@@ -31,8 +31,8 @@ public:
     QVBoxLayout *formLayout;
     QVBoxLayout *inputsLayout;
     QVBoxLayout *inputGroup;
-    QLabel *loginLabel;
-    QLineEdit *loginInput;
+    QLabel *usernameLabel;
+    QLineEdit *usernameInput;
     QVBoxLayout *inputGroup_2;
     QLabel *passwordLabel;
     QLineEdit *passwordInput;
@@ -44,6 +44,7 @@ public:
     {
         if (LoginDialog->objectName().isEmpty())
             LoginDialog->setObjectName("LoginDialog");
+        LoginDialog->setWindowModality(Qt::NonModal);
         LoginDialog->resize(350, 300);
         LoginDialog->setMinimumSize(QSize(350, 300));
         LoginDialog->setMaximumSize(QSize(350, 300));
@@ -85,15 +86,15 @@ public:
         inputGroup = new QVBoxLayout();
         inputGroup->setSpacing(5);
         inputGroup->setObjectName("inputGroup");
-        loginLabel = new QLabel(LoginDialog);
-        loginLabel->setObjectName("loginLabel");
+        usernameLabel = new QLabel(LoginDialog);
+        usernameLabel->setObjectName("usernameLabel");
 
-        inputGroup->addWidget(loginLabel);
+        inputGroup->addWidget(usernameLabel);
 
-        loginInput = new QLineEdit(LoginDialog);
-        loginInput->setObjectName("loginInput");
+        usernameInput = new QLineEdit(LoginDialog);
+        usernameInput->setObjectName("usernameInput");
 
-        inputGroup->addWidget(loginInput);
+        inputGroup->addWidget(usernameInput);
 
 
         inputsLayout->addLayout(inputGroup);
@@ -149,7 +150,7 @@ public:
     {
         LoginDialog->setWindowTitle(QCoreApplication::translate("LoginDialog", "\320\220\320\262\321\202\320\276\321\200\320\270\320\267\320\260\321\206\320\270\321\217", nullptr));
         label->setText(QCoreApplication::translate("LoginDialog", "\320\222\320\276\320\271\320\264\320\270\321\202\320\265 \320\262 \321\203\321\207\320\265\321\202\320\275\321\203\321\216 \320\267\320\260\320\277\320\270\321\201\321\214", nullptr));
-        loginLabel->setText(QCoreApplication::translate("LoginDialog", "\320\233\320\276\320\263\320\270\320\275", nullptr));
+        usernameLabel->setText(QCoreApplication::translate("LoginDialog", "\320\233\320\276\320\263\320\270\320\275", nullptr));
         passwordLabel->setText(QCoreApplication::translate("LoginDialog", "\320\237\320\260\321\200\320\276\320\273\321\214", nullptr));
         loginButton->setText(QCoreApplication::translate("LoginDialog", "\320\222\320\276\320\271\321\202\320\270", nullptr));
     } // retranslateUi

@@ -13,7 +13,7 @@ private:
 public:
     DatabaseManager(DatabaseConfiguration config);
     ~DatabaseManager();
-    bool openConnection();
+    bool openConnection(QString username, QString password);
     QSqlDatabase* database();
 };
 
