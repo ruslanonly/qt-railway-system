@@ -1,0 +1,12 @@
+debug/databaseConfiguration.o
+debug/databaseManager.o
+debug/querymodel.o
+debug/logindialog.o
+debug/main.o
+debug/mainwindow.o
+debug/addstationmodal.o
+debug/updatestationmodal.o
+debug/moc_logindialog.o
+debug/moc_mainwindow.o
+debug/moc_addstationmodal.o
+debug/moc_updatestationmodal.o

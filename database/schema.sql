@@ -1,7 +1,7 @@
 
 CREATE TABLE station (
   id SERIAL,
-  name VARCHAR(30) NOT NULL,
+  name VARCHAR(30) NOT NULL UNIQUE,
   city VARCHAR(30) NOT NULL,
   country VARCHAR(30) NOT NULL,
   PRIMARY KEY (id)
@@ -9,11 +9,11 @@ CREATE TABLE station (
 
 CREATE TABLE route (
   id SERIAL,
-  name VARCHAR(30),
+  name VARCHAR(30) UNIQUE NOT NULL,
   departure_station_id INT NOT NULL,
   arrival_station_id INT NOT NULL,
-  departure_date TIMESTAMP,
-  arrival_date TIMESTAMP,
+  departure_date TIMESTAMP NOT NULL,
+  arrival_date TIMESTAMP NOT NULL,
   PRIMARY KEY (id),
   CONSTRAINT departure_station_fk FOREIGN KEY(departure_station_id) REFERENCES station(id),
   CONSTRAINT arrival_station_fk FOREIGN KEY(arrival_station_id) REFERENCES station(id),
@@ -23,12 +23,12 @@ CREATE TABLE route (
 CREATE TABLE train (
   id SERIAL,
   route_id INT NOT NULL,
-  name VARCHAR(30),
+  name VARCHAR(30) UNIQUE NOT NULL,
   type VARCHAR(30),
-  railcar_capacity INT,
+  railcar_capacity INT NOT NULL,
   railcars_amount INT NOT NULL ,
-  first_class_price INT,
-  second_class_price INT,
+  first_class_price INT NOT NULL,
+  second_class_price INT NOT NULL,
   PRIMARY KEY (id),
   CONSTRAINT route_fk FOREIGN KEY(route_id) REFERENCES route(id),
   CHECK (railcar_capacity BETWEEN 1 AND 200),

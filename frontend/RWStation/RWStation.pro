@@ -11,23 +11,32 @@ CONFIG += c++17
 SOURCES += \
     database/databaseConfiguration.cpp \
     database/databaseManager.cpp \
+    database/querymodel.cpp \
     dialogs/logindialog.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    modals/addstationmodal.cpp \
+    modals/updatestationmodal.cpp
 
 HEADERS += \
     database/databaseConfiguration.h \
     database/databaseManager.h \
+    database/querymodel.h \
     dialogs/logindialog.h \
-    mainwindow.h
+    mainwindow.h \
+    modals/addstationmodal.h \
+    modals/updatestationmodal.h
 
 FORMS += \
     dialogs/logindialog.ui \
-    mainwindow.ui
+    mainwindow.ui \
+    modals/addstationmodal.ui \
+    modals/updatestationmodal.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
-DISTFILES +=
+DISTFILES += \
+    images/refresh.png

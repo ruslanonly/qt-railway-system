@@ -1,0 +1,12 @@
+release/databaseConfiguration.o
+release/databaseManager.o
+release/querymodel.o
+release/logindialog.o
+release/main.o
+release/mainwindow.o
+release/addstationmodal.o
+release/updatestationmodal.o
+release/moc_logindialog.o
+release/moc_mainwindow.o
+release/moc_addstationmodal.o
+release/moc_updatestationmodal.o
