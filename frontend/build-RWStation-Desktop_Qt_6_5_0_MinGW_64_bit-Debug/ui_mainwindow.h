@@ -188,6 +188,9 @@ public:
 
         ticketsTableView = new QTableView(TicketPage);
         ticketsTableView->setObjectName("ticketsTableView");
+        ticketsTableView->setContextMenuPolicy(Qt::CustomContextMenu);
+        ticketsTableView->setSelectionMode(QAbstractItemView::SingleSelection);
+        ticketsTableView->setSelectionBehavior(QAbstractItemView::SelectRows);
         ticketsTableView->horizontalHeader()->setStretchLastSection(true);
 
         verticalLayout->addWidget(ticketsTableView);
@@ -240,6 +243,9 @@ public:
 
         trainsTableView = new QTableView(TrainPage);
         trainsTableView->setObjectName("trainsTableView");
+        trainsTableView->setContextMenuPolicy(Qt::CustomContextMenu);
+        trainsTableView->setSelectionMode(QAbstractItemView::SingleSelection);
+        trainsTableView->setSelectionBehavior(QAbstractItemView::SelectRows);
         trainsTableView->horizontalHeader()->setStretchLastSection(true);
 
         verticalLayout_8->addWidget(trainsTableView);
@@ -292,6 +298,9 @@ public:
 
         passengersTableView = new QTableView(PassengerPage);
         passengersTableView->setObjectName("passengersTableView");
+        passengersTableView->setContextMenuPolicy(Qt::CustomContextMenu);
+        passengersTableView->setSelectionMode(QAbstractItemView::SingleSelection);
+        passengersTableView->setSelectionBehavior(QAbstractItemView::SelectRows);
         passengersTableView->horizontalHeader()->setStretchLastSection(true);
 
         verticalLayout_6->addWidget(passengersTableView);
@@ -344,6 +353,9 @@ public:
 
         routesTableView = new QTableView(RoutePage);
         routesTableView->setObjectName("routesTableView");
+        routesTableView->setContextMenuPolicy(Qt::CustomContextMenu);
+        routesTableView->setSelectionMode(QAbstractItemView::SingleSelection);
+        routesTableView->setSelectionBehavior(QAbstractItemView::SelectRows);
         routesTableView->horizontalHeader()->setStretchLastSection(true);
 
         verticalLayout_7->addWidget(routesTableView);
@@ -396,6 +408,9 @@ public:
 
         stationsTableView = new QTableView(StationPage);
         stationsTableView->setObjectName("stationsTableView");
+        stationsTableView->setContextMenuPolicy(Qt::CustomContextMenu);
+        stationsTableView->setSelectionMode(QAbstractItemView::SingleSelection);
+        stationsTableView->setSelectionBehavior(QAbstractItemView::SelectRows);
         stationsTableView->setGridStyle(Qt::SolidLine);
         stationsTableView->setWordWrap(false);
         stationsTableView->horizontalHeader()->setCascadingSectionResizes(true);
@@ -458,7 +473,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        pagesWidget->setCurrentIndex(5);
+        pagesWidget->setCurrentIndex(3);
 
 
         QMetaObject::connectSlotsByName(MainWindow);

@@ -18,7 +18,7 @@
     <item>
      <widget class="QStackedWidget" name="pagesWidget">
       <property name="currentIndex">
-       <number>5</number>
+       <number>3</number>
       </property>
       <widget class="QWidget" name="HomePage">
        <property name="sizePolicy">
@@ -55,7 +55,7 @@
          </spacer>
         </item>
         <item row="4" column="0">
-         <layout class="QGridLayout" name="redirectButtons" rowstretch="0,0,0,0">
+         <layout class="QGridLayout" name="redirectButtons" rowstretch="0,0,0">
           <item row="2" column="0">
            <widget class="QPushButton" name="routePageButton">
             <property name="cursor">
@@ -145,6 +145,15 @@
           </item>
           <item>
            <widget class="QTableView" name="ticketsTableView">
+            <property name="contextMenuPolicy">
+             <enum>Qt::CustomContextMenu</enum>
+            </property>
+            <property name="selectionMode">
+             <enum>QAbstractItemView::SingleSelection</enum>
+            </property>
+            <property name="selectionBehavior">
+             <enum>QAbstractItemView::SelectRows</enum>
+            </property>
             <attribute name="horizontalHeaderStretchLastSection">
              <bool>true</bool>
             </attribute>
@@ -226,6 +235,15 @@
           </item>
           <item>
            <widget class="QTableView" name="trainsTableView">
+            <property name="contextMenuPolicy">
+             <enum>Qt::CustomContextMenu</enum>
+            </property>
+            <property name="selectionMode">
+             <enum>QAbstractItemView::SingleSelection</enum>
+            </property>
+            <property name="selectionBehavior">
+             <enum>QAbstractItemView::SelectRows</enum>
+            </property>
             <attribute name="horizontalHeaderStretchLastSection">
              <bool>true</bool>
             </attribute>
@@ -307,6 +325,15 @@
           </item>
           <item>
            <widget class="QTableView" name="passengersTableView">
+            <property name="contextMenuPolicy">
+             <enum>Qt::CustomContextMenu</enum>
+            </property>
+            <property name="selectionMode">
+             <enum>QAbstractItemView::SingleSelection</enum>
+            </property>
+            <property name="selectionBehavior">
+             <enum>QAbstractItemView::SelectRows</enum>
+            </property>
             <attribute name="horizontalHeaderStretchLastSection">
              <bool>true</bool>
             </attribute>
@@ -388,6 +415,15 @@
           </item>
           <item>
            <widget class="QTableView" name="routesTableView">
+            <property name="contextMenuPolicy">
+             <enum>Qt::CustomContextMenu</enum>
+            </property>
+            <property name="selectionMode">
+             <enum>QAbstractItemView::SingleSelection</enum>
+            </property>
+            <property name="selectionBehavior">
+             <enum>QAbstractItemView::SelectRows</enum>
+            </property>
             <attribute name="horizontalHeaderStretchLastSection">
              <bool>true</bool>
             </attribute>
@@ -469,6 +505,15 @@
           </item>
           <item>
            <widget class="QTableView" name="stationsTableView">
+            <property name="contextMenuPolicy">
+             <enum>Qt::CustomContextMenu</enum>
+            </property>
+            <property name="selectionMode">
+             <enum>QAbstractItemView::SingleSelection</enum>
+            </property>
+            <property name="selectionBehavior">
+             <enum>QAbstractItemView::SelectRows</enum>
+            </property>
             <property name="gridStyle">
              <enum>Qt::SolidLine</enum>
             </property>

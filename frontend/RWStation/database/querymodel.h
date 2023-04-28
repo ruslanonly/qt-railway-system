@@ -18,6 +18,8 @@ public:
     QSqlQueryModel* ticketSelectAll();
     QSqlQueryModel* passengerSelectAll();
 
+    QSqlQuery* stationSelectOne(int stationID);
+
 private:
     DatabaseManager* dbManager;
 };

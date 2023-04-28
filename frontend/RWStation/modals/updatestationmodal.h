@@ -12,11 +12,17 @@ class UpdateStationModal : public QWidget
     Q_OBJECT
 
 public:
-    explicit UpdateStationModal(QWidget *parent = nullptr);
+    explicit UpdateStationModal(int stationID, QWidget *parent = nullptr);
     ~UpdateStationModal();
 
+private slots:
+    void on_addButton_clicked();
+
 private:
+    void fillData();
+
     Ui::UpdateStationModal *ui;
+    int stationID;
 };
 
 #endif // UPDATESTATIONMODAL_H

@@ -1,6 +1,10 @@
 #include <QSqlQuery>
 #include <QSqlError>
 #include <QSqlQueryModel>
+#include <QMenu>
+#include <QMessageBox>
+
+#include "modals/updatestationmodal.h"
 
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
@@ -10,6 +14,7 @@ MainWindow::MainWindow(DatabaseManager* dbManager, QWidget *parent) : QMainWindo
 {
     this->dbManager = dbManager;
     ui->setupUi(this);
+
 }
 
 MainWindow::~MainWindow() {
@@ -133,3 +138,135 @@ void MainWindow::on_addStationButton_clicked()
     this->addStationModal->show();
 }
 
+
+
+
+
+
+void MainWindow::on_stationsTableView_customContextMenuRequested(const QPoint &pos)
+{
+    showCustomContextMenu(pos, ui->stationsTableView, TableViewVariant::station);
+}
+
+void MainWindow::on_routesTableView_customContextMenuRequested(const QPoint &pos)
+{
+    showCustomContextMenu(pos, ui->routesTableView, TableViewVariant::route);
+}
+
+void MainWindow::on_trainsTableView_customContextMenuRequested(const QPoint &pos)
+{
+    showCustomContextMenu(pos, ui->trainsTableView, TableViewVariant::train);
+}
+
+void MainWindow::on_ticketsTableView_customContextMenuRequested(const QPoint &pos)
+{
+    showCustomContextMenu(pos, ui->ticketsTableView, TableViewVariant::ticket);
+}
+
+void MainWindow::on_passengersTableView_customContextMenuRequested(const QPoint &pos)
+{
+    showCustomContextMenu(pos, ui->passengersTableView, TableViewVariant::passenger);
+}
+
+
+
+
+QString mapTableVariantToName(TableViewVariant tableVariant) {
+    switch(tableVariant) {
+    case station:
+        return "station";
+        break;
+    case route:
+        return"route";
+        break;
+    case train:
+        return"train";
+        break;
+    case ticket:
+        return"ticket";
+        break;
+    case passenger:
+        return "passenger";
+        break;
+    }
+}
+
+void MainWindow::showCustomContextMenu(const QPoint &pos, QTableView *tableView, TableViewVariant tableVariant) {
+    QModelIndex index = tableView->currentIndex();
+    int temp_ID = tableView->model()->data(tableView->model()->index(index.row(),0)).toInt();
+
+    QString currentTable = mapTableVariantToName(tableVariant);
+
+    //Создаём меню и два действия
+    QMenu *menu = new QMenu(this);
+    QAction *ModRec = new QAction("Изменить...", this);
+    QAction *DelRec = new QAction("Удалить", this);
+    //Соединяем действие с соответствующим сигналом и слотом
+
+    connect(ModRec, &QAction::triggered, [=]() {
+        ModifyRequestedAction(temp_ID, tableVariant);
+    });
+    connect(DelRec, &QAction::triggered, [=]() {
+        DeleteRequestedAction(temp_ID, tableVariant);
+    });
+
+    //Добавление действий, созданных ранее
+    menu->addAction(ModRec);
+    menu->addAction(DelRec);
+    menu->popup(tableView->viewport()->mapToGlobal(pos));
+}
+
+void MainWindow::ModifyRequestedAction(int selectedID, TableViewVariant selectedTable) {
+
+    QString table = mapTableVariantToName(selectedTable);
+    qDebug() << selectedID << " " << table;
+    switch(selectedTable) {
+        case station: {
+            updateStationModal = new UpdateStationModal(selectedID);
+            updateStationModal->show();
+            break;
+        }
+        case route:
+            break;
+        case train:
+            break;
+        case ticket:
+            break;
+        case passenger:
+            break;
+    }
+}
+
+void MainWindow::DeleteRequestedAction(int selectedID, TableViewVariant selectedTable) {
+    QString table = mapTableVariantToName(selectedTable);
+    qDebug() << selectedID << " " << table;
+
+    QSqlQuery *query = new QSqlQuery();
+    query->prepare("SELECT delete_" + table + "(:ID)");
+    query->bindValue(":ID", selectedID);
+    if (query->exec()){
+        switch(selectedTable) {
+            case station:
+                loadStationTable();
+                break;
+            case route:
+                loadRouteTable();
+                break;
+            case train:
+                loadTrainTable();
+                break;
+            case ticket:
+                loadTicketTable();
+                break;
+            case passenger:
+                loadPassengerTable();
+                break;
+            }
+        }
+    else {
+        QMessageBox msg;
+        msg.setText(query->lastError().text());
+        msg.exec();
+    }
+
+}

@@ -1,78 +1,69 @@
 /* Station */
-CREATE OR REPLACE PROCEDURE add_station(
-  name_in VARCHAR(30),
-  city_in VARCHAR(30),
-  country_in VARCHAR(30)
-)
-LANGUAGE plpgsql
-AS $$
+CREATE OR REPLACE FUNCTION add_station(
+    _name VARCHAR(30),
+    _city VARCHAR(30),
+    _country VARCHAR(30)
+) RETURNS VOID AS $$
 BEGIN
-  INSERT INTO station (name, city, country) VALUES (name_in, city_in, country_in);
-END;
-$$;
-
-CREATE OR REPLACE PROCEDURE update_station(
-  p_id INT,
-  p_name VARCHAR(30),
-  p_city VARCHAR(30),
-  p_country VARCHAR(30)
-)
-AS $$
-BEGIN
-  UPDATE station
-  SET name = p_name, city = p_city, country = p_country
-  WHERE id = p_id;
+    INSERT INTO station (name, city, country) VALUES (_name, _city, _country);
 END;
 $$ LANGUAGE plpgsql;
 
-CREATE OR REPLACE PROCEDURE delete_station(p_id INT)
-AS $$
+CREATE OR REPLACE FUNCTION update_station(
+    _id INT,
+    _name VARCHAR(30),
+    _city VARCHAR(30),
+    _country VARCHAR(30)
+) RETURNS VOID AS $$
 BEGIN
-  DELETE FROM station WHERE id = p_id;
+    UPDATE station SET name = _name, city = _city, country = _country WHERE id = _id;
 END;
 $$ LANGUAGE plpgsql;
 
+CREATE OR REPLACE FUNCTION delete_station(
+    _id INT
+) RETURNS VOID AS $$
+BEGIN
+    DELETE FROM station WHERE id = _id;
+END;
+$$ LANGUAGE plpgsql;
 
 
 
 /* Route */
-CREATE OR REPLACE PROCEDURE add_route(
-  name_in VARCHAR(30),
-  departure_station_id_in INT,
-  arrival_station_id_in INT,
-  departure_date_in TIMESTAMP,
-  arrival_date_in TIMESTAMP
-)
-LANGUAGE plpgsql
-AS $$
+CREATE OR REPLACE FUNCTION add_route(
+    _name VARCHAR(30),
+    _departure_station_id INT,
+    _arrival_station_id INT,
+    _departure_date TIMESTAMP,
+    _arrival_date TIMESTAMP
+) RETURNS VOID AS $$
 BEGIN
-  INSERT INTO route (name, departure_station_id, arrival_station_id, departure_date, arrival_date)
-  VALUES (name_in, departure_station_id_in, arrival_station_id_in, departure_date_in, arrival_date_in);
-END;
-$$;
-
-CREATE OR REPLACE PROCEDURE update_route(
-  p_id INT,
-  p_name VARCHAR(30),
-  p_departure_station_id INT,
-  p_arrival_station_id INT,
-  p_departure_date TIMESTAMP,
-  p_arrival_date TIMESTAMP
-)
-AS $$
-BEGIN
-  UPDATE route
-  SET name = p_name, departure_station_id = p_departure_station_id,
-    arrival_station_id = p_arrival_station_id, departure_date = p_departure_date,
-    arrival_date = p_arrival_date
-  WHERE id = p_id;
+    INSERT INTO route (name, departure_station_id, arrival_station_id, departure_date, arrival_date) 
+    VALUES (_name, _departure_station_id, _arrival_station_id, _departure_date, _arrival_date);
 END;
 $$ LANGUAGE plpgsql;
 
-CREATE OR REPLACE PROCEDURE delete_route(p_id INT)
-AS $$
+CREATE OR REPLACE FUNCTION update_route(
+    _id INT,
+    _name VARCHAR(30),
+    _departure_station_id INT,
+    _arrival_station_id INT,
+    _departure_date TIMESTAMP,
+    _arrival_date TIMESTAMP
+) RETURNS VOID AS $$
 BEGIN
-  DELETE FROM route WHERE id = p_id;
+    UPDATE route SET name = _name, departure_station_id = _departure_station_id, 
+    arrival_station_id = _arrival_station_id, departure_date = _departure_date, arrival_date = _arrival_date 
+    WHERE id = _id;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE OR REPLACE FUNCTION delete_route(
+    _id INT
+) RETURNS VOID AS $$
+BEGIN
+    DELETE FROM route WHERE id = _id;
 END;
 $$ LANGUAGE plpgsql;
 
@@ -82,50 +73,45 @@ $$ LANGUAGE plpgsql;
 
 
 /* Train */
-CREATE OR REPLACE PROCEDURE add_train(
-  route_id_in INT,
-  name_in VARCHAR(30),
-  type_in VARCHAR(30),
-  railcar_capacity_in INT,
-  railcars_amount_in INT,
-  first_class_price_in INT,
-  second_class_price_in INT
-)
-LANGUAGE plpgsql
-AS $$
+CREATE OR REPLACE FUNCTION add_train(
+    _route_id INT,
+    _name VARCHAR(30),
+    _type VARCHAR(30),
+    _railcar_capacity INT,
+    _railcars_amount INT,
+    _first_class_price INT,
+    _second_class_price INT
+) RETURNS VOID AS $$
 BEGIN
-  INSERT INTO train (route_id, name, type, railcar_capacity, railcars_amount, first_class_price, second_class_price)
-  VALUES (route_id_in, name_in, type_in, railcar_capacity_in, railcars_amount_in, first_class_price_in, second_class_price_in);
-END;
-$$;
-
-CREATE OR REPLACE PROCEDURE update_train(
-  p_id INT,
-  p_route_id INT,
-  p_name VARCHAR(30),
-  p_type VARCHAR(30),
-  p_railcar_capacity INT,
-  p_railcars_amount INT,
-  p_first_class_price INT,
-  p_second_class_price INT
-)
-AS $$
-BEGIN
-  UPDATE train
-  SET route_id = p_route_id, name = p_name, type = p_type,
-    railcar_capacity = p_railcar_capacity, railcars_amount = p_railcars_amount,
-    first_class_price = p_first_class_price, second_class_price = p_second_class_price
-  WHERE id = p_id;
+    INSERT INTO train (route_id, name, type, railcar_capacity, railcars_amount, first_class_price, second_class_price) 
+    VALUES (_route_id, _name, _type, _railcar_capacity, _railcars_amount, _first_class_price, _second_class_price);
 END;
 $$ LANGUAGE plpgsql;
 
-CREATE OR REPLACE PROCEDURE delete_train(p_id INT)
-AS $$
+CREATE OR REPLACE FUNCTION update_train(
+    _id INT,
+    _route_id INT,
+    _name VARCHAR(30),
+    _type VARCHAR(30),
+    _railcar_capacity INT,
+    _railcars_amount INT,
+    _first_class_price INT,
+    _second_class_price INT
+) RETURNS VOID AS $$
 BEGIN
-  DELETE FROM train WHERE id = p_id;
+    UPDATE train SET route_id = _route_id, name = _name, type = _type, railcar_capacity = _railcar_capacity, 
+    railcars_amount = _railcars_amount, first_class_price = _first_class_price, second_class_price = _second_class_price 
+    WHERE id = _id;
 END;
 $$ LANGUAGE plpgsql;
 
+CREATE OR REPLACE FUNCTION delete_train(
+    _id INT
+) RETURNS VOID AS $$
+BEGIN
+    DELETE FROM train WHERE id = _id;
+END;
+$$ LANGUAGE plpgsql;
 
 
 
@@ -134,43 +120,43 @@ $$ LANGUAGE plpgsql;
 
 
 /* Ticket */
-CREATE OR REPLACE PROCEDURE add_ticket(
-  route_id_in INT,
-  seat_no_in INT,
-  railcar_no_in SMALLINT,
-  railcar_class_in SMALLINT
-)
-LANGUAGE plpgsql
-AS $$
+CREATE OR REPLACE FUNCTION add_ticket(
+    _route_id INTEGER,
+    _seat_no INTEGER,
+    _railcar_no SMALLINT,
+    _railcar_class SMALLINT
+) RETURNS VOID AS $$
 BEGIN
-  INSERT INTO ticket (route_id, seat_no, railcar_no, railcar_class)
-  VALUES (route_id_in, seat_no_in, railcar_no_in, railcar_class_in);
-END;
-$$;
-
-CREATE OR REPLACE PROCEDURE update_ticket(
-  p_id INT,
-  p_route_id INT,
-  p_seat_no INT,
-  p_railcar_no SMALLINT,
-  p_railcar_class SMALLINT
-)
-AS $$
-BEGIN
-  UPDATE ticket
-  SET route_id = p_route_id, seat_no = p_seat_no,
-    railcar_no = p_railcar_no, railcar_class = p_railcar_class
-  WHERE id = p_id;
+    INSERT INTO ticket (route_id, seat_no, railcar_no, railcar_class)
+    VALUES (_route_id, _seat_no, _railcar_no, _railcar_class);
 END;
 $$ LANGUAGE plpgsql;
 
-CREATE OR REPLACE PROCEDURE delete_ticket(p_id INT)
-AS $$
+CREATE OR REPLACE FUNCTION update_ticket(
+    _id INTEGER,
+    _route_id INTEGER,
+    _seat_no INTEGER,
+    _railcar_no SMALLINT,
+    _railcar_class SMALLINT
+) RETURNS VOID AS $$
 BEGIN
-  DELETE FROM ticket WHERE id = p_id;
+    UPDATE ticket SET
+        route_id = _route_id,
+        seat_no = _seat_no,
+        railcar_no = _railcar_no,
+        railcar_class = _railcar_class
+    WHERE id = _id;
 END;
 $$ LANGUAGE plpgsql;
 
+CREATE OR REPLACE FUNCTION delete_ticket(
+    _id INTEGER
+) RETURNS VOID AS $$
+BEGIN
+    DELETE FROM ticket
+    WHERE id = _id;
+END;
+$$ LANGUAGE plpgsql;
 
 
 
@@ -179,42 +165,3 @@ $$ LANGUAGE plpgsql;
 
 
 /* Passenger */
-CREATE OR REPLACE PROCEDURE add_passenger(
-  first_name_in VARCHAR(30),
-  middle_name_in VARCHAR(30),
-  last_name_in VARCHAR(30),
-  passport_serial_no_in SMALLINT,
-  passport_code_in INT
-)
-LANGUAGE plpgsql
-AS $$
-BEGIN
-  INSERT INTO passenger (first_name, middle_name, last_name, passport_serial_no, passport_code)
-  VALUES (first_name_in, middle_name_in, last_name_in, passport_serial_no_in, passport_code_in);
-END;
-$$;
-
-CREATE OR REPLACE PROCEDURE update_passenger(
-  p_id INT,
-  p_first_name VARCHAR(30),
-  p_middle_name VARCHAR(30),
-  p_last_name VARCHAR(30),
-  p_passport_serial_no SMALLINT,
-  p_passport_code INT
-)
-AS $$
-BEGIN
-  UPDATE passenger
-  SET first_name = p_first_name, middle_name = p_middle_name,
-    last_name = p_last_name, passport_serial_no = p_passport_serial_no,
-    passport_code = p_passport_code
-  WHERE id = p_id;
-END;
-$$ LANGUAGE plpgsql;
-
-CREATE OR REPLACE PROCEDURE delete_passenger(p_id INT)
-AS $$
-BEGIN
-  DELETE FROM passenger WHERE id = p_id;
-END;
-$$ LANGUAGE plpgsql;

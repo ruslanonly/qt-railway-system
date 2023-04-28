@@ -3,14 +3,26 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QTableView>
+#include <QSignalMapper>
 #include "database/querymodel.h"
 
 #include "database/databaseManager.h"
+
 #include "modals/addstationmodal.h"
+#include "modals/updatestationmodal.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
+
+enum TableViewVariant {
+    station,
+    route,
+    train,
+    ticket,
+    passenger
+};
 
 class MainWindow : public QMainWindow
 
@@ -57,14 +69,25 @@ private slots:
 
     void on_addStationButton_clicked();
 
-private:
+    void on_stationsTableView_customContextMenuRequested(const QPoint &pos);
+    void on_ticketsTableView_customContextMenuRequested(const QPoint &pos);
+    void on_trainsTableView_customContextMenuRequested(const QPoint &pos);
+    void on_passengersTableView_customContextMenuRequested(const QPoint &pos);
+    void on_routesTableView_customContextMenuRequested(const QPoint &pos);
+    void ModifyRequestedAction(int selectedID, TableViewVariant selectedTable);
+    void DeleteRequestedAction(int selectedID, TableViewVariant selectedTable);
+
     void loadStationTable();
     void loadRouteTable();
     void loadTrainTable();
     void loadTicketTable();
     void loadPassengerTable();
 
+private:
+    void showCustomContextMenu(const QPoint &pos, QTableView *tableView, TableViewVariant tableVariant);
+
     AddStationModal* addStationModal;
+    UpdateStationModal* updateStationModal;
 
     DatabaseManager* dbManager;
     Ui::MainWindow *ui;

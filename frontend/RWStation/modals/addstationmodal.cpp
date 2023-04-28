@@ -2,6 +2,7 @@
 #include "ui_addstationmodal.h"
 #include <QSqlQuery>
 #include <QSqlError>
+#include <QMessageBox>
 
 AddStationModal::AddStationModal(DatabaseManager* dbManager, QWidget *parent) :
     QWidget(parent),
@@ -9,6 +10,7 @@ AddStationModal::AddStationModal(DatabaseManager* dbManager, QWidget *parent) :
 {
     ui->setupUi(this);
     this->dbManager = dbManager;
+    this->setAttribute(Qt::WA_DeleteOnClose);
 }
 
 AddStationModal::~AddStationModal()
@@ -30,9 +32,11 @@ void AddStationModal::on_addButton_clicked()
     query->bindValue(":City", city);
     query->bindValue(":Country", country);
     if (query->exec()) {
-        qDebug() << "Success";
+        this->close();
     } else {
-        qDebug() << query->lastError().text();
+        QMessageBox msg;
+        msg.setText(query->lastError().text());
+        msg.exec();
     }
 
 }

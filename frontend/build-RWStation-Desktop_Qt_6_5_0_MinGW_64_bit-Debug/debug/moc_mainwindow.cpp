@@ -56,11 +56,27 @@ static constexpr auto qt_meta_stringdata_CLASSMainWindowENDCLASS = QtMocHelpers:
     "on_refreshStationButton_clicked",
     "on_refreshTicketButton_clicked",
     "on_refreshTrainButton_clicked",
-    "on_addStationButton_clicked"
+    "on_addStationButton_clicked",
+    "on_stationsTableView_customContextMenuRequested",
+    "pos",
+    "on_ticketsTableView_customContextMenuRequested",
+    "on_trainsTableView_customContextMenuRequested",
+    "on_passengersTableView_customContextMenuRequested",
+    "on_routesTableView_customContextMenuRequested",
+    "ModifyRequestedAction",
+    "selectedID",
+    "TableViewVariant",
+    "selectedTable",
+    "DeleteRequestedAction",
+    "loadStationTable",
+    "loadRouteTable",
+    "loadTrainTable",
+    "loadTicketTable",
+    "loadPassengerTable"
 );
 #else  // !QT_MOC_HAS_STRING_DATA
 struct qt_meta_stringdata_CLASSMainWindowENDCLASS_t {
-    uint offsetsAndSizes[38];
+    uint offsetsAndSizes[70];
     char stringdata0[11];
     char stringdata1[11];
     char stringdata2[1];
@@ -80,6 +96,22 @@ struct qt_meta_stringdata_CLASSMainWindowENDCLASS_t {
     char stringdata16[31];
     char stringdata17[30];
     char stringdata18[28];
+    char stringdata19[48];
+    char stringdata20[4];
+    char stringdata21[47];
+    char stringdata22[46];
+    char stringdata23[50];
+    char stringdata24[46];
+    char stringdata25[22];
+    char stringdata26[11];
+    char stringdata27[17];
+    char stringdata28[14];
+    char stringdata29[22];
+    char stringdata30[17];
+    char stringdata31[15];
+    char stringdata32[15];
+    char stringdata33[16];
+    char stringdata34[19];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(sizeof(qt_meta_stringdata_CLASSMainWindowENDCLASS_t::offsetsAndSizes) + ofs), len 
@@ -103,7 +135,23 @@ Q_CONSTINIT static const qt_meta_stringdata_CLASSMainWindowENDCLASS_t qt_meta_st
         QT_MOC_LITERAL(371, 31),  // "on_refreshStationButton_clicked"
         QT_MOC_LITERAL(403, 30),  // "on_refreshTicketButton_clicked"
         QT_MOC_LITERAL(434, 29),  // "on_refreshTrainButton_clicked"
-        QT_MOC_LITERAL(464, 27)   // "on_addStationButton_clicked"
+        QT_MOC_LITERAL(464, 27),  // "on_addStationButton_clicked"
+        QT_MOC_LITERAL(492, 47),  // "on_stationsTableView_customCo..."
+        QT_MOC_LITERAL(540, 3),  // "pos"
+        QT_MOC_LITERAL(544, 46),  // "on_ticketsTableView_customCon..."
+        QT_MOC_LITERAL(591, 45),  // "on_trainsTableView_customCont..."
+        QT_MOC_LITERAL(637, 49),  // "on_passengersTableView_custom..."
+        QT_MOC_LITERAL(687, 45),  // "on_routesTableView_customCont..."
+        QT_MOC_LITERAL(733, 21),  // "ModifyRequestedAction"
+        QT_MOC_LITERAL(755, 10),  // "selectedID"
+        QT_MOC_LITERAL(766, 16),  // "TableViewVariant"
+        QT_MOC_LITERAL(783, 13),  // "selectedTable"
+        QT_MOC_LITERAL(797, 21),  // "DeleteRequestedAction"
+        QT_MOC_LITERAL(819, 16),  // "loadStationTable"
+        QT_MOC_LITERAL(836, 14),  // "loadRouteTable"
+        QT_MOC_LITERAL(851, 14),  // "loadTrainTable"
+        QT_MOC_LITERAL(866, 15),  // "loadTicketTable"
+        QT_MOC_LITERAL(882, 18)   // "loadPassengerTable"
     },
     "MainWindow",
     "showWindow",
@@ -123,7 +171,23 @@ Q_CONSTINIT static const qt_meta_stringdata_CLASSMainWindowENDCLASS_t qt_meta_st
     "on_refreshStationButton_clicked",
     "on_refreshTicketButton_clicked",
     "on_refreshTrainButton_clicked",
-    "on_addStationButton_clicked"
+    "on_addStationButton_clicked",
+    "on_stationsTableView_customContextMenuRequested",
+    "pos",
+    "on_ticketsTableView_customContextMenuRequested",
+    "on_trainsTableView_customContextMenuRequested",
+    "on_passengersTableView_customContextMenuRequested",
+    "on_routesTableView_customContextMenuRequested",
+    "ModifyRequestedAction",
+    "selectedID",
+    "TableViewVariant",
+    "selectedTable",
+    "DeleteRequestedAction",
+    "loadStationTable",
+    "loadRouteTable",
+    "loadTrainTable",
+    "loadTicketTable",
+    "loadPassengerTable"
 };
 #undef QT_MOC_LITERAL
 #endif // !QT_MOC_HAS_STRING_DATA
@@ -135,7 +199,7 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSMainWindowENDCLASS[] = {
       11,       // revision
        0,       // classname
        0,    0, // classinfo
-      17,   14, // methods
+      29,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -143,23 +207,35 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSMainWindowENDCLASS[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    0,  116,    2, 0x0a,    1 /* Public */,
-       3,    0,  117,    2, 0x08,    2 /* Private */,
-       4,    0,  118,    2, 0x08,    3 /* Private */,
-       5,    0,  119,    2, 0x08,    4 /* Private */,
-       6,    0,  120,    2, 0x08,    5 /* Private */,
-       7,    0,  121,    2, 0x08,    6 /* Private */,
-       8,    0,  122,    2, 0x08,    7 /* Private */,
-       9,    0,  123,    2, 0x08,    8 /* Private */,
-      10,    0,  124,    2, 0x08,    9 /* Private */,
-      11,    0,  125,    2, 0x08,   10 /* Private */,
-      12,    0,  126,    2, 0x08,   11 /* Private */,
-      13,    0,  127,    2, 0x08,   12 /* Private */,
-      14,    0,  128,    2, 0x08,   13 /* Private */,
-      15,    0,  129,    2, 0x08,   14 /* Private */,
-      16,    0,  130,    2, 0x08,   15 /* Private */,
-      17,    0,  131,    2, 0x08,   16 /* Private */,
-      18,    0,  132,    2, 0x08,   17 /* Private */,
+       1,    0,  188,    2, 0x0a,    1 /* Public */,
+       3,    0,  189,    2, 0x08,    2 /* Private */,
+       4,    0,  190,    2, 0x08,    3 /* Private */,
+       5,    0,  191,    2, 0x08,    4 /* Private */,
+       6,    0,  192,    2, 0x08,    5 /* Private */,
+       7,    0,  193,    2, 0x08,    6 /* Private */,
+       8,    0,  194,    2, 0x08,    7 /* Private */,
+       9,    0,  195,    2, 0x08,    8 /* Private */,
+      10,    0,  196,    2, 0x08,    9 /* Private */,
+      11,    0,  197,    2, 0x08,   10 /* Private */,
+      12,    0,  198,    2, 0x08,   11 /* Private */,
+      13,    0,  199,    2, 0x08,   12 /* Private */,
+      14,    0,  200,    2, 0x08,   13 /* Private */,
+      15,    0,  201,    2, 0x08,   14 /* Private */,
+      16,    0,  202,    2, 0x08,   15 /* Private */,
+      17,    0,  203,    2, 0x08,   16 /* Private */,
+      18,    0,  204,    2, 0x08,   17 /* Private */,
+      19,    1,  205,    2, 0x08,   18 /* Private */,
+      21,    1,  208,    2, 0x08,   20 /* Private */,
+      22,    1,  211,    2, 0x08,   22 /* Private */,
+      23,    1,  214,    2, 0x08,   24 /* Private */,
+      24,    1,  217,    2, 0x08,   26 /* Private */,
+      25,    2,  220,    2, 0x08,   28 /* Private */,
+      29,    2,  225,    2, 0x08,   31 /* Private */,
+      30,    0,  230,    2, 0x08,   34 /* Private */,
+      31,    0,  231,    2, 0x08,   35 /* Private */,
+      32,    0,  232,    2, 0x08,   36 /* Private */,
+      33,    0,  233,    2, 0x08,   37 /* Private */,
+      34,    0,  234,    2, 0x08,   38 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
@@ -174,6 +250,18 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSMainWindowENDCLASS[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void, QMetaType::QPoint,   20,
+    QMetaType::Void, QMetaType::QPoint,   20,
+    QMetaType::Void, QMetaType::QPoint,   20,
+    QMetaType::Void, QMetaType::QPoint,   20,
+    QMetaType::Void, QMetaType::QPoint,   20,
+    QMetaType::Void, QMetaType::Int, 0x80000000 | 27,   26,   28,
+    QMetaType::Void, QMetaType::Int, 0x80000000 | 27,   26,   28,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
@@ -225,6 +313,39 @@ Q_CONSTINIT const QMetaObject MainWindow::staticMetaObject = { {
         // method 'on_refreshTrainButton_clicked'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'on_addStationButton_clicked'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'on_stationsTableView_customContextMenuRequested'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        QtPrivate::TypeAndForceComplete<const QPoint &, std::false_type>,
+        // method 'on_ticketsTableView_customContextMenuRequested'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        QtPrivate::TypeAndForceComplete<const QPoint &, std::false_type>,
+        // method 'on_trainsTableView_customContextMenuRequested'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        QtPrivate::TypeAndForceComplete<const QPoint &, std::false_type>,
+        // method 'on_passengersTableView_customContextMenuRequested'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        QtPrivate::TypeAndForceComplete<const QPoint &, std::false_type>,
+        // method 'on_routesTableView_customContextMenuRequested'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        QtPrivate::TypeAndForceComplete<const QPoint &, std::false_type>,
+        // method 'ModifyRequestedAction'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        QtPrivate::TypeAndForceComplete<int, std::false_type>,
+        QtPrivate::TypeAndForceComplete<TableViewVariant, std::false_type>,
+        // method 'DeleteRequestedAction'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        QtPrivate::TypeAndForceComplete<int, std::false_type>,
+        QtPrivate::TypeAndForceComplete<TableViewVariant, std::false_type>,
+        // method 'loadStationTable'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'loadRouteTable'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'loadTrainTable'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'loadTicketTable'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'loadPassengerTable'
         QtPrivate::TypeAndForceComplete<void, std::false_type>
     >,
     nullptr
@@ -253,10 +374,21 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 14: _t->on_refreshTicketButton_clicked(); break;
         case 15: _t->on_refreshTrainButton_clicked(); break;
         case 16: _t->on_addStationButton_clicked(); break;
+        case 17: _t->on_stationsTableView_customContextMenuRequested((*reinterpret_cast< std::add_pointer_t<QPoint>>(_a[1]))); break;
+        case 18: _t->on_ticketsTableView_customContextMenuRequested((*reinterpret_cast< std::add_pointer_t<QPoint>>(_a[1]))); break;
+        case 19: _t->on_trainsTableView_customContextMenuRequested((*reinterpret_cast< std::add_pointer_t<QPoint>>(_a[1]))); break;
+        case 20: _t->on_passengersTableView_customContextMenuRequested((*reinterpret_cast< std::add_pointer_t<QPoint>>(_a[1]))); break;
+        case 21: _t->on_routesTableView_customContextMenuRequested((*reinterpret_cast< std::add_pointer_t<QPoint>>(_a[1]))); break;
+        case 22: _t->ModifyRequestedAction((*reinterpret_cast< std::add_pointer_t<int>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<TableViewVariant>>(_a[2]))); break;
+        case 23: _t->DeleteRequestedAction((*reinterpret_cast< std::add_pointer_t<int>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<TableViewVariant>>(_a[2]))); break;
+        case 24: _t->loadStationTable(); break;
+        case 25: _t->loadRouteTable(); break;
+        case 26: _t->loadTrainTable(); break;
+        case 27: _t->loadTicketTable(); break;
+        case 28: _t->loadPassengerTable(); break;
         default: ;
         }
     }
-    (void)_a;
 }
 
 const QMetaObject *MainWindow::metaObject() const
@@ -278,13 +410,13 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 17)
+        if (_id < 29)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 17;
+        _id -= 29;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 17)
+        if (_id < 29)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 17;
+        _id -= 29;
     }
     return _id;
 }
