@@ -4,9 +4,13 @@ debug/querymodel.o
 debug/logindialog.o
 debug/main.o
 debug/mainwindow.o
+debug/addroutemodal.o
 debug/addstationmodal.o
+debug/updateroutemodal.o
 debug/updatestationmodal.o
 debug/moc_logindialog.o
 debug/moc_mainwindow.o
+debug/moc_addroutemodal.o
 debug/moc_addstationmodal.o
+debug/moc_updateroutemodal.o
 debug/moc_updatestationmodal.o

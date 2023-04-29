@@ -134,10 +134,15 @@ void MainWindow::on_refreshTrainButton_clicked()
 
 void MainWindow::on_addStationButton_clicked()
 {
-    this->addStationModal = new AddStationModal(this->dbManager);
+    this->addStationModal = new AddStationModal();
     this->addStationModal->show();
 }
 
+void MainWindow::on_addRouteButton_clicked()
+{
+    this->addRouteModal = new AddRouteModal();
+    this->addRouteModal->show();
+}
 
 
 
@@ -217,17 +222,17 @@ void MainWindow::showCustomContextMenu(const QPoint &pos, QTableView *tableView,
 }
 
 void MainWindow::ModifyRequestedAction(int selectedID, TableViewVariant selectedTable) {
-
-    QString table = mapTableVariantToName(selectedTable);
-    qDebug() << selectedID << " " << table;
     switch(selectedTable) {
         case station: {
             updateStationModal = new UpdateStationModal(selectedID);
             updateStationModal->show();
             break;
         }
-        case route:
+        case route: {
+            updateRouteModal = new UpdateRouteModal(selectedID);
+            updateRouteModal->show();
             break;
+        }
         case train:
             break;
         case ticket:
@@ -270,3 +275,4 @@ void MainWindow::DeleteRequestedAction(int selectedID, TableViewVariant selected
     }
 
 }
+

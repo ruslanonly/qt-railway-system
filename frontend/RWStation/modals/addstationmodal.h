@@ -15,7 +15,7 @@ class AddStationModal : public QWidget
     Q_OBJECT
 
 public:
-    explicit AddStationModal(DatabaseManager* dbManager, QWidget *parent = nullptr);
+    explicit AddStationModal(QWidget *parent = nullptr);
     ~AddStationModal();
 
 private slots:
@@ -23,7 +23,6 @@ private slots:
 
 private:
     Ui::AddStationModal *ui;
-    DatabaseManager* dbManager;
     QueryModel* queryModel;
 };
 

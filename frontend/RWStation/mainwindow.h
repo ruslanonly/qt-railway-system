@@ -10,7 +10,10 @@
 #include "database/databaseManager.h"
 
 #include "modals/addstationmodal.h"
+#include "modals/addroutemodal.h"
+
 #include "modals/updatestationmodal.h"
+#include "modals/updateroutemodal.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -83,11 +86,15 @@ private slots:
     void loadTicketTable();
     void loadPassengerTable();
 
+    void on_addRouteButton_clicked();
+
 private:
     void showCustomContextMenu(const QPoint &pos, QTableView *tableView, TableViewVariant tableVariant);
 
     AddStationModal* addStationModal;
+    AddRouteModal* addRouteModal;
     UpdateStationModal* updateStationModal;
+    UpdateRouteModal* updateRouteModal;
 
     DatabaseManager* dbManager;
     Ui::MainWindow *ui;

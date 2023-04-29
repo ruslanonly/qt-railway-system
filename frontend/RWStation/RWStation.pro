@@ -15,7 +15,9 @@ SOURCES += \
     dialogs/logindialog.cpp \
     main.cpp \
     mainwindow.cpp \
+    modals/addroutemodal.cpp \
     modals/addstationmodal.cpp \
+    modals/updateroutemodal.cpp \
     modals/updatestationmodal.cpp
 
 HEADERS += \
@@ -24,13 +26,17 @@ HEADERS += \
     database/querymodel.h \
     dialogs/logindialog.h \
     mainwindow.h \
+    modals/addroutemodal.h \
     modals/addstationmodal.h \
+    modals/updateroutemodal.h \
     modals/updatestationmodal.h
 
 FORMS += \
     dialogs/logindialog.ui \
     mainwindow.ui \
+    modals/addroutemodal.ui \
     modals/addstationmodal.ui \
+    modals/updateroutemodal.ui \
     modals/updatestationmodal.ui
 
 # Default rules for deployment.

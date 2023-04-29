@@ -1,6 +1,6 @@
 /* Station */
 CREATE OR REPLACE FUNCTION add_station(
-    _name VARCHAR(30),
+    _name VARCHAR(50),
     _city VARCHAR(30),
     _country VARCHAR(30)
 ) RETURNS VOID AS $$
@@ -11,7 +11,7 @@ $$ LANGUAGE plpgsql;
 
 CREATE OR REPLACE FUNCTION update_station(
     _id INT,
-    _name VARCHAR(30),
+    _name VARCHAR(50),
     _city VARCHAR(30),
     _country VARCHAR(30)
 ) RETURNS VOID AS $$
@@ -32,7 +32,7 @@ $$ LANGUAGE plpgsql;
 
 /* Route */
 CREATE OR REPLACE FUNCTION add_route(
-    _name VARCHAR(30),
+    _name VARCHAR(50),
     _departure_station_id INT,
     _arrival_station_id INT,
     _departure_date TIMESTAMP,
@@ -46,7 +46,7 @@ $$ LANGUAGE plpgsql;
 
 CREATE OR REPLACE FUNCTION update_route(
     _id INT,
-    _name VARCHAR(30),
+    _name VARCHAR(50),
     _departure_station_id INT,
     _arrival_station_id INT,
     _departure_date TIMESTAMP,
@@ -121,27 +121,30 @@ $$ LANGUAGE plpgsql;
 
 /* Ticket */
 CREATE OR REPLACE FUNCTION add_ticket(
-    _route_id INTEGER,
-    _seat_no INTEGER,
+    _route_id INT,
+    _train_id INT,
+    _seat_no INT,
     _railcar_no SMALLINT,
     _railcar_class SMALLINT
 ) RETURNS VOID AS $$
 BEGIN
-    INSERT INTO ticket (route_id, seat_no, railcar_no, railcar_class)
-    VALUES (_route_id, _seat_no, _railcar_no, _railcar_class);
+    INSERT INTO ticket (route_id, train_id, seat_no, railcar_no, railcar_class)
+    VALUES (_route_id, _train_id, _seat_no, _railcar_no, _railcar_class);
 END;
 $$ LANGUAGE plpgsql;
 
 CREATE OR REPLACE FUNCTION update_ticket(
-    _id INTEGER,
-    _route_id INTEGER,
-    _seat_no INTEGER,
+    _id INT,
+    _route_id INT,
+    _train_id INT,
+    _seat_no INT,
     _railcar_no SMALLINT,
     _railcar_class SMALLINT
 ) RETURNS VOID AS $$
 BEGIN
     UPDATE ticket SET
         route_id = _route_id,
+        train_id = _train_id,
         seat_no = _seat_no,
         railcar_no = _railcar_no,
         railcar_class = _railcar_class
@@ -150,7 +153,7 @@ END;
 $$ LANGUAGE plpgsql;
 
 CREATE OR REPLACE FUNCTION delete_ticket(
-    _id INTEGER
+    _id INT
 ) RETURNS VOID AS $$
 BEGIN
     DELETE FROM ticket

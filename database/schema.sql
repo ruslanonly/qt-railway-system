@@ -1,7 +1,7 @@
 
 CREATE TABLE station (
   id SERIAL,
-  name VARCHAR(30) NOT NULL UNIQUE,
+  name VARCHAR(50) NOT NULL UNIQUE,
   city VARCHAR(30) NOT NULL,
   country VARCHAR(30) NOT NULL,
   PRIMARY KEY (id)
@@ -9,7 +9,7 @@ CREATE TABLE station (
 
 CREATE TABLE route (
   id SERIAL,
-  name VARCHAR(30) UNIQUE NOT NULL,
+  name VARCHAR(50) UNIQUE NOT NULL,
   departure_station_id INT NOT NULL,
   arrival_station_id INT NOT NULL,
   departure_date TIMESTAMP NOT NULL,
@@ -17,7 +17,8 @@ CREATE TABLE route (
   PRIMARY KEY (id),
   CONSTRAINT departure_station_fk FOREIGN KEY(departure_station_id) REFERENCES station(id),
   CONSTRAINT arrival_station_fk FOREIGN KEY(arrival_station_id) REFERENCES station(id),
-  CHECK (departure_date < arrival_date)
+  CHECK (departure_date < arrival_date),
+  CHECK (departure_station_id != arrival_station_id)
 );
 
 CREATE TABLE train (
@@ -38,12 +39,14 @@ CREATE TABLE train (
 CREATE TABLE ticket (
   id SERIAL,
   route_id INT NOT NULL,
+  train_id INT NOT NULL,
   seat_no INT NOT NULL,
   railcar_no SMALLINT NOT NULL,
   railcar_class SMALLINT NOT NULL,
   PRIMARY KEY (id),
   CONSTRAINT route_fk FOREIGN KEY(route_id) REFERENCES route(id),
-  CHECK (railcar_class = 1 OR railcar_class = 2) 
+  CONSTRAINT train_fk FOREIGN KEY(train_id) REFERENCES train(id),
+  CHECK (railcar_class = 1 OR railcar_class = 2)
 );
 
 CREATE TABLE passenger (
