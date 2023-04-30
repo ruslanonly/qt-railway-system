@@ -16,7 +16,9 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     modals/addroutemodal.cpp \
+    modals/addschedulemodal.cpp \
     modals/addstationmodal.cpp \
+    modals/addtrainmodal.cpp \
     modals/updateroutemodal.cpp \
     modals/updatestationmodal.cpp
 
@@ -27,7 +29,9 @@ HEADERS += \
     dialogs/logindialog.h \
     mainwindow.h \
     modals/addroutemodal.h \
+    modals/addschedulemodal.h \
     modals/addstationmodal.h \
+    modals/addtrainmodal.h \
     modals/updateroutemodal.h \
     modals/updatestationmodal.h
 
@@ -35,7 +39,9 @@ FORMS += \
     dialogs/logindialog.ui \
     mainwindow.ui \
     modals/addroutemodal.ui \
+    modals/addschedulemodal.ui \
     modals/addstationmodal.ui \
+    modals/addtrainmodal.ui \
     modals/updateroutemodal.ui \
     modals/updatestationmodal.ui
 

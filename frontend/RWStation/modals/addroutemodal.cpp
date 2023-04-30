@@ -14,7 +14,7 @@ AddRouteModal::AddRouteModal(QWidget *parent) :
     ui->setupUi(this);
     this->setAttribute(Qt::WA_DeleteOnClose);
 
-    QSqlQueryModel* stationsModel = queryModel->stationSelectAll();
+    QSqlQueryModel* stationsModel = queryModel->stationSelectAllRaw();
     this->ui->arrStationComboBox->setModel(stationsModel);
     this->ui->arrStationComboBox->setModelColumn(1);
     this->ui->depStationComboBox->setModel(stationsModel);
@@ -31,19 +31,17 @@ void AddRouteModal::on_addButton_clicked()
 {
     QAbstractItemModel* model = this->ui->depStationComboBox->model();
     QString name = this->ui->nameInput->text();
-    QString departureDateTime = this->ui->depDateInput->dateTime().toString(Qt::ISODate);
-    QString arrivalDateTime = this->ui->arrDateInput->dateTime().toString(Qt::ISODate);
+    //QString departureDateTime = this->ui->depDateInput->dateTime().toString(Qt::ISODate);
+    //QString arrivalDateTime = this->ui->arrDateInput->dateTime().toString(Qt::ISODate);
     int DepartureStationID = model->data(model->index(ui->depStationComboBox->currentIndex(),0)).toInt();
-    int ArrivalStationID = model->data(model->index(ui->arrStationComboBox->currentIndex(),0)).toInt();;
+    int ArrivalStationID = model->data(model->index(ui->arrStationComboBox->currentIndex(),0)).toInt();
 
 
     QSqlQuery *query = new QSqlQuery;
-    query->prepare("SELECT add_route(:Name, :DepartureStationID, :ArrivalStationID, :DepartureDate, :ArrivalDate)");
+    query->prepare("SELECT add_route(:Name, :DepartureStationID, :ArrivalStationID)");
     query->bindValue(":Name", name);
     query->bindValue(":DepartureStationID", DepartureStationID);
     query->bindValue(":ArrivalStationID", ArrivalStationID);
-    query->bindValue(":DepartureDate", departureDateTime);
-    query->bindValue(":ArrivalDate", arrivalDateTime);
     if (query->exec()) {
         this->close();
     } else {

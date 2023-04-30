@@ -33,6 +33,7 @@ void MainWindow::on_ticketPageButton_clicked() {
 
 void MainWindow::on_trainPageButton_clicked() {
     this->ui->pagesWidget->setCurrentIndex(2);
+    loadTrainTable();
 }
 
 void MainWindow::on_passengerPageButton_clicked() {
@@ -48,6 +49,14 @@ void MainWindow::on_stationPageButton_clicked() {
     this->ui->pagesWidget->setCurrentIndex(5);
     loadStationTable();
 }
+
+void MainWindow::on_schedulePageButton_clicked()
+{
+    this->ui->pagesWidget->setCurrentIndex(6);
+    loadScheduleTable();
+}
+
+
 
 
 void MainWindow::on_backPassengerButton_clicked() {
@@ -70,6 +79,10 @@ void MainWindow::on_backTrainButton_clicked() {
     this->ui->pagesWidget->setCurrentIndex(0);
 }
 
+void MainWindow::on_backScheduleButton_clicked() {
+    this->ui->pagesWidget->setCurrentIndex(0);
+}
+
 
 void MainWindow::loadStationTable() {
     QTableView* tableView= this->ui->stationsTableView;
@@ -79,9 +92,6 @@ void MainWindow::loadStationTable() {
 
 void MainWindow::loadRouteTable() {
     QTableView* tableView= this->ui->routesTableView;
-    if (tableView->model() != NULL) {
-        qDebug() << "hello";
-    }
     delete tableView->model();
     this->ui->routesTableView->setModel(queryModel->routeSelectAll());
 }
@@ -89,19 +99,27 @@ void MainWindow::loadRouteTable() {
 void MainWindow::loadTrainTable() {
     QTableView* tableView= this->ui->trainsTableView;
     delete tableView->model();
+
+    qDebug() << queryModel->trainSelectAll()->lastError().text();
     this->ui->trainsTableView->setModel(queryModel->trainSelectAll());
 }
 
 void MainWindow::loadTicketTable() {
     QTableView* tableView= this->ui->ticketsTableView;
     delete tableView->model();
-    this->ui->ticketsTableView->setModel(queryModel->ticketSelectAll());
+    this->ui->ticketsTableView->setModel(queryModel->ticketSelectAllRaw());
 }
 
 void MainWindow::loadPassengerTable() {
     QTableView* tableView= this->ui->passengersTableView;
     delete tableView->model();
-    this->ui->passengersTableView->setModel(queryModel->passengerSelectAll());
+    this->ui->passengersTableView->setModel(queryModel->passengerSelectAllRaw());
+}
+
+void MainWindow::loadScheduleTable() {
+    QTableView* tableView= this->ui->scheduleTableView;
+    delete tableView->model();
+    this->ui->scheduleTableView->setModel(queryModel->scheduleSelectAllRaw());
 }
 
 
@@ -131,6 +149,11 @@ void MainWindow::on_refreshTrainButton_clicked()
     loadTrainTable();
 }
 
+void MainWindow::on_refreshScheduleButton_clicked()
+{
+    loadScheduleTable();
+}
+
 
 void MainWindow::on_addStationButton_clicked()
 {
@@ -144,6 +167,11 @@ void MainWindow::on_addRouteButton_clicked()
     this->addRouteModal->show();
 }
 
+void MainWindow::on_addTrainButton_clicked()
+{
+    this->addTrainModal = new AddTrainModal();
+    this->addTrainModal->show();
+}
 
 
 
@@ -275,4 +303,11 @@ void MainWindow::DeleteRequestedAction(int selectedID, TableViewVariant selected
     }
 
 }
+
+
+
+
+
+
+
 

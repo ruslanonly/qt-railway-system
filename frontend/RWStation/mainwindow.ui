@@ -14,11 +14,11 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QVBoxLayout" name="verticalLayout_3">
+   <layout class="QHBoxLayout" name="horizontalLayout_2">
     <item>
      <widget class="QStackedWidget" name="pagesWidget">
       <property name="currentIndex">
-       <number>4</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="HomePage">
        <property name="sizePolicy">
@@ -103,6 +103,16 @@
             </property>
             <property name="text">
              <string>Пассажиры</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="2">
+           <widget class="QPushButton" name="schedulePageButton">
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
+            <property name="text">
+             <string>Расписание</string>
             </property>
            </widget>
           </item>
@@ -244,8 +254,14 @@
             <property name="selectionBehavior">
              <enum>QAbstractItemView::SelectRows</enum>
             </property>
+            <attribute name="horizontalHeaderCascadingSectionResizes">
+             <bool>true</bool>
+            </attribute>
             <attribute name="horizontalHeaderStretchLastSection">
              <bool>true</bool>
+            </attribute>
+            <attribute name="verticalHeaderCascadingSectionResizes">
+             <bool>false</bool>
             </attribute>
            </widget>
           </item>
@@ -424,6 +440,9 @@
             <property name="selectionBehavior">
              <enum>QAbstractItemView::SelectRows</enum>
             </property>
+            <property name="wordWrap">
+             <bool>false</bool>
+            </property>
             <attribute name="horizontalHeaderStretchLastSection">
              <bool>true</bool>
             </attribute>
@@ -588,7 +607,96 @@
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="page_4"/>
+      <widget class="QWidget" name="SchedulePage">
+       <layout class="QHBoxLayout" name="horizontalLayout_4">
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout_9" stretch="0,0,0">
+          <property name="spacing">
+           <number>20</number>
+          </property>
+          <item>
+           <widget class="QLabel" name="heading_8">
+            <property name="styleSheet">
+             <string notr="true">font-size: 12pt; font-weight: 700;</string>
+            </property>
+            <property name="text">
+             <string>Пассажиры</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QTableView" name="scheduleTableView">
+            <property name="contextMenuPolicy">
+             <enum>Qt::CustomContextMenu</enum>
+            </property>
+            <property name="selectionMode">
+             <enum>QAbstractItemView::SingleSelection</enum>
+            </property>
+            <property name="selectionBehavior">
+             <enum>QAbstractItemView::SelectRows</enum>
+            </property>
+            <attribute name="horizontalHeaderStretchLastSection">
+             <bool>true</bool>
+            </attribute>
+           </widget>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="buttonsLayout_8">
+            <property name="spacing">
+             <number>7</number>
+            </property>
+            <item>
+             <widget class="QPushButton" name="backScheduleButton">
+              <property name="cursor">
+               <cursorShape>PointingHandCursor</cursorShape>
+              </property>
+              <property name="text">
+               <string>Назад</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_8">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QPushButton" name="refreshScheduleButton">
+              <property name="cursor">
+               <cursorShape>PointingHandCursor</cursorShape>
+              </property>
+              <property name="text">
+               <string>Обновить</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="addScheduleButton">
+              <property name="cursor">
+               <cursorShape>PointingHandCursor</cursorShape>
+              </property>
+              <property name="text">
+               <string>Добавить</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
      </widget>
     </item>
    </layout>

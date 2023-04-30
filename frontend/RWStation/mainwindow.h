@@ -15,6 +15,8 @@
 #include "modals/updatestationmodal.h"
 #include "modals/updateroutemodal.h"
 
+#include "modals/addtrainmodal.h"
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -41,14 +43,11 @@ public slots:
 
 private slots:
     void on_ticketPageButton_clicked();
-
     void on_trainPageButton_clicked();
-
     void on_passengerPageButton_clicked();
-
     void on_routePageButton_clicked();
-
     void on_stationPageButton_clicked();
+    void on_schedulePageButton_clicked();
 
     void on_backPassengerButton_clicked();
 
@@ -71,6 +70,8 @@ private slots:
     void on_refreshTrainButton_clicked();
 
     void on_addStationButton_clicked();
+    void on_addRouteButton_clicked();
+    void on_addTrainButton_clicked();
 
     void on_stationsTableView_customContextMenuRequested(const QPoint &pos);
     void on_ticketsTableView_customContextMenuRequested(const QPoint &pos);
@@ -85,8 +86,12 @@ private slots:
     void loadTrainTable();
     void loadTicketTable();
     void loadPassengerTable();
+    void loadScheduleTable();
 
-    void on_addRouteButton_clicked();
+
+    void on_backScheduleButton_clicked();
+
+    void on_refreshScheduleButton_clicked();
 
 private:
     void showCustomContextMenu(const QPoint &pos, QTableView *tableView, TableViewVariant tableVariant);
@@ -95,6 +100,7 @@ private:
     AddRouteModal* addRouteModal;
     UpdateStationModal* updateStationModal;
     UpdateRouteModal* updateRouteModal;
+    AddTrainModal* addTrainModal;
 
     DatabaseManager* dbManager;
     Ui::MainWindow *ui;

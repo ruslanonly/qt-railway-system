@@ -12,13 +12,17 @@ class QueryModel
 {
 public:
     QueryModel(DatabaseManager* dbManager);
+    QSqlQueryModel* stationSelectAllRaw();
+    QSqlQueryModel* routeSelectAllRaw();
+    QSqlQueryModel* trainSelectAllRaw();
+    QSqlQueryModel* ticketSelectAllRaw();
+    QSqlQueryModel* passengerSelectAllRaw();
+    QSqlQueryModel* scheduleSelectAllRaw();
+
     QSqlQueryModel* stationSelectAll();
     QSqlQueryModel* routeSelectAll();
     QSqlQueryModel* trainSelectAll();
-    QSqlQueryModel* ticketSelectAll();
-    QSqlQueryModel* passengerSelectAll();
-
-    QSqlQuery* stationSelectOne(int stationID);
+    QSqlQueryModel* scheduleSelectAll();
 
 private:
     DatabaseManager* dbManager;

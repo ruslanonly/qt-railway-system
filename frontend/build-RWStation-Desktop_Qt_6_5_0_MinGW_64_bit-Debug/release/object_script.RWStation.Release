@@ -5,12 +5,16 @@ release/logindialog.o
 release/main.o
 release/mainwindow.o
 release/addroutemodal.o
+release/addschedulemodal.o
 release/addstationmodal.o
+release/addtrainmodal.o
 release/updateroutemodal.o
 release/updatestationmodal.o
 release/moc_logindialog.o
 release/moc_mainwindow.o
 release/moc_addroutemodal.o
+release/moc_addschedulemodal.o
 release/moc_addstationmodal.o
+release/moc_addtrainmodal.o
 release/moc_updateroutemodal.o
 release/moc_updatestationmodal.o

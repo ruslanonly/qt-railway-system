@@ -17,4 +17,12 @@ INSERT INTO station(name, city, country) VALUES ('Нижний Новгород 
 
 
 
-INSERT INTO route (name, departure_station_id,arrival_station_id,departure_date,arrival_date) VALUES('Москва — Анапа', 1, 2, CURRENT_TIMESTAMP, to_timestamp(123123123123));
+INSERT INTO route (name, departure_station_id,arrival_station_id) VALUES('Москва — Анапа', 1, 2);
+INSERT INTO route (name, departure_station_id,arrival_station_id) VALUES('Маршрут — Маршрут', 3, 4);
+INSERT INTO route (name, departure_station_id,arrival_station_id) VALUES('Маршрут', 3, 4);
+
+
+
+
+INSERT INTO train (route_id, name, type, railcar_capacity, railcars_amount, first_class_price, second_class_price) 
+    VALUES (1, '705Ж', 'пассажирский', 150, 9, 1100, 700);

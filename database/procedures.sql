@@ -34,13 +34,11 @@ $$ LANGUAGE plpgsql;
 CREATE OR REPLACE FUNCTION add_route(
     _name VARCHAR(50),
     _departure_station_id INT,
-    _arrival_station_id INT,
-    _departure_date TIMESTAMP,
-    _arrival_date TIMESTAMP
+    _arrival_station_id INT
 ) RETURNS VOID AS $$
 BEGIN
-    INSERT INTO route (name, departure_station_id, arrival_station_id, departure_date, arrival_date) 
-    VALUES (_name, _departure_station_id, _arrival_station_id, _departure_date, _arrival_date);
+    INSERT INTO route (name, departure_station_id, arrival_station_id) 
+    VALUES (_name, _departure_station_id, _arrival_station_id);
 END;
 $$ LANGUAGE plpgsql;
 
@@ -48,13 +46,13 @@ CREATE OR REPLACE FUNCTION update_route(
     _id INT,
     _name VARCHAR(50),
     _departure_station_id INT,
-    _arrival_station_id INT,
-    _departure_date TIMESTAMP,
-    _arrival_date TIMESTAMP
+    _arrival_station_id INT
 ) RETURNS VOID AS $$
 BEGIN
-    UPDATE route SET name = _name, departure_station_id = _departure_station_id, 
-    arrival_station_id = _arrival_station_id, departure_date = _departure_date, arrival_date = _arrival_date 
+    UPDATE route SET 
+    name = _name, 
+    departure_station_id = _departure_station_id, 
+    arrival_station_id = _arrival_station_id
     WHERE id = _id;
 END;
 $$ LANGUAGE plpgsql;
@@ -66,9 +64,6 @@ BEGIN
     DELETE FROM route WHERE id = _id;
 END;
 $$ LANGUAGE plpgsql;
-
-
-
 
 
 
@@ -114,6 +109,53 @@ END;
 $$ LANGUAGE plpgsql;
 
 
+
+
+
+
+/* Schedule */
+CREATE OR REPLACE FUNCTION add_schedule(
+    route_id INTEGER,
+    train_id INTEGER,
+    departure_date TIMESTAMP,
+    arrival_date TIMESTAMP
+)
+RETURNS VOID AS $$
+BEGIN
+    INSERT INTO schedule(route_id, train_id, departure_date, arrival_date)
+    VALUES(route_id, train_id, departure_date, arrival_date);
+END;
+$$ LANGUAGE plpgsql;
+
+
+CREATE OR REPLACE FUNCTION update_schedule(
+    schedule_id INTEGER,
+    new_route_id INT,
+    new_train_id INT,
+    new_departure_date TIMESTAMP,
+    new_arrival_date TIMESTAMP
+)
+RETURNS VOID AS $$
+BEGIN
+    UPDATE schedule
+    SET departure_date = new_departure_date, 
+    arrival_date = new_arrival_date,
+    route_id = new_route_id,
+    train_id = new_train_id
+    WHERE id = schedule_id;
+END;
+$$ LANGUAGE plpgsql;
+
+
+CREATE OR REPLACE FUNCTION delete_schedule(
+    schedule_id INTEGER
+)
+RETURNS VOID AS $$
+BEGIN
+    DELETE FROM schedule
+    WHERE id = schedule_id;
+END;
+$$ LANGUAGE plpgsql;
 
 
 

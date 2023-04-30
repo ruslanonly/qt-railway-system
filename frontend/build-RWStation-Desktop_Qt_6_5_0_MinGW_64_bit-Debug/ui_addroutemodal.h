@@ -12,7 +12,6 @@
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QComboBox>
-#include <QtWidgets/QDateTimeEdit>
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLabel>
@@ -36,18 +35,12 @@ public:
     QVBoxLayout *inputGroup_8;
     QLabel *arrivalStationLabel;
     QComboBox *arrStationComboBox;
-    QVBoxLayout *inputGroup_9;
-    QLabel *arrivalDateLabel;
-    QDateTimeEdit *arrDateInput;
-    QVBoxLayout *inputGroup_10;
-    QLabel *departureDateLabel;
-    QDateTimeEdit *depDateInput;
-    QVBoxLayout *inputGroup_7;
-    QLabel *departureStationLabel;
-    QComboBox *depStationComboBox;
     QVBoxLayout *inputGroup_6;
     QLabel *nameLabel;
     QLineEdit *nameInput;
+    QVBoxLayout *inputGroup_7;
+    QLabel *departureStationLabel;
+    QComboBox *depStationComboBox;
     QSpacerItem *verticalSpacer_2;
     QPushButton *addButton;
     QSpacerItem *horizontalSpacer_2;
@@ -56,9 +49,9 @@ public:
     {
         if (AddRouteModal->objectName().isEmpty())
             AddRouteModal->setObjectName("AddRouteModal");
-        AddRouteModal->resize(450, 350);
-        AddRouteModal->setMinimumSize(QSize(450, 350));
-        AddRouteModal->setMaximumSize(QSize(450, 350));
+        AddRouteModal->resize(450, 300);
+        AddRouteModal->setMinimumSize(QSize(450, 300));
+        AddRouteModal->setMaximumSize(QSize(450, 300));
         verticalLayout = new QVBoxLayout(AddRouteModal);
         verticalLayout->setObjectName("verticalLayout");
         label = new QLabel(AddRouteModal);
@@ -96,37 +89,22 @@ public:
 
         gridLayout->addLayout(inputGroup_8, 1, 1, 1, 1);
 
-        inputGroup_9 = new QVBoxLayout();
-        inputGroup_9->setSpacing(5);
-        inputGroup_9->setObjectName("inputGroup_9");
-        arrivalDateLabel = new QLabel(AddRouteModal);
-        arrivalDateLabel->setObjectName("arrivalDateLabel");
+        inputGroup_6 = new QVBoxLayout();
+        inputGroup_6->setSpacing(5);
+        inputGroup_6->setObjectName("inputGroup_6");
+        nameLabel = new QLabel(AddRouteModal);
+        nameLabel->setObjectName("nameLabel");
 
-        inputGroup_9->addWidget(arrivalDateLabel);
+        inputGroup_6->addWidget(nameLabel);
 
-        arrDateInput = new QDateTimeEdit(AddRouteModal);
-        arrDateInput->setObjectName("arrDateInput");
+        nameInput = new QLineEdit(AddRouteModal);
+        nameInput->setObjectName("nameInput");
+        nameInput->setEchoMode(QLineEdit::Normal);
 
-        inputGroup_9->addWidget(arrDateInput);
-
-
-        gridLayout->addLayout(inputGroup_9, 2, 1, 1, 1);
-
-        inputGroup_10 = new QVBoxLayout();
-        inputGroup_10->setSpacing(5);
-        inputGroup_10->setObjectName("inputGroup_10");
-        departureDateLabel = new QLabel(AddRouteModal);
-        departureDateLabel->setObjectName("departureDateLabel");
-
-        inputGroup_10->addWidget(departureDateLabel);
-
-        depDateInput = new QDateTimeEdit(AddRouteModal);
-        depDateInput->setObjectName("depDateInput");
-
-        inputGroup_10->addWidget(depDateInput);
+        inputGroup_6->addWidget(nameInput);
 
 
-        gridLayout->addLayout(inputGroup_10, 2, 0, 1, 1);
+        gridLayout->addLayout(inputGroup_6, 0, 0, 1, 2);
 
         inputGroup_7 = new QVBoxLayout();
         inputGroup_7->setSpacing(5);
@@ -143,23 +121,6 @@ public:
 
 
         gridLayout->addLayout(inputGroup_7, 1, 0, 1, 1);
-
-        inputGroup_6 = new QVBoxLayout();
-        inputGroup_6->setSpacing(5);
-        inputGroup_6->setObjectName("inputGroup_6");
-        nameLabel = new QLabel(AddRouteModal);
-        nameLabel->setObjectName("nameLabel");
-
-        inputGroup_6->addWidget(nameLabel);
-
-        nameInput = new QLineEdit(AddRouteModal);
-        nameInput->setObjectName("nameInput");
-        nameInput->setEchoMode(QLineEdit::Password);
-
-        inputGroup_6->addWidget(nameInput);
-
-
-        gridLayout->addLayout(inputGroup_6, 0, 0, 1, 2);
 
         gridLayout->setColumnStretch(0, 1);
 
@@ -197,10 +158,8 @@ public:
         AddRouteModal->setWindowTitle(QCoreApplication::translate("AddRouteModal", "Form", nullptr));
         label->setText(QCoreApplication::translate("AddRouteModal", "\320\234\320\260\321\200\321\210\321\200\321\203\321\202", nullptr));
         arrivalStationLabel->setText(QCoreApplication::translate("AddRouteModal", "\320\241\321\202\320\260\320\275\321\206\320\270\321\217 \320\277\321\200\320\270\320\261\321\213\321\202\320\270\321\217", nullptr));
-        arrivalDateLabel->setText(QCoreApplication::translate("AddRouteModal", "\320\222\321\200\320\265\320\274\321\217 \320\277\321\200\320\270\320\261\321\213\321\202\320\270\321\217", nullptr));
-        departureDateLabel->setText(QCoreApplication::translate("AddRouteModal", "\320\222\321\200\320\265\320\274\321\217 \320\276\321\202\320\277\321\200\320\260\320\262\320\273\320\265\320\275\320\270\321\217", nullptr));
-        departureStationLabel->setText(QCoreApplication::translate("AddRouteModal", "\320\241\321\202\320\260\320\275\321\206\320\270\321\217 \320\276\321\202\320\277\321\200\320\260\320\262\320\273\320\265\320\275\320\270\321\217", nullptr));
         nameLabel->setText(QCoreApplication::translate("AddRouteModal", "\320\235\320\260\320\267\320\262\320\260\320\275\320\270\320\265", nullptr));
+        departureStationLabel->setText(QCoreApplication::translate("AddRouteModal", "\320\241\321\202\320\260\320\275\321\206\320\270\321\217 \320\276\321\202\320\277\321\200\320\260\320\262\320\273\320\265\320\275\320\270\321\217", nullptr));
         addButton->setText(QCoreApplication::translate("AddRouteModal", "\320\224\320\276\320\261\320\260\320\262\320\270\321\202\321\214", nullptr));
     } // retranslateUi
 

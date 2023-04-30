@@ -7,19 +7,19 @@
     <x>0</x>
     <y>0</y>
     <width>450</width>
-    <height>350</height>
+    <height>300</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
     <width>450</width>
-    <height>350</height>
+    <height>300</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
     <width>450</width>
-    <height>350</height>
+    <height>300</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -81,57 +81,6 @@
            </item>
           </layout>
          </item>
-         <item row="2" column="1">
-          <layout class="QVBoxLayout" name="inputGroup_9">
-           <property name="spacing">
-            <number>5</number>
-           </property>
-           <item>
-            <widget class="QLabel" name="arrivalDateLabel">
-             <property name="text">
-              <string>Время прибытия</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QDateTimeEdit" name="arrDateInput"/>
-           </item>
-          </layout>
-         </item>
-         <item row="2" column="0">
-          <layout class="QVBoxLayout" name="inputGroup_10">
-           <property name="spacing">
-            <number>5</number>
-           </property>
-           <item>
-            <widget class="QLabel" name="departureDateLabel">
-             <property name="text">
-              <string>Время отправления</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QDateTimeEdit" name="depDateInput"/>
-           </item>
-          </layout>
-         </item>
-         <item row="1" column="0">
-          <layout class="QVBoxLayout" name="inputGroup_7">
-           <property name="spacing">
-            <number>5</number>
-           </property>
-           <item>
-            <widget class="QLabel" name="departureStationLabel">
-             <property name="text">
-              <string>Станция отправления</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QComboBox" name="depStationComboBox"/>
-           </item>
-          </layout>
-         </item>
          <item row="0" column="0" colspan="2">
           <layout class="QVBoxLayout" name="inputGroup_6">
            <property name="spacing">
@@ -150,6 +99,23 @@
               <enum>QLineEdit::Normal</enum>
              </property>
             </widget>
+           </item>
+          </layout>
+         </item>
+         <item row="1" column="0">
+          <layout class="QVBoxLayout" name="inputGroup_7">
+           <property name="spacing">
+            <number>5</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="departureStationLabel">
+             <property name="text">
+              <string>Станция отправления</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QComboBox" name="depStationComboBox"/>
            </item>
           </layout>
          </item>
