@@ -16,6 +16,13 @@
 #include "modals/updateroutemodal.h"
 
 #include "modals/addtrainmodal.h"
+#include "modals/updatetrainmodal.h"
+
+#include "modals/addschedulemodal.h"
+#include "modals/updateschedulemodal.h"
+
+#include "modals/addpassengermodal.h"
+#include "modals/updatepassengermodal.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -26,7 +33,8 @@ enum TableViewVariant {
     route,
     train,
     ticket,
-    passenger
+    passenger,
+    schedule
 };
 
 class MainWindow : public QMainWindow
@@ -50,34 +58,30 @@ private slots:
     void on_schedulePageButton_clicked();
 
     void on_backPassengerButton_clicked();
-
     void on_backRouteButton_clicked();
-
     void on_backStationButton_clicked();
-
     void on_backTicketButton_clicked();
-
     void on_backTrainButton_clicked();
+    void on_backScheduleButton_clicked();
 
     void on_refreshPassengerButton_clicked();
-
     void on_refreshRouteButton_clicked();
-
     void on_refreshStationButton_clicked();
-
     void on_refreshTicketButton_clicked();
-
     void on_refreshTrainButton_clicked();
+    void on_refreshScheduleButton_clicked();
 
     void on_addStationButton_clicked();
     void on_addRouteButton_clicked();
     void on_addTrainButton_clicked();
+    void on_addScheduleButton_clicked();
 
     void on_stationsTableView_customContextMenuRequested(const QPoint &pos);
     void on_ticketsTableView_customContextMenuRequested(const QPoint &pos);
     void on_trainsTableView_customContextMenuRequested(const QPoint &pos);
     void on_passengersTableView_customContextMenuRequested(const QPoint &pos);
     void on_routesTableView_customContextMenuRequested(const QPoint &pos);
+    void on_scheduleTableView_customContextMenuRequested(const QPoint &pos);
     void ModifyRequestedAction(int selectedID, TableViewVariant selectedTable);
     void DeleteRequestedAction(int selectedID, TableViewVariant selectedTable);
 
@@ -88,19 +92,22 @@ private slots:
     void loadPassengerTable();
     void loadScheduleTable();
 
-
-    void on_backScheduleButton_clicked();
-
-    void on_refreshScheduleButton_clicked();
+    void on_addPassengerButton_clicked();
 
 private:
     void showCustomContextMenu(const QPoint &pos, QTableView *tableView, TableViewVariant tableVariant);
 
     AddStationModal* addStationModal;
     AddRouteModal* addRouteModal;
+    AddTrainModal* addTrainModal;
+    AddScheduleModal* addScheduleModal;
+    AddPassengerModal* addPassengerModal;
+
     UpdateStationModal* updateStationModal;
     UpdateRouteModal* updateRouteModal;
-    AddTrainModal* addTrainModal;
+    UpdateTrainModal* updateTrainModal;
+    UpdateScheduleModal* updateScheduleModal;
+    UpdatePassengerModal* updatePassengerModal;
 
     DatabaseManager* dbManager;
     Ui::MainWindow *ui;

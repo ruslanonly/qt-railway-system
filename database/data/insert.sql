@@ -26,3 +26,11 @@ INSERT INTO route (name, departure_station_id,arrival_station_id) VALUES('Мар
 
 INSERT INTO train (route_id, name, type, railcar_capacity, railcars_amount, first_class_price, second_class_price) 
     VALUES (1, '705Ж', 'пассажирский', 150, 9, 1100, 700);
+INSERT INTO train (route_id, name, type, railcar_capacity, railcars_amount, first_class_price, second_class_price) 
+VALUES (2, '705Жsdf', 'пассажирский', 150, 9, 1100, 700);
+
+
+INSERT INTO schedule(route_id, train_id, departure_date, arrival_date)
+VALUES(1, 1, CURRENT_TIMESTAMP, to_timestamp(123123123123));
+INSERT INTO schedule(route_id, train_id, departure_date, arrival_date)
+VALUES(1, 2, CURRENT_TIMESTAMP, to_timestamp(123123123123));

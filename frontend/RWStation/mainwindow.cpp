@@ -38,6 +38,7 @@ void MainWindow::on_trainPageButton_clicked() {
 
 void MainWindow::on_passengerPageButton_clicked() {
     this->ui->pagesWidget->setCurrentIndex(3);
+    loadPassengerTable();
 }
 
 void MainWindow::on_routePageButton_clicked() {
@@ -113,13 +114,15 @@ void MainWindow::loadTicketTable() {
 void MainWindow::loadPassengerTable() {
     QTableView* tableView= this->ui->passengersTableView;
     delete tableView->model();
-    this->ui->passengersTableView->setModel(queryModel->passengerSelectAllRaw());
+    qDebug() << "passenger" <<  queryModel->passengerSelectAll()->lastError().text();
+    this->ui->passengersTableView->setModel(queryModel->passengerSelectAll());
 }
 
 void MainWindow::loadScheduleTable() {
     QTableView* tableView= this->ui->scheduleTableView;
     delete tableView->model();
-    this->ui->scheduleTableView->setModel(queryModel->scheduleSelectAllRaw());
+    qDebug() << queryModel->scheduleSelectAll()->lastError().text();
+    this->ui->scheduleTableView->setModel(queryModel->scheduleSelectAll());
 }
 
 
@@ -173,7 +176,17 @@ void MainWindow::on_addTrainButton_clicked()
     this->addTrainModal->show();
 }
 
+void MainWindow::on_addScheduleButton_clicked()
+{
+    this->addScheduleModal = new AddScheduleModal();
+    this->addScheduleModal->show();
+}
 
+void MainWindow::on_addPassengerButton_clicked()
+{
+    this->addPassengerModal = new AddPassengerModal();
+    this->addPassengerModal->show();
+}
 
 
 void MainWindow::on_stationsTableView_customContextMenuRequested(const QPoint &pos)
@@ -201,7 +214,10 @@ void MainWindow::on_passengersTableView_customContextMenuRequested(const QPoint 
     showCustomContextMenu(pos, ui->passengersTableView, TableViewVariant::passenger);
 }
 
-
+void MainWindow::on_scheduleTableView_customContextMenuRequested(const QPoint &pos)
+{
+    showCustomContextMenu(pos, ui->scheduleTableView, TableViewVariant::schedule);
+}
 
 
 QString mapTableVariantToName(TableViewVariant tableVariant) {
@@ -210,13 +226,16 @@ QString mapTableVariantToName(TableViewVariant tableVariant) {
         return "station";
         break;
     case route:
-        return"route";
+        return "route";
         break;
     case train:
-        return"train";
+        return "train";
+        break;
+    case schedule:
+        return "schedule";
         break;
     case ticket:
-        return"ticket";
+        return "ticket";
         break;
     case passenger:
         return "passenger";
@@ -261,22 +280,35 @@ void MainWindow::ModifyRequestedAction(int selectedID, TableViewVariant selected
             updateRouteModal->show();
             break;
         }
-        case train:
+        case train: {
+            updateTrainModal = new UpdateTrainModal(selectedID);
+            updateTrainModal->show();
             break;
-        case ticket:
+        }
+        case schedule: {
+            updateScheduleModal = new UpdateScheduleModal(selectedID);
+            updateScheduleModal->show();
             break;
-        case passenger:
+        }
+        case ticket:{
+
             break;
+        }
+        case passenger: {
+            updatePassengerModal = new UpdatePassengerModal(selectedID);
+            updatePassengerModal->show();
+            break;
+        }
     }
 }
 
 void MainWindow::DeleteRequestedAction(int selectedID, TableViewVariant selectedTable) {
     QString table = mapTableVariantToName(selectedTable);
-    qDebug() << selectedID << " " << table;
 
     QSqlQuery *query = new QSqlQuery();
     query->prepare("SELECT delete_" + table + "(:ID)");
     query->bindValue(":ID", selectedID);
+
     if (query->exec()){
         switch(selectedTable) {
             case station:
@@ -287,6 +319,9 @@ void MainWindow::DeleteRequestedAction(int selectedID, TableViewVariant selected
                 break;
             case train:
                 loadTrainTable();
+                break;
+            case schedule:
+                loadScheduleTable();
                 break;
             case ticket:
                 loadTicketTable();
@@ -303,6 +338,15 @@ void MainWindow::DeleteRequestedAction(int selectedID, TableViewVariant selected
     }
 
 }
+
+
+
+
+
+
+
+
+
 
 
 

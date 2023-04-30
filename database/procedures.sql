@@ -94,7 +94,11 @@ CREATE OR REPLACE FUNCTION update_train(
     _second_class_price INT
 ) RETURNS VOID AS $$
 BEGIN
-    UPDATE train SET route_id = _route_id, name = _name, type = _type, railcar_capacity = _railcar_capacity, 
+    UPDATE train SET 
+    route_id = _route_id, 
+    name = _name, 
+    type = _type, 
+    railcar_capacity = _railcar_capacity, 
     railcars_amount = _railcars_amount, first_class_price = _first_class_price, second_class_price = _second_class_price 
     WHERE id = _id;
 END;
@@ -163,11 +167,11 @@ $$ LANGUAGE plpgsql;
 
 /* Ticket */
 CREATE OR REPLACE FUNCTION add_ticket(
-    _route_id INT,
-    _train_id INT,
-    _seat_no INT,
-    _railcar_no SMALLINT,
-    _railcar_class SMALLINT
+    schedule_id INT,
+    passenger_id INT,
+    seat_no INT,
+    railcar_no SMALLINT,
+    railcar_class SMALLINT
 ) RETURNS VOID AS $$
 BEGIN
     INSERT INTO ticket (route_id, train_id, seat_no, railcar_no, railcar_class)
@@ -210,3 +214,50 @@ $$ LANGUAGE plpgsql;
 
 
 /* Passenger */
+
+CREATE OR REPLACE FUNCTION add_passenger(
+  p_first_name VARCHAR(30),
+  p_middle_name VARCHAR(30),
+  p_last_name VARCHAR(30),
+  p_passport_serial_no SMALLINT,
+  p_passport_code INT
+)
+RETURNS VOID AS
+$$
+BEGIN
+  INSERT INTO passenger (first_name, middle_name, last_name, passport_serial_no, passport_code)
+  VALUES (p_first_name, p_middle_name, p_last_name, p_passport_serial_no, p_passport_code);
+END;
+$$
+LANGUAGE plpgsql;
+
+CREATE OR REPLACE FUNCTION update_passenger(
+  p_id INT,
+  p_first_name VARCHAR(30),
+  p_middle_name VARCHAR(30),
+  p_last_name VARCHAR(30),
+  p_passport_serial_no SMALLINT,
+  p_passport_code INT
+)
+RETURNS VOID AS
+$$
+BEGIN
+  UPDATE passenger
+  SET first_name = p_first_name,
+      middle_name = p_middle_name,
+      last_name = p_last_name,
+      passport_serial_no = p_passport_serial_no,
+      passport_code = p_passport_code
+  WHERE id = p_id;
+END;
+$$
+LANGUAGE plpgsql;
+
+CREATE OR REPLACE FUNCTION delete_passenger(p_id INT)
+RETURNS VOID AS
+$$
+BEGIN
+  DELETE FROM passenger WHERE id = p_id;
+END;
+$$
+LANGUAGE plpgsql;

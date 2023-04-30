@@ -23,6 +23,7 @@ public:
     QSqlQueryModel* routeSelectAll();
     QSqlQueryModel* trainSelectAll();
     QSqlQueryModel* scheduleSelectAll();
+    QSqlQueryModel* passengerSelectAll();
 
 private:
     DatabaseManager* dbManager;

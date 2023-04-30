@@ -15,12 +15,16 @@ SOURCES += \
     dialogs/logindialog.cpp \
     main.cpp \
     mainwindow.cpp \
+    modals/addpassengermodal.cpp \
     modals/addroutemodal.cpp \
     modals/addschedulemodal.cpp \
     modals/addstationmodal.cpp \
     modals/addtrainmodal.cpp \
+    modals/updatepassengermodal.cpp \
     modals/updateroutemodal.cpp \
-    modals/updatestationmodal.cpp
+    modals/updateschedulemodal.cpp \
+    modals/updatestationmodal.cpp \
+    modals/updatetrainmodal.cpp
 
 HEADERS += \
     database/databaseConfiguration.h \
@@ -28,22 +32,30 @@ HEADERS += \
     database/querymodel.h \
     dialogs/logindialog.h \
     mainwindow.h \
+    modals/addpassengermodal.h \
     modals/addroutemodal.h \
     modals/addschedulemodal.h \
     modals/addstationmodal.h \
     modals/addtrainmodal.h \
+    modals/updatepassengermodal.h \
     modals/updateroutemodal.h \
-    modals/updatestationmodal.h
+    modals/updateschedulemodal.h \
+    modals/updatestationmodal.h \
+    modals/updatetrainmodal.h
 
 FORMS += \
     dialogs/logindialog.ui \
     mainwindow.ui \
+    modals/addpassengermodal.ui \
     modals/addroutemodal.ui \
     modals/addschedulemodal.ui \
     modals/addstationmodal.ui \
     modals/addtrainmodal.ui \
+    modals/updatepassengermodal.ui \
     modals/updateroutemodal.ui \
-    modals/updatestationmodal.ui
+    modals/updateschedulemodal.ui \
+    modals/updatestationmodal.ui \
+    modals/updatetrainmodal.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

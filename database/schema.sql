@@ -54,7 +54,6 @@ CREATE TABLE passenger (
   last_name VARCHAR(30) NOT NULL,
   passport_serial_no SMALLINT NOT NULL,
   passport_code INT NOT NULL,
-  birth_date DATE,
   PRIMARY KEY (id),
   CHECK (passport_serial_no BETWEEN 1000 AND 9999),
   CHECK (passport_code BETWEEN 100000 AND 999999)
