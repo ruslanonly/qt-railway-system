@@ -2,6 +2,8 @@
 #include "ui_updatepassengermodal.h"
 
 #include <QSqlQuery>
+#include <QSqlError>
+#include <QMessageBox>
 
 UpdatePassengerModal::UpdatePassengerModal(int passengerID, QWidget *parent) :
     QWidget(parent),
@@ -32,3 +34,31 @@ void UpdatePassengerModal::fillData() {
         ui->pCodeInput->setValue(query.value(5).toInt());
     }
 }
+
+void UpdatePassengerModal::on_addButton_clicked()
+{
+    QString firstName = this->ui->firstNameInput->text();
+    QString lastName = this->ui->lastNameInput->text();
+    QString middleName = this->ui->middleNameInput->text();
+    int passportSerialNo = this->ui->pSerialNoInput->value();
+    int passportCode = this->ui->pCodeInput->value();
+
+    QSqlQuery query;
+    query.prepare("SELECT update_passenger(:ID, :FirstName, :MiddleName, :LastName, :PassportSerialNo, :PassportCode)");
+    query.bindValue(":ID", this->passengerID);
+    query.bindValue(":FirstName", firstName);
+    query.bindValue(":MiddleName", middleName);
+    query.bindValue(":LastName", lastName);
+    query.bindValue(":PassportSerialNo", passportSerialNo);
+    query.bindValue(":PassportCode", passportCode);
+
+    if (query.exec())
+    {
+        this->close();
+    } else {
+        QMessageBox msg;
+        msg.setText(query.lastError().text());
+        msg.exec();
+    }
+}
+

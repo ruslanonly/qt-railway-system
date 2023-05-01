@@ -32,7 +32,6 @@ void AddPassengerModal::on_addButton_clicked()
     query.bindValue(":LastName", lastName);
     query.bindValue(":PassportSerialNo", passportSerialNo);
     query.bindValue(":PassportCode", passportCode);
-
     if (query.exec()) {
         this->close();
     } else {

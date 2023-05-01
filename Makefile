@@ -7,11 +7,14 @@ schema:
 population:
 	docker exec -it application-db-1 psql -U rw_user -d railway -f /home/database/population.sql
 
-procedures:
-	docker exec -it application-db-1 psql -U rw_user -d railway -f /home/database/procedures.sql
+funcs:
+	docker exec -it application-db-1 psql -U rw_user -d railway -f /home/database/funcs.sql
 
-drop_procedures:
-	docker exec -it application-db-1 psql -U rw_user -d railway -f /home/database/drop_procedures.sql
+get_funcs:
+	docker exec -it application-db-1 psql -U rw_user -d railway -f /home/database/get_funcs.sql
+
+drop_funcs:
+	docker exec -it application-db-1 psql -U rw_user -d railway -f /home/database/drop_funcs.sql
 
 insert:
 	docker exec -it application-db-1 psql -U rw_user -d railway -f /home/database/data/insert.sql

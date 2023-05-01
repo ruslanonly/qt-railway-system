@@ -18,10 +18,6 @@ UpdateScheduleModal::UpdateScheduleModal(int scheduleID, QWidget *parent) :
     this->ui->routeComboBox->setModel(routeModel);
     this->ui->routeComboBox->setModelColumn(1);
 
-    QSqlQueryModel* trainModel = queryModel->trainSelectAllRaw();
-    this->ui->trainComboBox->setModel(trainModel);
-    this->ui->trainComboBox->setModelColumn(2);
-
     fillData();
 }
 
@@ -88,5 +84,17 @@ void UpdateScheduleModal::on_addButton_clicked()
         qDebug() << query->lastError().text();
         msg.exec();
     }
+}
+
+
+void UpdateScheduleModal::on_routeComboBox_currentIndexChanged(int index)
+{
+    QAbstractItemModel* routeModel = this->ui->routeComboBox->model();
+    int routeID = routeModel->data(routeModel->index(index,0)).toInt();
+    qDebug() << routeID;
+    delete ui->trainComboBox->model();
+    this->trainModel = queryModel->trainSelectAllForRoute(routeID);
+    this->ui->trainComboBox->setModel(trainModel);
+    this->ui->trainComboBox->setModelColumn(2);
 }
 

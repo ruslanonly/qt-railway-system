@@ -81,11 +81,12 @@ static constexpr auto qt_meta_stringdata_CLASSMainWindowENDCLASS = QtMocHelpers:
     "loadTicketTable",
     "loadPassengerTable",
     "loadScheduleTable",
-    "on_addPassengerButton_clicked"
+    "on_addPassengerButton_clicked",
+    "on_addTicketButton_clicked"
 );
 #else  // !QT_MOC_HAS_STRING_DATA
 struct qt_meta_stringdata_CLASSMainWindowENDCLASS_t {
-    uint offsetsAndSizes[88];
+    uint offsetsAndSizes[90];
     char stringdata0[11];
     char stringdata1[11];
     char stringdata2[1];
@@ -130,6 +131,7 @@ struct qt_meta_stringdata_CLASSMainWindowENDCLASS_t {
     char stringdata41[19];
     char stringdata42[18];
     char stringdata43[30];
+    char stringdata44[27];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(sizeof(qt_meta_stringdata_CLASSMainWindowENDCLASS_t::offsetsAndSizes) + ofs), len 
@@ -178,7 +180,8 @@ Q_CONSTINIT static const qt_meta_stringdata_CLASSMainWindowENDCLASS_t qt_meta_st
         QT_MOC_LITERAL(1088, 15),  // "loadTicketTable"
         QT_MOC_LITERAL(1104, 18),  // "loadPassengerTable"
         QT_MOC_LITERAL(1123, 17),  // "loadScheduleTable"
-        QT_MOC_LITERAL(1141, 29)   // "on_addPassengerButton_clicked"
+        QT_MOC_LITERAL(1141, 29),  // "on_addPassengerButton_clicked"
+        QT_MOC_LITERAL(1171, 26)   // "on_addTicketButton_clicked"
     },
     "MainWindow",
     "showWindow",
@@ -223,7 +226,8 @@ Q_CONSTINIT static const qt_meta_stringdata_CLASSMainWindowENDCLASS_t qt_meta_st
     "loadTicketTable",
     "loadPassengerTable",
     "loadScheduleTable",
-    "on_addPassengerButton_clicked"
+    "on_addPassengerButton_clicked",
+    "on_addTicketButton_clicked"
 };
 #undef QT_MOC_LITERAL
 #endif // !QT_MOC_HAS_STRING_DATA
@@ -235,7 +239,7 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSMainWindowENDCLASS[] = {
       11,       // revision
        0,       // classname
        0,    0, // classinfo
-      38,   14, // methods
+      39,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -243,44 +247,45 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSMainWindowENDCLASS[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    0,  242,    2, 0x0a,    1 /* Public */,
-       3,    0,  243,    2, 0x08,    2 /* Private */,
-       4,    0,  244,    2, 0x08,    3 /* Private */,
-       5,    0,  245,    2, 0x08,    4 /* Private */,
-       6,    0,  246,    2, 0x08,    5 /* Private */,
-       7,    0,  247,    2, 0x08,    6 /* Private */,
-       8,    0,  248,    2, 0x08,    7 /* Private */,
-       9,    0,  249,    2, 0x08,    8 /* Private */,
-      10,    0,  250,    2, 0x08,    9 /* Private */,
-      11,    0,  251,    2, 0x08,   10 /* Private */,
-      12,    0,  252,    2, 0x08,   11 /* Private */,
-      13,    0,  253,    2, 0x08,   12 /* Private */,
-      14,    0,  254,    2, 0x08,   13 /* Private */,
-      15,    0,  255,    2, 0x08,   14 /* Private */,
-      16,    0,  256,    2, 0x08,   15 /* Private */,
-      17,    0,  257,    2, 0x08,   16 /* Private */,
-      18,    0,  258,    2, 0x08,   17 /* Private */,
-      19,    0,  259,    2, 0x08,   18 /* Private */,
-      20,    0,  260,    2, 0x08,   19 /* Private */,
-      21,    0,  261,    2, 0x08,   20 /* Private */,
-      22,    0,  262,    2, 0x08,   21 /* Private */,
-      23,    0,  263,    2, 0x08,   22 /* Private */,
-      24,    0,  264,    2, 0x08,   23 /* Private */,
-      25,    1,  265,    2, 0x08,   24 /* Private */,
-      27,    1,  268,    2, 0x08,   26 /* Private */,
-      28,    1,  271,    2, 0x08,   28 /* Private */,
-      29,    1,  274,    2, 0x08,   30 /* Private */,
-      30,    1,  277,    2, 0x08,   32 /* Private */,
-      31,    1,  280,    2, 0x08,   34 /* Private */,
-      32,    2,  283,    2, 0x08,   36 /* Private */,
-      36,    2,  288,    2, 0x08,   39 /* Private */,
-      37,    0,  293,    2, 0x08,   42 /* Private */,
-      38,    0,  294,    2, 0x08,   43 /* Private */,
-      39,    0,  295,    2, 0x08,   44 /* Private */,
-      40,    0,  296,    2, 0x08,   45 /* Private */,
-      41,    0,  297,    2, 0x08,   46 /* Private */,
-      42,    0,  298,    2, 0x08,   47 /* Private */,
-      43,    0,  299,    2, 0x08,   48 /* Private */,
+       1,    0,  248,    2, 0x0a,    1 /* Public */,
+       3,    0,  249,    2, 0x08,    2 /* Private */,
+       4,    0,  250,    2, 0x08,    3 /* Private */,
+       5,    0,  251,    2, 0x08,    4 /* Private */,
+       6,    0,  252,    2, 0x08,    5 /* Private */,
+       7,    0,  253,    2, 0x08,    6 /* Private */,
+       8,    0,  254,    2, 0x08,    7 /* Private */,
+       9,    0,  255,    2, 0x08,    8 /* Private */,
+      10,    0,  256,    2, 0x08,    9 /* Private */,
+      11,    0,  257,    2, 0x08,   10 /* Private */,
+      12,    0,  258,    2, 0x08,   11 /* Private */,
+      13,    0,  259,    2, 0x08,   12 /* Private */,
+      14,    0,  260,    2, 0x08,   13 /* Private */,
+      15,    0,  261,    2, 0x08,   14 /* Private */,
+      16,    0,  262,    2, 0x08,   15 /* Private */,
+      17,    0,  263,    2, 0x08,   16 /* Private */,
+      18,    0,  264,    2, 0x08,   17 /* Private */,
+      19,    0,  265,    2, 0x08,   18 /* Private */,
+      20,    0,  266,    2, 0x08,   19 /* Private */,
+      21,    0,  267,    2, 0x08,   20 /* Private */,
+      22,    0,  268,    2, 0x08,   21 /* Private */,
+      23,    0,  269,    2, 0x08,   22 /* Private */,
+      24,    0,  270,    2, 0x08,   23 /* Private */,
+      25,    1,  271,    2, 0x08,   24 /* Private */,
+      27,    1,  274,    2, 0x08,   26 /* Private */,
+      28,    1,  277,    2, 0x08,   28 /* Private */,
+      29,    1,  280,    2, 0x08,   30 /* Private */,
+      30,    1,  283,    2, 0x08,   32 /* Private */,
+      31,    1,  286,    2, 0x08,   34 /* Private */,
+      32,    2,  289,    2, 0x08,   36 /* Private */,
+      36,    2,  294,    2, 0x08,   39 /* Private */,
+      37,    0,  299,    2, 0x08,   42 /* Private */,
+      38,    0,  300,    2, 0x08,   43 /* Private */,
+      39,    0,  301,    2, 0x08,   44 /* Private */,
+      40,    0,  302,    2, 0x08,   45 /* Private */,
+      41,    0,  303,    2, 0x08,   46 /* Private */,
+      42,    0,  304,    2, 0x08,   47 /* Private */,
+      43,    0,  305,    2, 0x08,   48 /* Private */,
+      44,    0,  306,    2, 0x08,   49 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
@@ -314,6 +319,7 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSMainWindowENDCLASS[] = {
     QMetaType::Void, QMetaType::QPoint,   26,
     QMetaType::Void, QMetaType::Int, 0x80000000 | 34,   33,   35,
     QMetaType::Void, QMetaType::Int, 0x80000000 | 34,   33,   35,
+    QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
@@ -419,6 +425,8 @@ Q_CONSTINIT const QMetaObject MainWindow::staticMetaObject = { {
         // method 'loadScheduleTable'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'on_addPassengerButton_clicked'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'on_addTicketButton_clicked'
         QtPrivate::TypeAndForceComplete<void, std::false_type>
     >,
     nullptr
@@ -468,6 +476,7 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 35: _t->loadPassengerTable(); break;
         case 36: _t->loadScheduleTable(); break;
         case 37: _t->on_addPassengerButton_clicked(); break;
+        case 38: _t->on_addTicketButton_clicked(); break;
         default: ;
         }
     }
@@ -492,13 +501,13 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 38)
+        if (_id < 39)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 38;
+        _id -= 39;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 38)
+        if (_id < 39)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 38;
+        _id -= 39;
     }
     return _id;
 }

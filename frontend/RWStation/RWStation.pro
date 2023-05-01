@@ -19,6 +19,7 @@ SOURCES += \
     modals/addroutemodal.cpp \
     modals/addschedulemodal.cpp \
     modals/addstationmodal.cpp \
+    modals/addticketmodal.cpp \
     modals/addtrainmodal.cpp \
     modals/updatepassengermodal.cpp \
     modals/updateroutemodal.cpp \
@@ -36,6 +37,7 @@ HEADERS += \
     modals/addroutemodal.h \
     modals/addschedulemodal.h \
     modals/addstationmodal.h \
+    modals/addticketmodal.h \
     modals/addtrainmodal.h \
     modals/updatepassengermodal.h \
     modals/updateroutemodal.h \
@@ -50,6 +52,7 @@ FORMS += \
     modals/addroutemodal.ui \
     modals/addschedulemodal.ui \
     modals/addstationmodal.ui \
+    modals/addticketmodal.ui \
     modals/addtrainmodal.ui \
     modals/updatepassengermodal.ui \
     modals/updateroutemodal.ui \

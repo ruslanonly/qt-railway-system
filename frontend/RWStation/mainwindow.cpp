@@ -28,6 +28,7 @@ void MainWindow::showWindow() {
 
 void MainWindow::on_ticketPageButton_clicked() {
     this->ui->pagesWidget->setCurrentIndex(1);
+    loadTicketTable();
 
 }
 
@@ -108,7 +109,8 @@ void MainWindow::loadTrainTable() {
 void MainWindow::loadTicketTable() {
     QTableView* tableView= this->ui->ticketsTableView;
     delete tableView->model();
-    this->ui->ticketsTableView->setModel(queryModel->ticketSelectAllRaw());
+    qDebug() << queryModel->ticketSelectAll()->lastError().text();
+    this->ui->ticketsTableView->setModel(queryModel->ticketSelectAll());
 }
 
 void MainWindow::loadPassengerTable() {
@@ -186,6 +188,12 @@ void MainWindow::on_addPassengerButton_clicked()
 {
     this->addPassengerModal = new AddPassengerModal();
     this->addPassengerModal->show();
+}
+
+void MainWindow::on_addTicketButton_clicked()
+{
+    this->addTicketModal = new AddTicketModal();
+    this->addTicketModal->show();
 }
 
 
@@ -338,6 +346,9 @@ void MainWindow::DeleteRequestedAction(int selectedID, TableViewVariant selected
     }
 
 }
+
+
+
 
 
 

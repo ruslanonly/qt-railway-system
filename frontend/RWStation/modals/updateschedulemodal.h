@@ -19,12 +19,15 @@ public:
 private slots:
     void on_addButton_clicked();
 
+    void on_routeComboBox_currentIndexChanged(int index);
+
 private:
     void fillData();
     Ui::UpdateScheduleModal *ui;
 
     int scheduleID;
     QueryModel* queryModel;
+    QSqlQueryModel* trainModel;
 };
 
 #endif // UPDATESCHEDULEMODAL_H

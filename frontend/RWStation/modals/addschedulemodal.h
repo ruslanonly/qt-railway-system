@@ -25,7 +25,7 @@ private:
     Ui::AddScheduleModal *ui;
 
     QueryModel* queryModel;
-    QSqlQueryModel trainModel;
+    QSqlQueryModel* trainModel;
 };
 
 #endif // ADDSCHEDULEMODAL_H

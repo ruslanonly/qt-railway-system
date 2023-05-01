@@ -8,6 +8,7 @@ debug/addpassengermodal.o
 debug/addroutemodal.o
 debug/addschedulemodal.o
 debug/addstationmodal.o
+debug/addticketmodal.o
 debug/addtrainmodal.o
 debug/updatepassengermodal.o
 debug/updateroutemodal.o
@@ -20,6 +21,7 @@ debug/moc_addpassengermodal.o
 debug/moc_addroutemodal.o
 debug/moc_addschedulemodal.o
 debug/moc_addstationmodal.o
+debug/moc_addticketmodal.o
 debug/moc_addtrainmodal.o
 debug/moc_updatepassengermodal.o
 debug/moc_updateroutemodal.o

@@ -24,6 +24,13 @@ public:
     QSqlQueryModel* trainSelectAll();
     QSqlQueryModel* scheduleSelectAll();
     QSqlQueryModel* passengerSelectAll();
+    QSqlQueryModel* ticketSelectAll();
+
+    QSqlQueryModel* scheduleSelectAllList();
+
+    QSqlQueryModel* trainSelectAllForRoute(int routeID);
+    QSqlQueryModel* seatsSelectAllForScheduleAndRailcar(int scheduleID, int railcarNo);
+    QSqlQueryModel* railcarsSelectAllNumbersForSchedule(int scheduleID);
 
 private:
     DatabaseManager* dbManager;

@@ -24,6 +24,9 @@
 #include "modals/addpassengermodal.h"
 #include "modals/updatepassengermodal.h"
 
+#include "modals/addticketmodal.h"
+
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -94,6 +97,8 @@ private slots:
 
     void on_addPassengerButton_clicked();
 
+    void on_addTicketButton_clicked();
+
 private:
     void showCustomContextMenu(const QPoint &pos, QTableView *tableView, TableViewVariant tableVariant);
 
@@ -102,6 +107,7 @@ private:
     AddTrainModal* addTrainModal;
     AddScheduleModal* addScheduleModal;
     AddPassengerModal* addPassengerModal;
+    AddTicketModal* addTicketModal;
 
     UpdateStationModal* updateStationModal;
     UpdateRouteModal* updateRouteModal;

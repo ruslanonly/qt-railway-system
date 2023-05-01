@@ -30,7 +30,7 @@ QSqlQueryModel* QueryModel::trainSelectAllRaw() {
 
 QSqlQueryModel* QueryModel::ticketSelectAllRaw() {
     QSqlQueryModel *model = new QSqlQueryModel;
-    model->setQuery("SELECT id, route_id, seat_no, railcar_no, railcar_class FROM ticket");
+    model->setQuery("SELECT id, schedule_id, passenger_id, seat_no, railcar_no, railcar_class FROM ticket");
     return model;
 }
 
@@ -83,8 +83,70 @@ QSqlQueryModel* QueryModel::scheduleSelectAll() {
     return model;
 }
 
+
 QSqlQueryModel* QueryModel::passengerSelectAll() {
     QSqlQueryModel *model = new QSqlQueryModel;
-    model->setQuery("SELECT id, last_name as Фамилия, first_name as Имя, middle_name as Фамилия, passport_serial_no as \"Номер серии паспорта\", passport_code as \"Номер паспорта\" FROM passenger");
+    model->setQuery("SELECT id, CONCAT(first_name, ' ', LEFT(last_name, 1), '. ',  LEFT(middle_name, 1), '. ') as ФИО, "
+                    "passport_serial_no as \"Номер серии паспорта\", passport_code as \"Номер паспорта\" FROM passenger ORDER BY id");
+    return model;
+}
+
+QSqlQueryModel* QueryModel::ticketSelectAll() {
+    QSqlQueryModel *model = new QSqlQueryModel;
+    model->setQuery("SELECT tk.id, r.name as Маршрут, t.name as Поезд, s.departure_date as \"Время Отправления\", s.arrival_date as \"Время Прибытия\", "
+                    "CONCAT(p.first_name, ' ', p.last_name, ' ',  p.middle_name) as Пассажир, "
+                    "tk.seat_no as \"Номер места\", tk.railcar_no as \"Номер вагона\", tk.railcar_class as \"Класс обслуживания\" FROM ticket tk "
+                    "INNER JOIN schedule s ON tk.schedule_id = s.id "
+                    "INNER JOIN passenger p ON tk.passenger_id = p.id "
+                    "INNER JOIN route r ON s.route_id = r.id "
+                    "INNER JOIN train t ON s.train_id = t.id");
+    return model;
+}
+
+
+
+QSqlQueryModel* QueryModel::scheduleSelectAllList() {
+    QSqlQueryModel *model = new QSqlQueryModel;
+    model->setQuery("SELECT s.id, CONCAT(r.name, ' | ', t.name, ' | ',  s.departure_date, ' -> ', s.arrival_date) FROM schedule s "
+                    "INNER JOIN route r ON s.route_id = r.id "
+                    "INNER JOIN train t ON s.train_id = t.id ORDER BY s.id");
+    return model;
+}
+
+QSqlQueryModel* QueryModel::trainSelectAllForRoute(int routeID) {
+    QSqlQueryModel *model = new QSqlQueryModel;
+    QSqlQuery query;
+    query.prepare("SELECT id, route_id, name, type, railcar_capacity, railcars_amount, "
+                  "first_class_price, second_class_price FROM train WHERE route_id = :ID");
+    query.bindValue(":ID", routeID);
+    if (!query.exec()) {
+        qDebug() << query.lastError().text();
+    }
+    model->setQuery(query);
+    return model;
+}
+
+QSqlQueryModel* QueryModel::railcarsSelectAllNumbersForSchedule(int scheduleID) {
+    QSqlQueryModel *model = new QSqlQueryModel;
+    QSqlQuery query;
+    query.prepare("SELECT get_all_railcar_numbers(:ScheduleID)");
+    query.bindValue(":ScheduleID", scheduleID);
+    if (!query.exec()) {
+        qDebug() << query.lastError().text();
+    }
+    model->setQuery(query);
+    return model;
+}
+
+QSqlQueryModel* seatsSelectAllForScheduleAndRailcar(int scheduleID, int railcarNo) {
+    QSqlQueryModel *model = new QSqlQueryModel;
+    QSqlQuery query;
+    query.prepare("SELECT get_available_seats(:ScheduleID, :RailcarNo)");
+    query.bindValue(":ScheduleID", scheduleID);
+    query.bindValue(":RailcarNo", railcarNo);
+    if (!query.exec()) {
+        qDebug() << query.lastError().text();
+    }
+    model->setQuery(query);
     return model;
 }

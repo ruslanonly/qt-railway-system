@@ -15,6 +15,9 @@ public:
     explicit UpdatePassengerModal(int passengerID, QWidget *parent = nullptr);
     ~UpdatePassengerModal();
 
+private slots:
+    void on_addButton_clicked();
+
 private:
     void fillData();
     Ui::UpdatePassengerModal *ui;
