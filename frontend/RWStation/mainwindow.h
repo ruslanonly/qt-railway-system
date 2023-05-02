@@ -25,6 +25,7 @@
 #include "modals/updatepassengermodal.h"
 
 #include "modals/addticketmodal.h"
+#include "modals/updateticketmodal.h"
 
 
 QT_BEGIN_NAMESPACE
@@ -114,6 +115,7 @@ private:
     UpdateTrainModal* updateTrainModal;
     UpdateScheduleModal* updateScheduleModal;
     UpdatePassengerModal* updatePassengerModal;
+    UpdateTicketModal* updateTicketModal;
 
     DatabaseManager* dbManager;
     Ui::MainWindow *ui;

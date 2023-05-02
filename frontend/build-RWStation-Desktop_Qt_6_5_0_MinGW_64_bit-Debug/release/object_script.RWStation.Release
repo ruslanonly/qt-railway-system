@@ -14,6 +14,7 @@ release/updatepassengermodal.o
 release/updateroutemodal.o
 release/updateschedulemodal.o
 release/updatestationmodal.o
+release/updateticketmodal.o
 release/updatetrainmodal.o
 release/moc_logindialog.o
 release/moc_mainwindow.o
@@ -27,4 +28,5 @@ release/moc_updatepassengermodal.o
 release/moc_updateroutemodal.o
 release/moc_updateschedulemodal.o
 release/moc_updatestationmodal.o
+release/moc_updateticketmodal.o
 release/moc_updatetrainmodal.o

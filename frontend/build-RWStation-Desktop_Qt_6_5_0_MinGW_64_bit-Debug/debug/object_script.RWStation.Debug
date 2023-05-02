@@ -14,6 +14,7 @@ debug/updatepassengermodal.o
 debug/updateroutemodal.o
 debug/updateschedulemodal.o
 debug/updatestationmodal.o
+debug/updateticketmodal.o
 debug/updatetrainmodal.o
 debug/moc_logindialog.o
 debug/moc_mainwindow.o
@@ -27,4 +28,5 @@ debug/moc_updatepassengermodal.o
 debug/moc_updateroutemodal.o
 debug/moc_updateschedulemodal.o
 debug/moc_updatestationmodal.o
+debug/moc_updateticketmodal.o
 debug/moc_updatetrainmodal.o

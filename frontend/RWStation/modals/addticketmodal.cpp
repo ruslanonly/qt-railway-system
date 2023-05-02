@@ -2,6 +2,9 @@
 #include "ui_addticketmodal.h"
 
 #include <QMessageBox>
+#include <QComboBox>
+#include <QSqlQuery>
+#include <QSqlError>
 
 AddTicketModal::AddTicketModal(QWidget *parent) :
     QWidget(parent),
@@ -9,7 +12,7 @@ AddTicketModal::AddTicketModal(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    QSqlQueryModel* passengersModel = queryModel->passengerSelectAllRaw();
+    QSqlQueryModel* passengersModel = queryModel->passengerSelectAllList();
     this->ui->passengerComboBox->setModel(passengersModel);
     this->ui->passengerComboBox->setModelColumn(1);
 
@@ -26,33 +29,34 @@ AddTicketModal::~AddTicketModal()
 void AddTicketModal::on_addButton_clicked()
 {
 
-//    QAbstractItemModel* scheduleModel = this->ui->scheduleComboBox->model();
-//    QAbstractItemModel* passengerModel = this->ui->passengerComboBox->model();
-//    int seatNo = this->ui->seatNoComboBox->text();
-//    int railcarNo = this->ui->nameInput->text();
-//    int railcarClass = this->ui->railcarClassInput->text();
-//    //QString departureDateTime = this->ui->depDateInput->dateTime().toString(Qt::ISODate);
-//    //QString arrivalDateTime = this->ui->arrDateInput->dateTime().toString(Qt::ISODate);
-//    int scheduleID = scheduleModel->data(scheduleModel->index(ui->scheduleComboBox->currentIndex(),0)).toInt();
-//    int passengerID = passengerModel->data(passengerModel->index(ui->passengerComboBox->currentIndex(),0)).toInt();
+    QAbstractItemModel* scheduleModel = this->ui->scheduleComboBox->model();
+    QAbstractItemModel* passengerModel = this->ui->passengerComboBox->model();
+    QAbstractItemModel* railcarNoModel = this->ui->railCarNoComboBox->model();
+    QAbstractItemModel* seatNoModel = this->ui->seatNoComboBox->model();
+
+    int seatNo = seatNoModel->data(seatNoModel->index(ui->seatNoComboBox->currentIndex(),0)).toInt();
+    int railcarNo = railcarNoModel->data(railcarNoModel->index(ui->railCarNoComboBox->currentIndex(),0)).toInt();
+    int railcarClass = this->ui->railcarClassInput->value();
+    int scheduleID = scheduleModel->data(scheduleModel->index(ui->scheduleComboBox->currentIndex(),0)).toInt();
+    int passengerID = passengerModel->data(passengerModel->index(ui->passengerComboBox->currentIndex(),0)).toInt();
 
 
-//    QSqlQuery *query = new QSqlQuery;
-//    query->prepare("SELECT add_ticket(:ScheduleID, :PassengerID, :SeatNo, :RailcarNo, :RailcarClass)");
-//    query->bindValue(":ScheduleID", scheduleID);
-//    query->bindValue(":PassengerID", passengerID);
-//    query->bindValue(":SeatNo", name);
-//    query->bindValue(":RailcarNo", DepartureStationID);
-//    query->bindValue(":RailcarClass", ArrivalStationID);
+    QSqlQuery *query = new QSqlQuery;
+    query->prepare("SELECT add_ticket(:ScheduleID, :PassengerID, :SeatNo, :RailcarNo, :RailcarClass)");
+    query->bindValue(":ScheduleID", scheduleID);
+    query->bindValue(":PassengerID", passengerID);
+    query->bindValue(":SeatNo", seatNo);
+    query->bindValue(":RailcarNo", railcarNo);
+    query->bindValue(":RailcarClass", railcarClass);
 
-//    if (query->exec()) {
-//        this->close();
-//    } else {
-//        QMessageBox msg;
-//        qDebug() << query->lastError().text();
-//        msg.setText(query->lastError().text());
-//        msg.exec();
-//    }
+    if (query->exec()) {
+        this->close();
+    } else {
+        QMessageBox msg;
+        qDebug() << query->lastError().text();
+        msg.setText(query->lastError().text());
+        msg.exec();
+    }
 }
 
 void AddTicketModal::on_scheduleComboBox_currentIndexChanged(int index)
@@ -62,18 +66,21 @@ void AddTicketModal::on_scheduleComboBox_currentIndexChanged(int index)
 
     QSqlQueryModel* railcarsModel = queryModel->railcarsSelectAllNumbersForSchedule(scheduleID);
     this->ui->railCarNoComboBox->setModel(railcarsModel);
-    this->ui->railCarNoComboBox->setModelColumn(1);
+    this->ui->railCarNoComboBox->setModelColumn(0);
 }
 
 void AddTicketModal::on_railCarNoComboBox_currentIndexChanged(int index)
 {
-//    QAbstractItemModel* routeModel = this->ui->routeComboBox->model();
-//    int routeID = routeModel->data(routeModel->index(index,0)).toInt();
-//    qDebug() << routeID;
-//    delete ui->trainComboBox->model();
-//    this->seatNoModel = queryModel->trainSelectAllForRoute(routeID);
-//    this->ui->trainComboBox->setModel(trainModel);
-//    this->ui->trainComboBox->setModelColumn(0);
+    QAbstractItemModel* scheduleModel = this->ui->scheduleComboBox->model();
+    int scheduleID = scheduleModel->data(scheduleModel->index(ui->scheduleComboBox->currentIndex(),0)).toInt();
+
+    QAbstractItemModel* railcarModel = this->ui->railCarNoComboBox->model();
+    int railcarNo = railcarModel->data(railcarModel->index(index,0)).toInt();
+
+    delete ui->seatNoComboBox->model();
+    this->seatNoModel = queryModel->seatsSelectAllForScheduleAndRailcar(scheduleID, railcarNo);
+    this->ui->seatNoComboBox->setModel(seatNoModel);
+    this->ui->seatNoComboBox->setModelColumn(0);
 }
 
 

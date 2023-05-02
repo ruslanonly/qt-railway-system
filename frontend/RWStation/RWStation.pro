@@ -25,6 +25,7 @@ SOURCES += \
     modals/updateroutemodal.cpp \
     modals/updateschedulemodal.cpp \
     modals/updatestationmodal.cpp \
+    modals/updateticketmodal.cpp \
     modals/updatetrainmodal.cpp
 
 HEADERS += \
@@ -43,6 +44,7 @@ HEADERS += \
     modals/updateroutemodal.h \
     modals/updateschedulemodal.h \
     modals/updatestationmodal.h \
+    modals/updateticketmodal.h \
     modals/updatetrainmodal.h
 
 FORMS += \
@@ -58,6 +60,7 @@ FORMS += \
     modals/updateroutemodal.ui \
     modals/updateschedulemodal.ui \
     modals/updatestationmodal.ui \
+    modals/updateticketmodal.ui \
     modals/updatetrainmodal.ui
 
 # Default rules for deployment.

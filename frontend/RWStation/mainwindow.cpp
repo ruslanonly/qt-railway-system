@@ -299,7 +299,8 @@ void MainWindow::ModifyRequestedAction(int selectedID, TableViewVariant selected
             break;
         }
         case ticket:{
-
+            updateTicketModal = new UpdateTicketModal(selectedID);
+            updateTicketModal->show();
             break;
         }
         case passenger: {

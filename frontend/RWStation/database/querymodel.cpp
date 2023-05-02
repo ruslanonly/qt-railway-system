@@ -113,6 +113,16 @@ QSqlQueryModel* QueryModel::scheduleSelectAllList() {
     return model;
 }
 
+QSqlQueryModel* QueryModel::passengerSelectAllList() {
+    QSqlQueryModel *model = new QSqlQueryModel;
+    model->setQuery("SELECT id, CONCAT(first_name, ' ', LEFT(last_name, 1), '. ',  LEFT(middle_name, 1), '. | ', passport_serial_no, ' ', passport_code) "
+                    "FROM passenger ORDER BY id");
+    return model;
+}
+
+
+
+
 QSqlQueryModel* QueryModel::trainSelectAllForRoute(int routeID) {
     QSqlQueryModel *model = new QSqlQueryModel;
     QSqlQuery query;
@@ -138,7 +148,7 @@ QSqlQueryModel* QueryModel::railcarsSelectAllNumbersForSchedule(int scheduleID) 
     return model;
 }
 
-QSqlQueryModel* seatsSelectAllForScheduleAndRailcar(int scheduleID, int railcarNo) {
+QSqlQueryModel* QueryModel::seatsSelectAllForScheduleAndRailcar(int scheduleID, int railcarNo) {
     QSqlQueryModel *model = new QSqlQueryModel;
     QSqlQuery query;
     query.prepare("SELECT get_available_seats(:ScheduleID, :RailcarNo)");

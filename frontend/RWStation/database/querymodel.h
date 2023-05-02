@@ -27,6 +27,7 @@ public:
     QSqlQueryModel* ticketSelectAll();
 
     QSqlQueryModel* scheduleSelectAllList();
+    QSqlQueryModel* passengerSelectAllList();
 
     QSqlQueryModel* trainSelectAllForRoute(int routeID);
     QSqlQueryModel* seatsSelectAllForScheduleAndRailcar(int scheduleID, int railcarNo);
