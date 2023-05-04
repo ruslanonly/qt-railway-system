@@ -26,7 +26,8 @@ SOURCES += \
     modals/updateschedulemodal.cpp \
     modals/updatestationmodal.cpp \
     modals/updateticketmodal.cpp \
-    modals/updatetrainmodal.cpp
+    modals/updatetrainmodal.cpp \
+    utils.cpp
 
 HEADERS += \
     database/databaseConfiguration.h \
@@ -45,7 +46,8 @@ HEADERS += \
     modals/updateschedulemodal.h \
     modals/updatestationmodal.h \
     modals/updateticketmodal.h \
-    modals/updatetrainmodal.h
+    modals/updatetrainmodal.h \
+    utils.h
 
 FORMS += \
     dialogs/logindialog.ui \

@@ -15,6 +15,7 @@ CREATE TABLE route (
   PRIMARY KEY (id),
   CONSTRAINT departure_station_fk FOREIGN KEY(departure_station_id) REFERENCES station(id),
   CONSTRAINT arrival_station_fk FOREIGN KEY(arrival_station_id) REFERENCES station(id),
+  CONSTRAINT unique_route_group_fk UNIQUE(departure_station_id, arrival_station_id),
   CHECK (departure_station_id != arrival_station_id)
 );
 
@@ -44,6 +45,7 @@ CREATE TABLE schedule (
   PRIMARY KEY (id),
   CONSTRAINT route_fk FOREIGN KEY(route_id) REFERENCES route(id),
   CONSTRAINT train_fk FOREIGN KEY(train_id) REFERENCES train(id),
+  CONSTRAINT unique_schedule_group_fk UNIQUE(route_id, train_id, departure_date, arrival_date),
   CHECK (departure_date < arrival_date)
 );
 
@@ -55,6 +57,7 @@ CREATE TABLE passenger (
   passport_serial_no SMALLINT NOT NULL,
   passport_code INT NOT NULL,
   PRIMARY KEY (id),
+  CONSTRAINT unique_passport_group_fk UNIQUE(passport_serial_no, passport_code),
   CHECK (passport_serial_no BETWEEN 1000 AND 9999),
   CHECK (passport_code BETWEEN 100000 AND 999999)
 );
@@ -69,5 +72,6 @@ CREATE TABLE ticket (
   PRIMARY KEY (id),
   CONSTRAINT schedule_fk FOREIGN KEY(schedule_id) REFERENCES schedule(id),
   CONSTRAINT passenger_fk FOREIGN KEY(passenger_id) REFERENCES passenger(id),
+  CONSTRAINT unique_ticket_group_fk UNIQUE(schedule_id, seat_no, railcar_no),
   CHECK (railcar_class = 1 OR railcar_class = 2)
 );

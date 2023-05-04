@@ -4,6 +4,7 @@
 #include <QSqlQuery>
 #include <QSqlError>
 #include <QMessageBox>
+#include "utils.h"
 
 UpdatePassengerModal::UpdatePassengerModal(int passengerID, QWidget *parent) :
     QWidget(parent),
@@ -57,8 +58,10 @@ void UpdatePassengerModal::on_addButton_clicked()
         this->close();
     } else {
         QMessageBox msg;
-        msg.setText(query.lastError().text());
+        msg.setText("Не получилось изменить данные");
+        msg.setInformativeText(Utils::mapErrorMessage(query.lastError().text()));
         msg.exec();
+        qDebug() << query.lastError().text();
     }
 }
 

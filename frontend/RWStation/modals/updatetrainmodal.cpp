@@ -5,6 +5,7 @@
 #include <QSqlQuery>
 #include <QSqlError>
 #include <QMessageBox>
+#include "utils.h"
 
 UpdateTrainModal::UpdateTrainModal(int trainID, QWidget *parent) :
     QWidget(parent),
@@ -73,26 +74,28 @@ void UpdateTrainModal::on_updateButton_clicked()
     int firstClassPrice = ui->firstClassInput->value();
     int secondClassPrice = ui->secondClassInput->value();
     int routeID = routesModel->data(routesModel->index(ui->routeComboBox->currentIndex(),0)).toInt();
-    QSqlQuery *query = new QSqlQuery;
-    query->prepare("SELECT update_train(:ID, :RouteID, :Name, :Type, :RailcarCapacity, :RailcarsAmount, :FirstClassPrice, :SecondClassPrice)");
-    query->bindValue(":ID", this->trainID);
-    query->bindValue(":RouteID", routeID);
-    query->bindValue(":Name", name);
-    query->bindValue(":Type", trainType);
-    query->bindValue(":RailcarCapacity", railcarCapacity);
-    query->bindValue(":RailcarsAmount", railcarsAmount);
-    query->bindValue(":FirstClassPrice", firstClassPrice);
-    query->bindValue(":SecondClassPrice", secondClassPrice);
+    QSqlQuery query;
+    query.prepare("SELECT update_train(:ID, :RouteID, :Name, :Type, :RailcarCapacity, :RailcarsAmount, :FirstClassPrice, :SecondClassPrice)");
+    query.bindValue(":ID", this->trainID);
+    query.bindValue(":RouteID", routeID);
+    query.bindValue(":Name", name);
+    query.bindValue(":Type", trainType);
+    query.bindValue(":RailcarCapacity", railcarCapacity);
+    query.bindValue(":RailcarsAmount", railcarsAmount);
+    query.bindValue(":FirstClassPrice", firstClassPrice);
+    query.bindValue(":SecondClassPrice", secondClassPrice);
 
     qDebug() << railcarCapacity << railcarsAmount << firstClassPrice << secondClassPrice;
 
-    if (query->exec()) {
+    if (query.exec())
+    {
         this->close();
     } else {
         QMessageBox msg;
-        qDebug() << "error" << query->lastError().text();
-        msg.setText(query->lastError().text());
+        msg.setText("Не получилось изменить данные");
+        msg.setInformativeText(Utils::mapErrorMessage(query.lastError().text()));
         msg.exec();
+        qDebug() << query.lastError().text();
     }
 }
 

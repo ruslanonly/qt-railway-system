@@ -5,6 +5,7 @@
 #include <QSqlError>
 #include <QMessageBox>
 #include <QSqlQueryModel>
+#include "utils.h"
 
 UpdateTicketModal::UpdateTicketModal(int ticketID, QWidget *parent) :
     QWidget(parent),
@@ -92,21 +93,24 @@ void UpdateTicketModal::on_updateButton_clicked()
     int passengerID = passengerModel->data(passengerModel->index(ui->passengerComboBox->currentIndex(),0)).toInt();
 
 
-    QSqlQuery *query = new QSqlQuery;
-    query->prepare("SELECT add_ticket(:ScheduleID, :PassengerID, :SeatNo, :RailcarNo, :RailcarClass)");
-    query->bindValue(":ScheduleID", scheduleID);
-    query->bindValue(":PassengerID", passengerID);
-    query->bindValue(":SeatNo", seatNo);
-    query->bindValue(":RailcarNo", railcarNo);
-    query->bindValue(":RailcarClass", railcarClass);
+    QSqlQuery query;
+    query.prepare("SELECT update_ticket(:ID, :ScheduleID, :PassengerID, :SeatNo, :RailcarNo, :RailcarClass)");
+    query.bindValue(":ID", this->ticketID);
+    query.bindValue(":ScheduleID", scheduleID);
+    query.bindValue(":PassengerID", passengerID);
+    query.bindValue(":SeatNo", seatNo);
+    query.bindValue(":RailcarNo", railcarNo);
+    query.bindValue(":RailcarClass", railcarClass);
 
-    if (query->exec()) {
+    if (query.exec())
+    {
         this->close();
     } else {
         QMessageBox msg;
-        qDebug() << query->lastError().text();
-        msg.setText(query->lastError().text());
+        msg.setText("Не получилось изменить данные");
+        msg.setInformativeText(Utils::mapErrorMessage(query.lastError().text()));
         msg.exec();
+        qDebug() << query.lastError().text();
     }
 }
 

@@ -16,6 +16,7 @@ release/updateschedulemodal.o
 release/updatestationmodal.o
 release/updateticketmodal.o
 release/updatetrainmodal.o
+release/utils.o
 release/moc_logindialog.o
 release/moc_mainwindow.o
 release/moc_addpassengermodal.o

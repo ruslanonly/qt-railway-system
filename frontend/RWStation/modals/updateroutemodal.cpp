@@ -5,6 +5,7 @@
 #include <QSqlError>
 #include <QMessageBox>
 #include <QSqlQueryModel>
+#include "utils.h"
 
 UpdateRouteModal::UpdateRouteModal(int routeID, QWidget *parent) :
     QWidget(parent),
@@ -62,18 +63,21 @@ void UpdateRouteModal::on_updateButton_clicked()
     int DepartureStationID = model->data(model->index(ui->depStationComboBox->currentIndex(),0)).toInt();
     int ArrivalStationID = model->data(model->index(ui->arrStationComboBox->currentIndex(),0)).toInt();;
 
-    QSqlQuery *query = new QSqlQuery;
-    query->prepare("SELECT update_route(:ID, :Name, :DepartureStationID, :ArrivalStationID)");
-    query->bindValue(":ID", this->routeID);
-    query->bindValue(":Name", name);
-    query->bindValue(":DepartureStationID", DepartureStationID);
-    query->bindValue(":ArrivalStationID", ArrivalStationID);
-    if (query->exec()) {
+    QSqlQuery query;
+    query.prepare("SELECT update_route(:ID, :Name, :DepartureStationID, :ArrivalStationID)");
+    query.bindValue(":ID", this->routeID);
+    query.bindValue(":Name", name);
+    query.bindValue(":DepartureStationID", DepartureStationID);
+    query.bindValue(":ArrivalStationID", ArrivalStationID);
+    if (query.exec())
+    {
         this->close();
     } else {
         QMessageBox msg;
-        qDebug() << query->lastError().text();
+        msg.setText("Не получилось изменить данные");
+        msg.setInformativeText(Utils::mapErrorMessage(query.lastError().text()));
         msg.exec();
+        qDebug() << query.lastError().text();
     }
 }
 

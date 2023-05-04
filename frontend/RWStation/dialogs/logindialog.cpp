@@ -29,7 +29,7 @@ void LoginDialog::on_loginButton_clicked()
     const QString password = this->ui->passwordInput->text();
 
     //bool opened = this->dbManager->openConnection(username, password);
-    bool opened = this->dbManager->openConnection("rw_user", "rw_pwd");
+    bool opened = this->dbManager->openConnection(username, password);
     if (opened) {
         qDebug() << "Opened";
         emit loginedSignal();
