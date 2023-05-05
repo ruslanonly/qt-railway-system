@@ -7,6 +7,8 @@
 #include <QSqlQueryModel>
 #include <QAbstractItemModel>
 
+#include "utils.h"
+
 AddScheduleModal::AddScheduleModal(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::AddScheduleModal)
@@ -34,20 +36,22 @@ void AddScheduleModal::on_addButton_clicked()
     int routeID = routeModel->data(routeModel->index(ui->routeComboBox->currentIndex(),0)).toInt();
     int trainID = trainModel->data(trainModel->index(ui->trainComboBox->currentIndex(),0)).toInt();
 
-    QSqlQuery *query = new QSqlQuery;
-    query->prepare("SELECT add_schedule(:RouteID, :TrainID, :DepartureDate, :ArrivalDate)");
-    query->bindValue(":RouteID", routeID);
-    query->bindValue(":TrainID", trainID);
-    query->bindValue(":DepartureDate", departureDateTime);
-    query->bindValue(":ArrivalDate", arrivalDateTime);
+    QSqlQuery query;
+    query.prepare("SELECT add_schedule(:RouteID, :TrainID, :DepartureDate, :ArrivalDate)");
+    query.bindValue(":RouteID", routeID);
+    query.bindValue(":TrainID", trainID);
+    query.bindValue(":DepartureDate", departureDateTime);
+    query.bindValue(":ArrivalDate", arrivalDateTime);
 
-    if (query->exec()) {
+    if (query.exec()) {
         this->close();
     } else {
         QMessageBox msg;
-        qDebug() << query->lastError().text();
-        msg.setText(query->lastError().text());
+        msg.setText("Не получилось добавить рейс");
+        msg.setIcon(QMessageBox::Critical);
+        msg.setDetailedText(Utils::mapErrorMessage(query.lastError().text()));
         msg.exec();
+        qDebug() << query.lastError().text();
     }
 }
 

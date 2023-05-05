@@ -33,5 +33,9 @@ int main(int argc, char *argv[])
     QObject::connect(
         loginDialog, &LoginDialog::loginedSignal,
         mainWindow, &MainWindow::showWindow);
+
+    QObject::connect(
+        mainWindow, &MainWindow::logoutSignal,
+        loginDialog, &LoginDialog::mainWindowLogoutSlot);
     return a.exec();
 }

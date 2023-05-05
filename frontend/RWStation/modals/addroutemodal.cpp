@@ -7,6 +7,8 @@
 #include <QSqlQueryModel>
 #include <QAbstractItemModel>
 
+#include "utils.h"
+
 AddRouteModal::AddRouteModal(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::AddRouteModal)
@@ -37,18 +39,20 @@ void AddRouteModal::on_addButton_clicked()
     int ArrivalStationID = model->data(model->index(ui->arrStationComboBox->currentIndex(),0)).toInt();
 
 
-    QSqlQuery *query = new QSqlQuery;
-    query->prepare("SELECT add_route(:Name, :DepartureStationID, :ArrivalStationID)");
-    query->bindValue(":Name", name);
-    query->bindValue(":DepartureStationID", DepartureStationID);
-    query->bindValue(":ArrivalStationID", ArrivalStationID);
-    if (query->exec()) {
+    QSqlQuery query;
+    query.prepare("SELECT add_route(:Name, :DepartureStationID, :ArrivalStationID)");
+    query.bindValue(":Name", name);
+    query.bindValue(":DepartureStationID", DepartureStationID);
+    query.bindValue(":ArrivalStationID", ArrivalStationID);
+    if (query.exec()) {
         this->close();
     } else {
         QMessageBox msg;
-        qDebug() << query->lastError().text();
-        msg.setText(query->lastError().text());
+        msg.setText("Не получилось добавить маршрут");
+        msg.setIcon(QMessageBox::Critical);
+        msg.setDetailedText(Utils::mapErrorMessage(query.lastError().text()));
         msg.exec();
+        qDebug() << query.lastError().text();
     }
 }
 

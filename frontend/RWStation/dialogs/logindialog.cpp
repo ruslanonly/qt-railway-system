@@ -43,3 +43,7 @@ void LoginDialog::on_loginButton_clicked()
     }
 }
 
+void LoginDialog::mainWindowLogoutSlot() {
+    this->show();
+}
+

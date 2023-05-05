@@ -93,7 +93,8 @@ void UpdateTrainModal::on_updateButton_clicked()
     } else {
         QMessageBox msg;
         msg.setText("Не получилось изменить данные");
-        msg.setInformativeText(Utils::mapErrorMessage(query.lastError().text()));
+        msg.setIcon(QMessageBox::Critical);
+        msg.setDetailedText(Utils::mapErrorMessage(query.lastError().text()));
         msg.exec();
         qDebug() << query.lastError().text();
     }

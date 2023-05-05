@@ -5,6 +5,8 @@
 #include <QSqlError>
 #include <QMessageBox>
 
+#include "utils.h"
+
 AddPassengerModal::AddPassengerModal(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::AddPassengerModal)
@@ -36,8 +38,11 @@ void AddPassengerModal::on_addButton_clicked()
         this->close();
     } else {
         QMessageBox msg;
-        msg.setText(query.lastError().text());
+        msg.setText("Не получилось добавить пассажира");
+        msg.setIcon(QMessageBox::Critical);
+        msg.setDetailedText(Utils::mapErrorMessage(query.lastError().text()));
         msg.exec();
+        qDebug() << query.lastError().text();
     }
 }
 

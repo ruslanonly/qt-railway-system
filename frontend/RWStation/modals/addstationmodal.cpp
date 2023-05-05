@@ -4,6 +4,8 @@
 #include <QSqlError>
 #include <QMessageBox>
 
+#include "utils.h"
+
 AddStationModal::AddStationModal(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::AddStationModal)
@@ -32,8 +34,11 @@ void AddStationModal::on_addButton_clicked()
         this->close();
     } else {
         QMessageBox msg;
-        msg.setText(query.lastError().text());
+        msg.setText("Не получилось добавить станцию");
+        msg.setIcon(QMessageBox::Critical);
+        msg.setDetailedText(Utils::mapErrorMessage(query.lastError().text()));
         msg.exec();
+        qDebug() << query.lastError().text();
     }
 
 }

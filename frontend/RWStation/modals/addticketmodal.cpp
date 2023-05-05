@@ -6,6 +6,8 @@
 #include <QSqlQuery>
 #include <QSqlError>
 
+#include "utils.h"
+
 AddTicketModal::AddTicketModal(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::AddTicketModal)
@@ -41,21 +43,23 @@ void AddTicketModal::on_addButton_clicked()
     int passengerID = passengerModel->data(passengerModel->index(ui->passengerComboBox->currentIndex(),0)).toInt();
 
 
-    QSqlQuery *query = new QSqlQuery;
-    query->prepare("SELECT add_ticket(:ScheduleID, :PassengerID, :SeatNo, :RailcarNo, :RailcarClass)");
-    query->bindValue(":ScheduleID", scheduleID);
-    query->bindValue(":PassengerID", passengerID);
-    query->bindValue(":SeatNo", seatNo);
-    query->bindValue(":RailcarNo", railcarNo);
-    query->bindValue(":RailcarClass", railcarClass);
+    QSqlQuery query;
+    query.prepare("SELECT add_ticket(:ScheduleID, :PassengerID, :SeatNo, :RailcarNo, :RailcarClass)");
+    query.bindValue(":ScheduleID", scheduleID);
+    query.bindValue(":PassengerID", passengerID);
+    query.bindValue(":SeatNo", seatNo);
+    query.bindValue(":RailcarNo", railcarNo);
+    query.bindValue(":RailcarClass", railcarClass);
 
-    if (query->exec()) {
+    if (query.exec()) {
         this->close();
     } else {
         QMessageBox msg;
-        qDebug() << query->lastError().text();
-        msg.setText(query->lastError().text());
+        msg.setText("Не получилось добавить билет");
+        msg.setIcon(QMessageBox::Critical);
+        msg.setDetailedText(Utils::mapErrorMessage(query.lastError().text()));
         msg.exec();
+        qDebug() << query.lastError().text();
     }
 }
 

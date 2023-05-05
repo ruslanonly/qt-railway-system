@@ -10,15 +10,12 @@
 #define UI_MAINWINDOW_H
 
 #include <QtCore/QVariant>
-#include <QtGui/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
-#include <QtWidgets/QMenu>
-#include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QStackedWidget>
@@ -33,12 +30,11 @@ class Ui_MainWindow
 {
 public:
     QWidget *centralwidget;
-    QHBoxLayout *horizontalLayout_2;
+    QHBoxLayout *horizontalLayout_8;
     QStackedWidget *pagesWidget;
     QWidget *HomePage;
     QGridLayout *gridLayout;
-    QSpacerItem *verticalSpacer_3;
-    QSpacerItem *verticalSpacer;
+    QLabel *homeHeading;
     QGridLayout *redirectButtons;
     QPushButton *routePageButton;
     QPushButton *stationPageButton;
@@ -46,7 +42,11 @@ public:
     QPushButton *ticketPageButton;
     QPushButton *passengerPageButton;
     QPushButton *schedulePageButton;
-    QLabel *homeHeading;
+    QSpacerItem *verticalSpacer;
+    QSpacerItem *verticalSpacer_3;
+    QHBoxLayout *horizontalLayout_2;
+    QSpacerItem *horizontalSpacer_3;
+    QPushButton *logoutButton;
     QWidget *TicketPage;
     QHBoxLayout *horizontalLayout;
     QVBoxLayout *verticalLayout;
@@ -107,19 +107,17 @@ public:
     QSpacerItem *horizontalSpacer_8;
     QPushButton *refreshScheduleButton;
     QPushButton *addScheduleButton;
-    QMenuBar *menubar;
-    QMenu *menuHome;
     QStatusBar *statusbar;
 
     void setupUi(QMainWindow *MainWindow)
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName("MainWindow");
-        MainWindow->resize(683, 600);
+        MainWindow->resize(700, 600);
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName("centralwidget");
-        horizontalLayout_2 = new QHBoxLayout(centralwidget);
-        horizontalLayout_2->setObjectName("horizontalLayout_2");
+        horizontalLayout_8 = new QHBoxLayout(centralwidget);
+        horizontalLayout_8->setObjectName("horizontalLayout_8");
         pagesWidget = new QStackedWidget(centralwidget);
         pagesWidget->setObjectName("pagesWidget");
         HomePage = new QWidget();
@@ -131,13 +129,12 @@ public:
         HomePage->setSizePolicy(sizePolicy);
         gridLayout = new QGridLayout(HomePage);
         gridLayout->setObjectName("gridLayout");
-        verticalSpacer_3 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+        homeHeading = new QLabel(HomePage);
+        homeHeading->setObjectName("homeHeading");
+        homeHeading->setStyleSheet(QString::fromUtf8("font-size: 12pt; font-weight: 700;"));
+        homeHeading->setAlignment(Qt::AlignCenter);
 
-        gridLayout->addItem(verticalSpacer_3, 1, 0, 1, 1);
-
-        verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
-
-        gridLayout->addItem(verticalSpacer, 5, 0, 1, 1);
+        gridLayout->addWidget(homeHeading, 0, 0, 1, 1);
 
         redirectButtons = new QGridLayout();
         redirectButtons->setObjectName("redirectButtons");
@@ -180,12 +177,27 @@ public:
 
         gridLayout->addLayout(redirectButtons, 4, 0, 1, 1);
 
-        homeHeading = new QLabel(HomePage);
-        homeHeading->setObjectName("homeHeading");
-        homeHeading->setStyleSheet(QString::fromUtf8("font-size: 12pt; font-weight: 700;"));
-        homeHeading->setAlignment(Qt::AlignCenter);
+        verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
-        gridLayout->addWidget(homeHeading, 0, 0, 1, 1);
+        gridLayout->addItem(verticalSpacer, 5, 0, 1, 1);
+
+        verticalSpacer_3 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        gridLayout->addItem(verticalSpacer_3, 1, 0, 1, 1);
+
+        horizontalLayout_2 = new QHBoxLayout();
+        horizontalLayout_2->setObjectName("horizontalLayout_2");
+        horizontalSpacer_3 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_2->addItem(horizontalSpacer_3);
+
+        logoutButton = new QPushButton(HomePage);
+        logoutButton->setObjectName("logoutButton");
+
+        horizontalLayout_2->addWidget(logoutButton);
+
+
+        gridLayout->addLayout(horizontalLayout_2, 7, 0, 1, 1);
 
         pagesWidget->addWidget(HomePage);
         TicketPage = new QWidget();
@@ -527,24 +539,16 @@ public:
 
         pagesWidget->addWidget(SchedulePage);
 
-        horizontalLayout_2->addWidget(pagesWidget);
+        horizontalLayout_8->addWidget(pagesWidget);
 
         MainWindow->setCentralWidget(centralwidget);
-        menubar = new QMenuBar(MainWindow);
-        menubar->setObjectName("menubar");
-        menubar->setGeometry(QRect(0, 0, 683, 25));
-        menuHome = new QMenu(menubar);
-        menuHome->setObjectName("menuHome");
-        MainWindow->setMenuBar(menubar);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName("statusbar");
         MainWindow->setStatusBar(statusbar);
 
-        menubar->addAction(menuHome->menuAction());
-
         retranslateUi(MainWindow);
 
-        pagesWidget->setCurrentIndex(1);
+        pagesWidget->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -553,13 +557,14 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
+        homeHeading->setText(QCoreApplication::translate("MainWindow", "\320\226\320\265\320\273\320\265\320\267\320\275\320\276\320\264\320\276\321\200\320\276\320\266\320\275\320\260\321\217 \320\270\320\275\321\204\320\276\321\200\320\274\320\260\321\206\320\270\320\276\320\275\320\275\320\276-\321\201\320\277\321\200\320\260\320\262\320\276\321\207\320\275\320\260\321\217 \321\201\320\270\321\201\321\202\320\265\320\274\320\260", nullptr));
         routePageButton->setText(QCoreApplication::translate("MainWindow", "\320\234\320\260\321\200\321\210\321\200\321\203\321\202\321\213", nullptr));
         stationPageButton->setText(QCoreApplication::translate("MainWindow", "\320\241\321\202\320\260\320\275\321\206\320\270\320\270", nullptr));
         trainPageButton->setText(QCoreApplication::translate("MainWindow", "\320\237\320\276\320\265\320\267\320\264\320\260", nullptr));
         ticketPageButton->setText(QCoreApplication::translate("MainWindow", "\320\221\320\270\320\273\320\265\321\202\321\213", nullptr));
         passengerPageButton->setText(QCoreApplication::translate("MainWindow", "\320\237\320\260\321\201\321\201\320\260\320\266\320\270\321\200\321\213", nullptr));
         schedulePageButton->setText(QCoreApplication::translate("MainWindow", "\320\240\320\260\321\201\320\277\320\270\321\201\320\260\320\275\320\270\320\265", nullptr));
-        homeHeading->setText(QCoreApplication::translate("MainWindow", "\320\226\320\265\320\273\320\265\320\267\320\275\320\276\320\264\320\276\321\200\320\276\320\266\320\275\320\260\321\217 \320\270\320\275\321\204\320\276\321\200\320\274\320\260\321\206\320\270\320\276\320\275\320\275\320\276-\321\201\320\277\321\200\320\260\320\262\320\276\321\207\320\275\320\260\321\217 \321\201\320\270\321\201\321\202\320\265\320\274\320\260", nullptr));
+        logoutButton->setText(QCoreApplication::translate("MainWindow", "\320\241\320\274\320\265\320\275\320\270\321\202\321\214 \320\277\320\276\320\273\321\214\320\267\320\276\320\262\320\260\321\202\320\265\320\273\321\217", nullptr));
         heading->setText(QCoreApplication::translate("MainWindow", "\320\221\320\270\320\273\320\265\321\202\321\213", nullptr));
         backTicketButton->setText(QCoreApplication::translate("MainWindow", "\320\235\320\260\320\267\320\260\320\264", nullptr));
         refreshTicketButton->setText(QCoreApplication::translate("MainWindow", "\320\236\320\261\320\275\320\276\320\262\320\270\321\202\321\214", nullptr));
@@ -584,7 +589,6 @@ public:
         backScheduleButton->setText(QCoreApplication::translate("MainWindow", "\320\235\320\260\320\267\320\260\320\264", nullptr));
         refreshScheduleButton->setText(QCoreApplication::translate("MainWindow", "\320\236\320\261\320\275\320\276\320\262\320\270\321\202\321\214", nullptr));
         addScheduleButton->setText(QCoreApplication::translate("MainWindow", "\320\224\320\276\320\261\320\260\320\262\320\270\321\202\321\214", nullptr));
-        menuHome->setTitle(QCoreApplication::translate("MainWindow", "Home", nullptr));
     } // retranslateUi
 
 };

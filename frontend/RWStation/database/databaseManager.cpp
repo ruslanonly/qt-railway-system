@@ -32,6 +32,10 @@ bool DatabaseManager::openConnection(QString username, QString password) {
     return connected;
 }
 
+void DatabaseManager::closeConnection() {
+    this->db.close();
+}
+
 QSqlDatabase* DatabaseManager::database() {
     return &this->db;
 }

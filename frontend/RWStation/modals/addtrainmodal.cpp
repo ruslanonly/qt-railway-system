@@ -7,6 +7,8 @@
 #include <QSqlQueryModel>
 #include <QAbstractItemModel>
 
+#include "utils.h"
+
 AddTrainModal::AddTrainModal(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::AddTrainModal)
@@ -37,23 +39,25 @@ void AddTrainModal::on_addButton_clicked()
     int secondClassPrice = ui->secondClassInput->value();
     int routeID = routesModel->data(routesModel->index(ui->routeComboBox->currentIndex(),0)).toInt();
 
-    QSqlQuery *query = new QSqlQuery;
-    query->prepare("SELECT add_train(:RouteID, :Name, :Type, :RailcarCapacity, :RailcarsAmount, :FirstClassPrice, :SecondClassPrice)");
-    query->bindValue(":RouteID", routeID);
-    query->bindValue(":Name", name);
-    query->bindValue(":Type", trainType);
-    query->bindValue(":RailcarCapacity", railcarCapacity);
-    query->bindValue(":RailcarsAmount", railcarsAmount);
-    query->bindValue(":FirstClassPrice", firstClassPrice);
-    query->bindValue(":SecondClassPrice", secondClassPrice);
+    QSqlQuery query;
+    query.prepare("SELECT add_train(:RouteID, :Name, :Type, :RailcarCapacity, :RailcarsAmount, :FirstClassPrice, :SecondClassPrice)");
+    query.bindValue(":RouteID", routeID);
+    query.bindValue(":Name", name);
+    query.bindValue(":Type", trainType);
+    query.bindValue(":RailcarCapacity", railcarCapacity);
+    query.bindValue(":RailcarsAmount", railcarsAmount);
+    query.bindValue(":FirstClassPrice", firstClassPrice);
+    query.bindValue(":SecondClassPrice", secondClassPrice);
 
-    if (query->exec()) {
+    if (query.exec()) {
         this->close();
     } else {
         QMessageBox msg;
-        qDebug() << query->lastError().text();
-        msg.setText(query->lastError().text());
+        msg.setText("Не получилось добавить поезд");
+        msg.setIcon(QMessageBox::Critical);
+        msg.setDetailedText(Utils::mapErrorMessage(query.lastError().text()));
         msg.exec();
+        qDebug() << query.lastError().text();
     }
 }
 

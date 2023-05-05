@@ -9,6 +9,8 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
+#include "utils.h"
+
 
 MainWindow::MainWindow(DatabaseManager* dbManager, QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow)
 {
@@ -314,11 +316,11 @@ void MainWindow::ModifyRequestedAction(int selectedID, TableViewVariant selected
 void MainWindow::DeleteRequestedAction(int selectedID, TableViewVariant selectedTable) {
     QString table = mapTableVariantToName(selectedTable);
 
-    QSqlQuery *query = new QSqlQuery();
-    query->prepare("SELECT delete_" + table + "(:ID)");
-    query->bindValue(":ID", selectedID);
+    QSqlQuery query;
+    query.prepare("SELECT delete_" + table + "(:ID)");
+    query.bindValue(":ID", selectedID);
 
-    if (query->exec()){
+    if (query.exec()){
         switch(selectedTable) {
             case station:
                 loadStationTable();
@@ -342,28 +344,20 @@ void MainWindow::DeleteRequestedAction(int selectedID, TableViewVariant selected
         }
     else {
         QMessageBox msg;
-        msg.setText(query->lastError().text());
+        msg.setText("Не получилось удалить элемент таблицы");
+        msg.setIcon(QMessageBox::Critical);
+        msg.setDetailedText(Utils::mapErrorMessage(query.lastError().text()));
         msg.exec();
+        qDebug() << query.lastError().text();
     }
 
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+void MainWindow::on_logoutButton_clicked()
+{
+    this->dbManager->closeConnection();
+    this->close();
+    emit logoutSignal();
+}
 

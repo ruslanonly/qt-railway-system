@@ -1,13 +1,13 @@
-REVOKE ALL PRIVILEGES ON TABLE ticket, passenger, station, route, train, schedule FROM worker_role;
-REVOKE ALL PRIVILEGES ON TABLE ticket, passenger FROM admin_role;
+REVOKE ALL PRIVILEGES ON TABLE ticket, passenger, station, route, train, schedule FROM w_r;
+REVOKE ALL PRIVILEGES ON TABLE ticket, passenger FROM a_r;
 
-DROP ROLE admin_role;
-DROP ROLE worker_role;
+DROP ROLE a_r;
+DROP ROLE w_r;
 
-CREATE ROLE admin_role WITH LOGIN PASSWORD 'a' SUPERUSER;
-CREATE ROLE worker_role WITH LOGIN PASSWORD 'w';
+CREATE ROLE a_r WITH LOGIN PASSWORD 'a' SUPERUSER;
+CREATE ROLE w_r WITH LOGIN PASSWORD 'w';
 
-GRANT SELECT, INSERT, UPDATE, DELETE ON ticket TO worker_role;
-GRANT SELECT, USAGE ON SEQUENCE ticket_id_seq TO worker_role;
-GRANT SELECT, INSERT, UPDATE, DELETE ON passenger TO worker_role;
-GRANT SELECT ON station, route, train, schedule TO worker_role;
+GRANT SELECT, INSERT, UPDATE, DELETE ON ticket TO w_r;
+GRANT SELECT, USAGE ON SEQUENCE ticket_id_seq TO w_r;
+GRANT SELECT, INSERT, UPDATE, DELETE ON passenger TO w_r;
+GRANT SELECT ON station, route, train, schedule TO w_r;

@@ -50,6 +50,9 @@ public:
     MainWindow(DatabaseManager* dbManager, QWidget *parent = nullptr);
     ~MainWindow();
 
+signals:
+    void logoutSignal();
+
 public slots:
     void showWindow();
 
@@ -99,6 +102,9 @@ private slots:
     void on_addPassengerButton_clicked();
 
     void on_addTicketButton_clicked();
+
+
+    void on_logoutButton_clicked();
 
 private:
     void showCustomContextMenu(const QPoint &pos, QTableView *tableView, TableViewVariant tableVariant);

@@ -14,6 +14,7 @@ public:
     DatabaseManager(DatabaseConfiguration config);
     ~DatabaseManager();
     bool openConnection(QString username, QString password);
+    void closeConnection();
     QSqlDatabase* database();
 };
 

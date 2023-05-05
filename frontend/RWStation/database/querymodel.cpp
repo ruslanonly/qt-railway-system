@@ -99,7 +99,7 @@ QSqlQueryModel* QueryModel::ticketSelectAll() {
                     "INNER JOIN schedule s ON tk.schedule_id = s.id "
                     "INNER JOIN passenger p ON tk.passenger_id = p.id "
                     "INNER JOIN route r ON s.route_id = r.id "
-                    "INNER JOIN train t ON s.train_id = t.id");
+                    "INNER JOIN train t ON s.train_id = t.id ORDER BY tk.id");
     return model;
 }
 

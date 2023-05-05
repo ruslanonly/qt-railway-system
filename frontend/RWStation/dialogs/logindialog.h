@@ -15,8 +15,12 @@ class LoginDialog : public QWidget
 public:
     explicit LoginDialog(DatabaseManager* dbManager, QWidget *parent = nullptr);
     ~LoginDialog();
+
 signals:
     void loginedSignal();
+
+public slots:
+    void mainWindowLogoutSlot();
 
 private slots:
     void on_loginButton_clicked();
