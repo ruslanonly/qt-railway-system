@@ -55,6 +55,8 @@ public:
     QHBoxLayout *buttonsLayout;
     QPushButton *backTicketButton;
     QSpacerItem *horizontalSpacer;
+    QPushButton *bookTicketButton;
+    QSpacerItem *horizontalSpacer_4;
     QPushButton *refreshTicketButton;
     QPushButton *addTicketButton;
     QWidget *TrainPage;
@@ -235,6 +237,16 @@ public:
         horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
         buttonsLayout->addItem(horizontalSpacer);
+
+        bookTicketButton = new QPushButton(TicketPage);
+        bookTicketButton->setObjectName("bookTicketButton");
+        bookTicketButton->setCursor(QCursor(Qt::PointingHandCursor));
+
+        buttonsLayout->addWidget(bookTicketButton);
+
+        horizontalSpacer_4 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        buttonsLayout->addItem(horizontalSpacer_4);
 
         refreshTicketButton = new QPushButton(TicketPage);
         refreshTicketButton->setObjectName("refreshTicketButton");
@@ -548,7 +560,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        pagesWidget->setCurrentIndex(0);
+        pagesWidget->setCurrentIndex(1);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -567,6 +579,7 @@ public:
         logoutButton->setText(QCoreApplication::translate("MainWindow", "\320\241\320\274\320\265\320\275\320\270\321\202\321\214 \320\277\320\276\320\273\321\214\320\267\320\276\320\262\320\260\321\202\320\265\320\273\321\217", nullptr));
         heading->setText(QCoreApplication::translate("MainWindow", "\320\221\320\270\320\273\320\265\321\202\321\213", nullptr));
         backTicketButton->setText(QCoreApplication::translate("MainWindow", "\320\235\320\260\320\267\320\260\320\264", nullptr));
+        bookTicketButton->setText(QCoreApplication::translate("MainWindow", "\320\227\320\260\320\261\321\200\320\276\320\275\320\270\321\200\320\276\320\262\320\260\321\202\321\214 \320\261\320\270\320\273\320\265\321\202", nullptr));
         refreshTicketButton->setText(QCoreApplication::translate("MainWindow", "\320\236\320\261\320\275\320\276\320\262\320\270\321\202\321\214", nullptr));
         addTicketButton->setText(QCoreApplication::translate("MainWindow", "\320\224\320\276\320\261\320\260\320\262\320\270\321\202\321\214", nullptr));
         heading_7->setText(QCoreApplication::translate("MainWindow", "\320\237\320\276\320\265\320\267\320\264\320\260", nullptr));

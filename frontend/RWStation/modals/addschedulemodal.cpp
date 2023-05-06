@@ -37,13 +37,18 @@ void AddScheduleModal::on_addButton_clicked()
     int trainID = trainModel->data(trainModel->index(ui->trainComboBox->currentIndex(),0)).toInt();
 
     QSqlQuery query;
-    query.prepare("SELECT add_schedule(:RouteID, :TrainID, :DepartureDate, :ArrivalDate)");
-    query.bindValue(":RouteID", routeID);
-    query.bindValue(":TrainID", trainID);
-    query.bindValue(":DepartureDate", departureDateTime);
-    query.bindValue(":ArrivalDate", arrivalDateTime);
+    QString preparedQueryString = QString("CALL add_schedule_transaction(%1, %2, %3, %4)")
+                                      .arg(routeID)
+                                      .arg(trainID)
+                                      .arg(departureDateTime)
+                                      .arg(arrivalDateTime);
+//    query.prepare("SELECT add_schedule(:RouteID, :TrainID, :DepartureDate, :ArrivalDate)");
+//    query.bindValue(":RouteID", routeID);
+//    query.bindValue(":TrainID", trainID);
+//    query.bindValue(":DepartureDate", departureDateTime);
+//    query.bindValue(":ArrivalDate", arrivalDateTime);
 
-    if (query.exec()) {
+    if (query.exec(preparedQueryString)) {
         this->close();
     } else {
         QMessageBox msg;

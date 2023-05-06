@@ -198,6 +198,19 @@ void MainWindow::on_addTicketButton_clicked()
     this->addTicketModal->show();
 }
 
+void MainWindow::on_bookTicketButton_clicked()
+{
+    this->bookTicketModal = new BookTicketModal();
+    this->bookTicketModal->show();
+}
+
+
+void MainWindow::on_logoutButton_clicked()
+{
+    this->dbManager->closeConnection();
+    this->close();
+    emit logoutSignal();
+}
 
 void MainWindow::on_stationsTableView_customContextMenuRequested(const QPoint &pos)
 {
@@ -354,10 +367,5 @@ void MainWindow::DeleteRequestedAction(int selectedID, TableViewVariant selected
 }
 
 
-void MainWindow::on_logoutButton_clicked()
-{
-    this->dbManager->closeConnection();
-    this->close();
-    emit logoutSignal();
-}
+
 
