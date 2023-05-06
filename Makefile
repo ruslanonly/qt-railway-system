@@ -5,9 +5,16 @@ all:
 	docker exec -it application-db-1 psql -U rw_user -d railway -f /home/database/drop_funcs.sql
 	docker exec -it application-db-1 psql -U rw_user -d railway -f /home/database/funcs.sql
 	docker exec -it application-db-1 psql -U rw_user -d railway -f /home/database/roles.sql
+	docker exec -it application-db-1 psql -U rw_user -d railway -f /home/database/trigger.sql
 	
 roles:
 	docker exec -it application-db-1 psql -U rw_user -d railway -f /home/database/roles.sql
+
+trigger:
+	docker exec -it application-db-1 psql -U rw_user -d railway -f /home/database/trigger.sql
+	
+transaction:
+	docker exec -it application-db-1 psql -U rw_user -d railway -f /home/database/transaction.sql
 
 drop:
 	docker exec -it application-db-1 psql -U rw_user -d railway -f /home/database/drop.sql

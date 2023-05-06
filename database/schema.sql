@@ -42,11 +42,13 @@ CREATE TABLE schedule (
   train_id INT NOT NULL,
   departure_date TIMESTAMP NOT NULL,
   arrival_date TIMESTAMP NOT NULL,
+  status VARCHAR(20) NOT NULL DEFAULT 'есть места',
   PRIMARY KEY (id),
   CONSTRAINT route_fk FOREIGN KEY(route_id) REFERENCES route(id),
   CONSTRAINT train_fk FOREIGN KEY(train_id) REFERENCES train(id),
   CONSTRAINT unique_schedule_group_fk UNIQUE(route_id, train_id, departure_date, arrival_date),
-  CHECK (departure_date < arrival_date)
+  CHECK (departure_date < arrival_date),
+  CHECK (status IN ('осталось мало мест', 'есть места', 'нет мест'))
 );
 
 CREATE TABLE passenger (

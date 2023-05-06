@@ -44,6 +44,12 @@ void AddTicketModal::on_addButton_clicked()
 
 
     QSqlQuery query;
+//    QString qString = QString("CALL add_ticket_transaction(%1, %2, %3, %4::smallint, %5::smallint)")
+//                          .arg(scheduleID)
+//                          .arg(passengerID)
+//                          .arg(seatNo)
+//                          .arg(railcarNo)
+//                          .arg(railcarClass);
     query.prepare("SELECT add_ticket(:ScheduleID, :PassengerID, :SeatNo, :RailcarNo, :RailcarClass)");
     query.bindValue(":ScheduleID", scheduleID);
     query.bindValue(":PassengerID", passengerID);

@@ -76,7 +76,7 @@ QSqlQueryModel* QueryModel::trainSelectAll() {
 
 QSqlQueryModel* QueryModel::scheduleSelectAll() {
     QSqlQueryModel *model = new QSqlQueryModel;
-    model->setQuery("SELECT s.id, r.name as Маршрут, t.name as Поезд, "
+    model->setQuery("SELECT s.id, r.name as Маршрут, t.name as Поезд, status as Статус, "
                     "s.departure_date as \"Время Отправления\", s.arrival_date as \"Время Прибытия\" FROM schedule s "
                     "INNER JOIN route r ON s.route_id = r.id "
                     "INNER JOIN train t ON s.train_id = t.id ORDER BY s.id");
