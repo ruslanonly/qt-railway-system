@@ -76,5 +76,5 @@ CREATE TABLE ticket (
   CONSTRAINT passenger_fk FOREIGN KEY(passenger_id) REFERENCES passenger(id),
   CONSTRAINT unique_ticket_group_fk UNIQUE(schedule_id, seat_no, railcar_no),
   CHECK (railcar_class = 1 OR railcar_class = 2),
-  CHECK (seat_no > 0)
+  CHECK (seat_no > 0 AND railcar_no > 0)
 );
