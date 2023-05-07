@@ -6,6 +6,7 @@ all:
 	docker exec -it application-db-1 psql -U rw_user -d railway -f /home/database/funcs.sql
 	docker exec -it application-db-1 psql -U rw_user -d railway -f /home/database/roles.sql
 	docker exec -it application-db-1 psql -U rw_user -d railway -f /home/database/trigger.sql
+	docker exec -it application-db-1 psql -U rw_user -d railway -f /home/database/transaction.sql
 	
 roles:
 	docker exec -it application-db-1 psql -U rw_user -d railway -f /home/database/roles.sql

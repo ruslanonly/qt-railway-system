@@ -16,7 +16,7 @@ BEGIN
 
   IF available_seats = 0 THEN
     UPDATE schedule s SET status = 'нет мест' WHERE s.id = NEW.schedule_id OR s.id = OLD.schedule_id;
-  ELSIF available_seats < total_seats * 0.1 THEN
+  ELSIF available_seats < total_seats * 0.1 OR available_seats < 5 THEN
     UPDATE schedule s SET status = 'осталось мало мест' WHERE s.id = NEW.schedule_id OR s.id = OLD.schedule_id;
   ELSE
     UPDATE schedule s SET status = 'есть места' WHERE s.id = NEW.schedule_id OR s.id = OLD.schedule_id;
