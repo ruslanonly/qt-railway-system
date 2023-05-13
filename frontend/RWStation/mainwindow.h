@@ -30,6 +30,7 @@
 #include "modals/bookticketmodal.h"
 
 #include "modals/getschedulerevenuemodal.h"
+#include "modals/getscheduleticketsamount.h"
 
 
 QT_BEGIN_NAMESPACE
@@ -113,6 +114,8 @@ private slots:
 
     void on_getScheduleRevenueButton_clicked();
 
+    void on_getScheduleTicketsAmount_clicked();
+
 private:
     void showCustomContextMenu(const QPoint &pos, QTableView *tableView, TableViewVariant tableVariant);
 
@@ -133,6 +136,7 @@ private:
     UpdateTicketModal* updateTicketModal;
 
     GetScheduleRevenueModal* getScheduleRevenueModal;
+    GetScheduleTicketsAmount* getScheduleTicketsAmount;
 
     DatabaseManager* dbManager;
     Ui::MainWindow *ui;

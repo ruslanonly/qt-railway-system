@@ -37,7 +37,9 @@ public:
     {
         if (GetScheduleRevenueModal->objectName().isEmpty())
             GetScheduleRevenueModal->setObjectName("GetScheduleRevenueModal");
-        GetScheduleRevenueModal->resize(586, 412);
+        GetScheduleRevenueModal->resize(550, 410);
+        GetScheduleRevenueModal->setMinimumSize(QSize(550, 410));
+        GetScheduleRevenueModal->setMaximumSize(QSize(550, 410));
         horizontalLayout_2 = new QHBoxLayout(GetScheduleRevenueModal);
         horizontalLayout_2->setObjectName("horizontalLayout_2");
         verticalLayout = new QVBoxLayout();

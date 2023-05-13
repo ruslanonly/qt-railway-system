@@ -176,7 +176,9 @@ QSqlQueryModel* QueryModel::selectSchedulesRevenue() {
 QSqlQueryModel* QueryModel::selectScheduleTicketsAmount(int percentage) {
     QSqlQueryModel *model = new QSqlQueryModel;
     QSqlQuery query;
-    query.prepare("SELECT * FROM get_sch_tickets_amount(:Percentage)");
+    query.prepare("SELECT route_name as Маршрут, train_name as Поезд, "
+                  "s_departure_date as \"Время Отправления\", s_arrival_date as \"Время Прибытия\", "
+                  "tickets_amount as \"Продано билетов\" FROM get_sch_tickets_amount(:Percentage)");
     query.bindValue(":Percentage", percentage);
     if (!query.exec()) {
         qDebug() << query.lastError().text();

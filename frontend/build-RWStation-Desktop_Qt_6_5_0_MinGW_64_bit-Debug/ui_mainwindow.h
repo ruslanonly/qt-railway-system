@@ -105,19 +105,22 @@ public:
     QLabel *heading_8;
     QTableView *scheduleTableView;
     QHBoxLayout *buttonsLayout_8;
-    QPushButton *backScheduleButton;
-    QSpacerItem *getScheduleTicketsAmountSpacer_9;
+    QSpacerItem *horizontalSpacer_9;
     QPushButton *getScheduleRevenueButton;
-    QSpacerItem *horizontalSpacer_8;
-    QPushButton *refreshScheduleButton;
-    QPushButton *addScheduleButton;
+    QPushButton *getScheduleTicketsAmount;
+    QHBoxLayout *buttonsLayout_9;
+    QPushButton *backScheduleButton_2;
+    QSpacerItem *horizontalSpacer_10;
+    QSpacerItem *horizontalSpacer_11;
+    QPushButton *refreshScheduleButton_2;
+    QPushButton *addScheduleButton_2;
     QStatusBar *statusbar;
 
     void setupUi(QMainWindow *MainWindow)
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName("MainWindow");
-        MainWindow->resize(700, 600);
+        MainWindow->resize(750, 600);
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName("centralwidget");
         horizontalLayout_8 = new QHBoxLayout(centralwidget);
@@ -523,12 +526,6 @@ public:
         buttonsLayout_8 = new QHBoxLayout();
         buttonsLayout_8->setSpacing(7);
         buttonsLayout_8->setObjectName("buttonsLayout_8");
-        backScheduleButton = new QPushButton(SchedulePage);
-        backScheduleButton->setObjectName("backScheduleButton");
-        backScheduleButton->setCursor(QCursor(Qt::PointingHandCursor));
-
-        buttonsLayout_8->addWidget(backScheduleButton);
-
         horizontalSpacer_9 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
         buttonsLayout_8->addItem(horizontalSpacer_9);
@@ -539,24 +536,46 @@ public:
 
         buttonsLayout_8->addWidget(getScheduleRevenueButton);
 
-       getScheduleTickgetScheduleTicketsAmountSpacer_8 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+        getScheduleTicketsAmount = new QPushButton(SchedulePage);
+        getScheduleTicketsAmount->setObjectName("getScheduleTicketsAmount");
+        getScheduleTicketsAmount->setCursor(QCursor(Qt::PointingHandCursor));
 
-        buttonsLayout_8->addItem(hogetScheduleTicketsAmountacer_8);
-
-        refreshScheduleButton = new QPushButton(SchedulePage);
-        refreshScheduleButton->setObjectName("refreshScheduleButton");
-        refreshScheduleButton->setCursor(QCursor(Qt::PointingHandCursor));
-
-        buttonsLayout_8->addWidget(refreshScheduleButton);
-
-        addScheduleButton = new QPushButton(SchedulePage);
-        addScheduleButton->setObjectName("addScheduleButton");
-        addScheduleButton->setCursor(QCursor(Qt::PointingHandCursor));
-
-        buttonsLayout_8->addWidget(addScheduleButton);
+        buttonsLayout_8->addWidget(getScheduleTicketsAmount);
 
 
         verticalLayout_9->addLayout(buttonsLayout_8);
+
+        buttonsLayout_9 = new QHBoxLayout();
+        buttonsLayout_9->setSpacing(7);
+        buttonsLayout_9->setObjectName("buttonsLayout_9");
+        backScheduleButton_2 = new QPushButton(SchedulePage);
+        backScheduleButton_2->setObjectName("backScheduleButton_2");
+        backScheduleButton_2->setCursor(QCursor(Qt::PointingHandCursor));
+
+        buttonsLayout_9->addWidget(backScheduleButton_2);
+
+        horizontalSpacer_10 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        buttonsLayout_9->addItem(horizontalSpacer_10);
+
+        horizontalSpacer_11 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        buttonsLayout_9->addItem(horizontalSpacer_11);
+
+        refreshScheduleButton_2 = new QPushButton(SchedulePage);
+        refreshScheduleButton_2->setObjectName("refreshScheduleButton_2");
+        refreshScheduleButton_2->setCursor(QCursor(Qt::PointingHandCursor));
+
+        buttonsLayout_9->addWidget(refreshScheduleButton_2);
+
+        addScheduleButton_2 = new QPushButton(SchedulePage);
+        addScheduleButton_2->setObjectName("addScheduleButton_2");
+        addScheduleButton_2->setCursor(QCursor(Qt::PointingHandCursor));
+
+        buttonsLayout_9->addWidget(addScheduleButton_2);
+
+
+        verticalLayout_9->addLayout(buttonsLayout_9);
 
 
         horizontalLayout_4->addLayout(verticalLayout_9);
@@ -611,15 +630,16 @@ public:
         refreshStationButton->setText(QCoreApplication::translate("MainWindow", "\320\236\320\261\320\275\320\276\320\262\320\270\321\202\321\214", nullptr));
         addStationButton->setText(QCoreApplication::translate("MainWindow", "\320\224\320\276\320\261\320\260\320\262\320\270\321\202\321\214", nullptr));
         heading_8->setText(QCoreApplication::translate("MainWindow", "\320\240\320\260\321\201\320\277\320\270\321\201\320\260\320\275\320\270\320\265", nullptr));
-        backScheduleButton->setText(QCoreApplication::translate("MainWindow", "\320\235\320\260\320\267\320\260\320\264", nullptr));
         getScheduleRevenueButton->setText(QCoreApplication::translate("MainWindow", "\320\222\321\213\321\200\321\203\321\207\320\272\320\260 \321\201 \320\272\320\260\320\266\320\264\320\276\320\263\320\276 \321\200\320\265\320\271\321\201\320\260", nullptr));
-        refreshScheduleButton->setText(QCoreApplication::translate("MainWindow", "\320\236\320\261\320\275\320\276\320\262\320\270\321\202\321\214", nullptr));
-        addScheduleButton->setText(QCoreApplication::translate("MainWindow", "\320\224\320\276\320\261\320\260\320\262\320\270\321\202\321\214", nullptr));
+        getScheduleTicketsAmount->setText(QCoreApplication::translate("MainWindow", "\320\232\320\276\320\273\320\270\321\207\320\265\321\201\321\202\320\262\320\276 \320\277\321\200\320\276\320\264\320\260\320\275\320\275\321\213\321\205 \320\261\320\270\320\273\320\265\321\202\320\276\320\262", nullptr));
+        backScheduleButton_2->setText(QCoreApplication::translate("MainWindow", "\320\235\320\260\320\267\320\260\320\264", nullptr));
+        refreshScheduleButton_2->setText(QCoreApplication::translate("MainWindow", "\320\236\320\261\320\275\320\276\320\262\320\270\321\202\321\214", nullptr));
+        addScheduleButton_2->setText(QCoreApplication::translate("MainWindow", "\320\224\320\276\320\261\320\260\320\262\320\270\321\202\321\214", nullptr));
     } // retranslateUi
 
 };
 
-namegetScheduleTicketsAmount
+namespace Ui {
     class MainWindow: public Ui_MainWindow {};
 } // namespace Ui
 
