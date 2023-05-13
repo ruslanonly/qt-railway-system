@@ -10,4 +10,7 @@ CREATE ROLE w_r WITH LOGIN PASSWORD 'w';
 GRANT SELECT, INSERT, UPDATE, DELETE ON ticket TO w_r;
 GRANT SELECT, USAGE ON SEQUENCE ticket_id_seq TO w_r;
 GRANT SELECT, INSERT, UPDATE, DELETE ON passenger TO w_r;
+GRANT SELECT, USAGE ON SEQUENCE passenger_id_seq TO w_r;
+GRANT SELECT, UPDATE ON passenger TO w_r;
+GRANT UPDATE (status) ON schedule TO w_r;
 GRANT SELECT ON station, route, train, schedule TO w_r;

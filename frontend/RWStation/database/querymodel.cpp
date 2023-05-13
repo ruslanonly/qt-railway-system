@@ -76,8 +76,8 @@ QSqlQueryModel* QueryModel::trainSelectAll() {
 
 QSqlQueryModel* QueryModel::scheduleSelectAll() {
     QSqlQueryModel *model = new QSqlQueryModel;
-    model->setQuery("SELECT s.id, r.name as Маршрут, t.name as Поезд, status as Статус, "
-                    "s.departure_date as \"Время Отправления\", s.arrival_date as \"Время Прибытия\" FROM schedule s "
+    model->setQuery("SELECT s.id, r.name as Маршрут, t.name as Поезд, get_travel_time(s.id) as \"Время в пути\", "
+                    "status as Статус, s.departure_date as \"Время Отправления\", s.arrival_date as \"Время Прибытия\" FROM schedule s "
                     "INNER JOIN route r ON s.route_id = r.id "
                     "INNER JOIN train t ON s.train_id = t.id ORDER BY s.id");
     return model;
@@ -160,3 +160,28 @@ QSqlQueryModel* QueryModel::seatsSelectAllForScheduleAndRailcar(int scheduleID, 
     model->setQuery(query);
     return model;
 }
+
+QSqlQueryModel* QueryModel::selectSchedulesRevenue() {
+    QSqlQueryModel *model = new QSqlQueryModel;
+    QSqlQuery query;
+    query.prepare("SELECT * FROM get_schedule_revenue()");
+    if (!query.exec()) {
+        qDebug() << query.lastError().text();
+    }
+    model->setQuery(query);
+    return model;
+}
+
+
+QSqlQueryModel* QueryModel::selectScheduleTicketsAmount(int percentage) {
+    QSqlQueryModel *model = new QSqlQueryModel;
+    QSqlQuery query;
+    query.prepare("SELECT * FROM get_sch_tickets_amount(:Percentage)");
+    query.bindValue(":Percentage", percentage);
+    if (!query.exec()) {
+        qDebug() << query.lastError().text();
+    }
+    model->setQuery(query);
+    return model;
+}
+

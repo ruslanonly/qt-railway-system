@@ -33,6 +33,9 @@ public:
     QSqlQueryModel* seatsSelectAllForScheduleAndRailcar(int scheduleID, int railcarNo);
     QSqlQueryModel* railcarsSelectAllNumbersForSchedule(int scheduleID);
 
+    QSqlQueryModel* selectScheduleTicketsAmount(int percentage);
+    QSqlQueryModel* selectSchedulesRevenue();
+
 private:
     DatabaseManager* dbManager;
 };

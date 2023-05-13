@@ -11,6 +11,7 @@ release/addstationmodal.o
 release/addticketmodal.o
 release/addtrainmodal.o
 release/bookticketmodal.o
+release/getschedulerevenuemodal.o
 release/updatepassengermodal.o
 release/updateroutemodal.o
 release/updateschedulemodal.o
@@ -27,6 +28,7 @@ release/moc_addstationmodal.o
 release/moc_addticketmodal.o
 release/moc_addtrainmodal.o
 release/moc_bookticketmodal.o
+release/moc_getschedulerevenuemodal.o
 release/moc_updatepassengermodal.o
 release/moc_updateroutemodal.o
 release/moc_updateschedulemodal.o

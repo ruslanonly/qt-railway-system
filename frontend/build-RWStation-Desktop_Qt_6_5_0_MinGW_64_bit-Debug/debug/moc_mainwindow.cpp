@@ -85,11 +85,12 @@ static constexpr auto qt_meta_stringdata_CLASSMainWindowENDCLASS = QtMocHelpers:
     "on_addPassengerButton_clicked",
     "on_addTicketButton_clicked",
     "on_logoutButton_clicked",
-    "on_bookTicketButton_clicked"
+    "on_bookTicketButton_clicked",
+    "on_getScheduleRevenueButton_clicked"
 );
 #else  // !QT_MOC_HAS_STRING_DATA
 struct qt_meta_stringdata_CLASSMainWindowENDCLASS_t {
-    uint offsetsAndSizes[96];
+    uint offsetsAndSizes[98];
     char stringdata0[11];
     char stringdata1[13];
     char stringdata2[1];
@@ -138,6 +139,7 @@ struct qt_meta_stringdata_CLASSMainWindowENDCLASS_t {
     char stringdata45[27];
     char stringdata46[24];
     char stringdata47[28];
+    char stringdata48[36];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(sizeof(qt_meta_stringdata_CLASSMainWindowENDCLASS_t::offsetsAndSizes) + ofs), len 
@@ -190,7 +192,8 @@ Q_CONSTINIT static const qt_meta_stringdata_CLASSMainWindowENDCLASS_t qt_meta_st
         QT_MOC_LITERAL(1154, 29),  // "on_addPassengerButton_clicked"
         QT_MOC_LITERAL(1184, 26),  // "on_addTicketButton_clicked"
         QT_MOC_LITERAL(1211, 23),  // "on_logoutButton_clicked"
-        QT_MOC_LITERAL(1235, 27)   // "on_bookTicketButton_clicked"
+        QT_MOC_LITERAL(1235, 27),  // "on_bookTicketButton_clicked"
+        QT_MOC_LITERAL(1263, 35)   // "on_getScheduleRevenueButton_c..."
     },
     "MainWindow",
     "logoutSignal",
@@ -239,7 +242,8 @@ Q_CONSTINIT static const qt_meta_stringdata_CLASSMainWindowENDCLASS_t qt_meta_st
     "on_addPassengerButton_clicked",
     "on_addTicketButton_clicked",
     "on_logoutButton_clicked",
-    "on_bookTicketButton_clicked"
+    "on_bookTicketButton_clicked",
+    "on_getScheduleRevenueButton_clicked"
 };
 #undef QT_MOC_LITERAL
 #endif // !QT_MOC_HAS_STRING_DATA
@@ -251,7 +255,7 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSMainWindowENDCLASS[] = {
       11,       // revision
        0,       // classname
        0,    0, // classinfo
-      42,   14, // methods
+      43,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -259,50 +263,51 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSMainWindowENDCLASS[] = {
        1,       // signalCount
 
  // signals: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    0,  266,    2, 0x06,    1 /* Public */,
+       1,    0,  272,    2, 0x06,    1 /* Public */,
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       3,    0,  267,    2, 0x0a,    2 /* Public */,
-       4,    0,  268,    2, 0x08,    3 /* Private */,
-       5,    0,  269,    2, 0x08,    4 /* Private */,
-       6,    0,  270,    2, 0x08,    5 /* Private */,
-       7,    0,  271,    2, 0x08,    6 /* Private */,
-       8,    0,  272,    2, 0x08,    7 /* Private */,
-       9,    0,  273,    2, 0x08,    8 /* Private */,
-      10,    0,  274,    2, 0x08,    9 /* Private */,
-      11,    0,  275,    2, 0x08,   10 /* Private */,
-      12,    0,  276,    2, 0x08,   11 /* Private */,
-      13,    0,  277,    2, 0x08,   12 /* Private */,
-      14,    0,  278,    2, 0x08,   13 /* Private */,
-      15,    0,  279,    2, 0x08,   14 /* Private */,
-      16,    0,  280,    2, 0x08,   15 /* Private */,
-      17,    0,  281,    2, 0x08,   16 /* Private */,
-      18,    0,  282,    2, 0x08,   17 /* Private */,
-      19,    0,  283,    2, 0x08,   18 /* Private */,
-      20,    0,  284,    2, 0x08,   19 /* Private */,
-      21,    0,  285,    2, 0x08,   20 /* Private */,
-      22,    0,  286,    2, 0x08,   21 /* Private */,
-      23,    0,  287,    2, 0x08,   22 /* Private */,
-      24,    0,  288,    2, 0x08,   23 /* Private */,
-      25,    0,  289,    2, 0x08,   24 /* Private */,
-      26,    1,  290,    2, 0x08,   25 /* Private */,
-      28,    1,  293,    2, 0x08,   27 /* Private */,
-      29,    1,  296,    2, 0x08,   29 /* Private */,
-      30,    1,  299,    2, 0x08,   31 /* Private */,
-      31,    1,  302,    2, 0x08,   33 /* Private */,
-      32,    1,  305,    2, 0x08,   35 /* Private */,
-      33,    2,  308,    2, 0x08,   37 /* Private */,
-      37,    2,  313,    2, 0x08,   40 /* Private */,
-      38,    0,  318,    2, 0x08,   43 /* Private */,
-      39,    0,  319,    2, 0x08,   44 /* Private */,
-      40,    0,  320,    2, 0x08,   45 /* Private */,
-      41,    0,  321,    2, 0x08,   46 /* Private */,
-      42,    0,  322,    2, 0x08,   47 /* Private */,
-      43,    0,  323,    2, 0x08,   48 /* Private */,
-      44,    0,  324,    2, 0x08,   49 /* Private */,
-      45,    0,  325,    2, 0x08,   50 /* Private */,
-      46,    0,  326,    2, 0x08,   51 /* Private */,
-      47,    0,  327,    2, 0x08,   52 /* Private */,
+       3,    0,  273,    2, 0x0a,    2 /* Public */,
+       4,    0,  274,    2, 0x08,    3 /* Private */,
+       5,    0,  275,    2, 0x08,    4 /* Private */,
+       6,    0,  276,    2, 0x08,    5 /* Private */,
+       7,    0,  277,    2, 0x08,    6 /* Private */,
+       8,    0,  278,    2, 0x08,    7 /* Private */,
+       9,    0,  279,    2, 0x08,    8 /* Private */,
+      10,    0,  280,    2, 0x08,    9 /* Private */,
+      11,    0,  281,    2, 0x08,   10 /* Private */,
+      12,    0,  282,    2, 0x08,   11 /* Private */,
+      13,    0,  283,    2, 0x08,   12 /* Private */,
+      14,    0,  284,    2, 0x08,   13 /* Private */,
+      15,    0,  285,    2, 0x08,   14 /* Private */,
+      16,    0,  286,    2, 0x08,   15 /* Private */,
+      17,    0,  287,    2, 0x08,   16 /* Private */,
+      18,    0,  288,    2, 0x08,   17 /* Private */,
+      19,    0,  289,    2, 0x08,   18 /* Private */,
+      20,    0,  290,    2, 0x08,   19 /* Private */,
+      21,    0,  291,    2, 0x08,   20 /* Private */,
+      22,    0,  292,    2, 0x08,   21 /* Private */,
+      23,    0,  293,    2, 0x08,   22 /* Private */,
+      24,    0,  294,    2, 0x08,   23 /* Private */,
+      25,    0,  295,    2, 0x08,   24 /* Private */,
+      26,    1,  296,    2, 0x08,   25 /* Private */,
+      28,    1,  299,    2, 0x08,   27 /* Private */,
+      29,    1,  302,    2, 0x08,   29 /* Private */,
+      30,    1,  305,    2, 0x08,   31 /* Private */,
+      31,    1,  308,    2, 0x08,   33 /* Private */,
+      32,    1,  311,    2, 0x08,   35 /* Private */,
+      33,    2,  314,    2, 0x08,   37 /* Private */,
+      37,    2,  319,    2, 0x08,   40 /* Private */,
+      38,    0,  324,    2, 0x08,   43 /* Private */,
+      39,    0,  325,    2, 0x08,   44 /* Private */,
+      40,    0,  326,    2, 0x08,   45 /* Private */,
+      41,    0,  327,    2, 0x08,   46 /* Private */,
+      42,    0,  328,    2, 0x08,   47 /* Private */,
+      43,    0,  329,    2, 0x08,   48 /* Private */,
+      44,    0,  330,    2, 0x08,   49 /* Private */,
+      45,    0,  331,    2, 0x08,   50 /* Private */,
+      46,    0,  332,    2, 0x08,   51 /* Private */,
+      47,    0,  333,    2, 0x08,   52 /* Private */,
+      48,    0,  334,    2, 0x08,   53 /* Private */,
 
  // signals: parameters
     QMetaType::Void,
@@ -339,6 +344,7 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSMainWindowENDCLASS[] = {
     QMetaType::Void, QMetaType::QPoint,   27,
     QMetaType::Void, QMetaType::Int, 0x80000000 | 35,   34,   36,
     QMetaType::Void, QMetaType::Int, 0x80000000 | 35,   34,   36,
+    QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
@@ -455,6 +461,8 @@ Q_CONSTINIT const QMetaObject MainWindow::staticMetaObject = { {
         // method 'on_logoutButton_clicked'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'on_bookTicketButton_clicked'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'on_getScheduleRevenueButton_clicked'
         QtPrivate::TypeAndForceComplete<void, std::false_type>
     >,
     nullptr
@@ -508,6 +516,7 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 39: _t->on_addTicketButton_clicked(); break;
         case 40: _t->on_logoutButton_clicked(); break;
         case 41: _t->on_bookTicketButton_clicked(); break;
+        case 42: _t->on_getScheduleRevenueButton_clicked(); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -541,13 +550,13 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 42)
+        if (_id < 43)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 42;
+        _id -= 43;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 42)
+        if (_id < 43)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 42;
+        _id -= 43;
     }
     return _id;
 }

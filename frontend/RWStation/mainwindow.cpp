@@ -369,3 +369,10 @@ void MainWindow::DeleteRequestedAction(int selectedID, TableViewVariant selected
 
 
 
+
+void MainWindow::on_getScheduleRevenueButton_clicked()
+{
+    this->getScheduleRevenueModal = new GetScheduleRevenueModal();
+    this->getScheduleRevenueModal->show();
+}
+

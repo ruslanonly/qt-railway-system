@@ -69,11 +69,13 @@ WHERE t.route_id = ANY (
 /* Многотабличный запрос, содержащий группировку записей, агрегатные
 функции и параметр, используемый в разделе HAVING */
 
-SELECT r.id, r.name, COUNT(*) as total_tickets_sold
-FROM route r
-JOIN ticket t ON t.route_id = r.id
-GROUP BY r.id, r.name
-HAVING COUNT(*) > 100
+SELECT r.name AS route_name, t.name AS train_name, COUNT(*) AS num_tickets
+FROM ticket ti
+JOIN schedule s ON ti.schedule_id = s.id
+JOIN train t ON s.train_id = t.id
+JOIN route r ON t.route_id = r.id
+GROUP BY r.name, t.name
+HAVING COUNT(*) > (t.railcar_capacity * railcars_amount);
 
 /* Запросы, содержащий предикат ANY(SOME) или ALL (для каждого
 предиката); */
