@@ -41,7 +41,9 @@ public:
     {
         if (GetScheduleTicketsAmount->objectName().isEmpty())
             GetScheduleTicketsAmount->setObjectName("GetScheduleTicketsAmount");
-        GetScheduleTicketsAmount->resize(559, 428);
+        GetScheduleTicketsAmount->resize(560, 430);
+        GetScheduleTicketsAmount->setMinimumSize(QSize(560, 430));
+        GetScheduleTicketsAmount->setMaximumSize(QSize(560, 16777215));
         horizontalLayout = new QHBoxLayout(GetScheduleTicketsAmount);
         horizontalLayout->setObjectName("horizontalLayout");
         verticalLayout_2 = new QVBoxLayout();
@@ -58,6 +60,7 @@ public:
         verticalLayout_2->addWidget(ticketAmountsTableView);
 
         horizontalLayout_3 = new QHBoxLayout();
+        horizontalLayout_3->setSpacing(20);
         horizontalLayout_3->setObjectName("horizontalLayout_3");
         label_3 = new QLabel(GetScheduleTicketsAmount);
         label_3->setObjectName("label_3");

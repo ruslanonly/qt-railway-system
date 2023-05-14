@@ -1,10 +1,25 @@
-CREATE OR REPLACE VIEW ticket_info AS
-SELECT ticket.id, route.name AS route_name, train.name AS train_name, passenger.first_name, passenger.last_name, ticket.seat_no, ticket.railcar_class,
-CASE
-  WHEN ticket.railcar_class = 1 THEN train.first_class_price
-  WHEN ticket.railcar_class = 2 THEN train.second_class_price
-END AS ticket_price
-FROM ticket
-INNER JOIN route ON ticket.route_id = route.id
-INNER JOIN train ON ticket.train_id = train.id
-INNER JOIN passenger ON passenger.id = ticket.passenger_id;
+CREATE OR REPLACE VIEW schedule_details AS
+SELECT s.id AS schedule_id,
+       r.name AS route_name,
+       r.departure_station_id,
+       r.arrival_station_id,
+       dep.name AS departure_station_name,
+       dep.city AS departure_city,
+       dep.country AS departure_country,
+       arr.name AS arrival_station_name,
+       arr.city AS arrival_city,
+       arr.country AS arrival_country,
+       t.name AS train_name,
+       t.type AS train_type,
+       t.railcar_capacity,
+       t.railcars_amount,
+       t.first_class_price,
+       t.second_class_price,
+       p.departure_date,
+       p.arrival_date,
+       p.status
+FROM schedule s
+JOIN route r ON s.route_id = r.id
+JOIN train t ON r.id = t.route_id
+JOIN station dep ON r.departure_station_id = dep.id
+JOIN station arr ON r.arrival_station_id = arr.id;

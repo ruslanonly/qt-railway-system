@@ -22,6 +22,7 @@ SOURCES += \
     modals/addticketmodal.cpp \
     modals/addtrainmodal.cpp \
     modals/bookticketmodal.cpp \
+    modals/getpassengeradditionalmodal.cpp \
     modals/getschedulerevenuemodal.cpp \
     modals/getscheduleticketsamount.cpp \
     modals/updatepassengermodal.cpp \
@@ -45,6 +46,7 @@ HEADERS += \
     modals/addticketmodal.h \
     modals/addtrainmodal.h \
     modals/bookticketmodal.h \
+    modals/getpassengeradditionalmodal.h \
     modals/getschedulerevenuemodal.h \
     modals/getscheduleticketsamount.h \
     modals/updatepassengermodal.h \
@@ -65,6 +67,7 @@ FORMS += \
     modals/addticketmodal.ui \
     modals/addtrainmodal.ui \
     modals/bookticketmodal.ui \
+    modals/getpassengeradditionalmodal.ui \
     modals/getschedulerevenuemodal.ui \
     modals/getscheduleticketsamount.ui \
     modals/updatepassengermodal.ui \

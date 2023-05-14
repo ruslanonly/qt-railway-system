@@ -27,15 +27,15 @@ $$ LANGUAGE plpgsql;
 /* Запросы, содержащие подзапрос в разделах SELECT, FROM и WHERE (в
 каждом хотя бы по одному); */
 
-SELECT name, (SELECT COUNT(*) FROM passenger WHERE passenger.route_id = route.id) AS passenger_count
-FROM route;
+SELECT first_name, last_name, (SELECT COUNT(*) FROM ticket WHERE passenger_id = passenger.id) AS ticket_count
+FROM passenger;
 
 SELECT * FROM 
   (SELECT name, departure_date FROM route WHERE departure_station_id = 
     (SELECT id FROM station WHERE name = 'Moscow')) AS moscow_routes 
 WHERE EXTRACT(YEAR FROM departure_date) = 2022;
 
-SELECT name FROM train WHERE railcar_capacity > (SELECT AVG(railcar_capacity) FROM train);
+--WHERE get_available_seats
 
 /* Коррелированные подзапросы (минимум 3 запроса). */
 
@@ -80,14 +80,18 @@ HAVING COUNT(*) > (t.railcar_capacity * railcars_amount);
 /* Запросы, содержащий предикат ANY(SOME) или ALL (для каждого
 предиката); */
 
-SELECT * FROM ticket
-WHERE route_id = all (
-  SELECT route_id FROM train
-  WHERE first_class_price > 5000
+SELECT *
+FROM ticket
+WHERE passenger_id = ANY (
+  SELECT passenger_id
+  FROM ticket
+  GROUP BY passenger_id
+  HAVING COUNT(*) > 1
 );
 
-SELECT * FROM route
-WHERE id = any (
-  SELECT route_id FROM train
-  WHERE railcar_capacity > 100
-);
+
+SELECT * FROM passenger
+WHERE id = ALL(
+  SELECT passenger_id FROM ticket
+  WHERE train_id IN (SELECT id FROM train WHERE first_class_price > 500 OR second_class_price > 500)
+)

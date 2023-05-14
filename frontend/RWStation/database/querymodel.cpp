@@ -69,7 +69,7 @@ QSqlQueryModel* QueryModel::trainSelectAll() {
     QSqlQueryModel *model = new QSqlQueryModel;
     model->setQuery("SELECT t.id, t.name as Название, r.name as Маршрут, t.type as \"Тип поезда\", "
                     "t.railcar_capacity as Вместимость, t.railcars_amount as \"Количество вагонов\", "
-                    "t.first_class_price as \"Цена(1 класс)\", t.second_class_price as \"Цена(1 класс)\" FROM train t "
+                    "t.first_class_price as \"Цена(1 класс)\", t.second_class_price as \"Цена(2 класс)\" FROM train t "
                     "INNER JOIN route r ON route_id = r.id ORDER BY t.id");
     return model;
 }
@@ -180,6 +180,33 @@ QSqlQueryModel* QueryModel::selectScheduleTicketsAmount(int percentage) {
                   "s_departure_date as \"Время Отправления\", s_arrival_date as \"Время Прибытия\", "
                   "tickets_amount as \"Продано билетов\" FROM get_sch_tickets_amount(:Percentage)");
     query.bindValue(":Percentage", percentage);
+    if (!query.exec()) {
+        qDebug() << query.lastError().text();
+    }
+    model->setQuery(query);
+    return model;
+}
+
+
+QSqlQueryModel* QueryModel::selectPassengerWithSeveralTickets() {
+    QSqlQueryModel *model = new QSqlQueryModel;
+    QSqlQuery query;
+    query.prepare("SELECT * "
+                  "FROM passenger WHERE id = ANY ("
+                  "SELECT passenger_id FROM ticket GROUP BY passenger_id HAVING COUNT(*) > 1)");
+    if (!query.exec()) {
+        qDebug() << query.lastError().text();
+    }
+    model->setQuery(query);
+    return model;
+}
+
+QSqlQueryModel* QueryModel::selectPassengersWithTicketsAmount() {
+    QSqlQueryModel *model = new QSqlQueryModel;
+    QSqlQuery query;
+    query.prepare("SELECT first_name as Имя, last_name as Фамилия, middle_name as Отчество,"
+                  "(SELECT COUNT(*) FROM ticket WHERE passenger_id = passenger.id) AS \"Количество билетов\" "
+                  "FROM passenger;");
     if (!query.exec()) {
         qDebug() << query.lastError().text();
     }

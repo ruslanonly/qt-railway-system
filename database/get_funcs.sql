@@ -1,3 +1,4 @@
+-- vector
 CREATE OR REPLACE FUNCTION get_available_seats(in_schedule_id INT, in_railcar_no INT)
 RETURNS TABLE (seat_no INT) AS $$
 BEGIN
@@ -15,6 +16,7 @@ END;
 $$ LANGUAGE plpgsql;
 
 
+-- vector
 
 CREATE OR REPLACE FUNCTION get_all_railcar_numbers(schedule_id INT)
 RETURNS TABLE(railcar_no INT) AS $$
@@ -25,7 +27,7 @@ END;
 $$ LANGUAGE plpgsql;
 
 
-
+--scalar
 
 CREATE OR REPLACE FUNCTION get_travel_time(schedule_id INTEGER) RETURNS INTERVAL AS $$
 DECLARE

@@ -60,7 +60,10 @@ void MainWindow::on_schedulePageButton_clicked()
     loadScheduleTable();
 }
 
-
+void MainWindow::on_miscPageButton_clicked()
+{
+    this->ui->pagesWidget->setCurrentIndex(7);
+}
 
 
 void MainWindow::on_backPassengerButton_clicked() {
@@ -84,6 +87,11 @@ void MainWindow::on_backTrainButton_clicked() {
 }
 
 void MainWindow::on_backScheduleButton_clicked() {
+    this->ui->pagesWidget->setCurrentIndex(0);
+}
+
+void MainWindow::on_backMiscPageButton_clicked()
+{
     this->ui->pagesWidget->setCurrentIndex(0);
 }
 
@@ -204,6 +212,24 @@ void MainWindow::on_bookTicketButton_clicked()
     this->bookTicketModal->show();
 }
 
+void MainWindow::on_getScheduleRevenueButton_clicked()
+{
+    this->getScheduleRevenueModal = new GetScheduleRevenueModal();
+    this->getScheduleRevenueModal->show();
+}
+
+void MainWindow::on_getScheduleTicketsAmount_clicked()
+{
+    this->getScheduleTicketsAmount = new GetScheduleTicketsAmount();
+    this->getScheduleTicketsAmount->show();
+}
+
+void MainWindow::on_passengerAdditionalButton_clicked()
+{
+    this->getPassengerAdditionalModal = new GetPassengerAdditionalModal();
+    this->getPassengerAdditionalModal->show();
+}
+
 
 void MainWindow::on_logoutButton_clicked()
 {
@@ -211,6 +237,12 @@ void MainWindow::on_logoutButton_clicked()
     this->close();
     emit logoutSignal();
 }
+
+
+
+
+
+
 
 void MainWindow::on_stationsTableView_customContextMenuRequested(const QPoint &pos)
 {
@@ -241,6 +273,11 @@ void MainWindow::on_scheduleTableView_customContextMenuRequested(const QPoint &p
 {
     showCustomContextMenu(pos, ui->scheduleTableView, TableViewVariant::schedule);
 }
+
+
+
+
+
 
 
 QString mapTableVariantToName(TableViewVariant tableVariant) {
@@ -363,18 +400,10 @@ void MainWindow::DeleteRequestedAction(int selectedID, TableViewVariant selected
         msg.exec();
         qDebug() << query.lastError().text();
     }
-
 }
 
-void MainWindow::on_getScheduleRevenueButton_clicked()
-{
-    this->getScheduleRevenueModal = new GetScheduleRevenueModal();
-    this->getScheduleRevenueModal->show();
-}
 
-void MainWindow::on_getScheduleTicketsAmount_clicked()
-{
-    this->getScheduleTicketsAmount = new GetScheduleTicketsAmount();
-    this->getScheduleTicketsAmount->show();
-}
+
+
+
 

@@ -36,6 +36,11 @@ public:
     QSqlQueryModel* selectScheduleTicketsAmount(int percentage);
     QSqlQueryModel* selectSchedulesRevenue();
 
+    // all any selects
+    QSqlQueryModel* selectPassengerWithSeveralTickets();
+    QSqlQueryModel* selectPassengersWithTicketsAmount();
+
+
 private:
     DatabaseManager* dbManager;
 };

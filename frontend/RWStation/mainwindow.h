@@ -32,6 +32,8 @@
 #include "modals/getschedulerevenuemodal.h"
 #include "modals/getscheduleticketsamount.h"
 
+#include "modals/getpassengeradditionalmodal.h"
+
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -116,6 +118,12 @@ private slots:
 
     void on_getScheduleTicketsAmount_clicked();
 
+    void on_miscPageButton_clicked();
+
+    void on_backMiscPageButton_clicked();
+
+    void on_passengerAdditionalButton_clicked();
+
 private:
     void showCustomContextMenu(const QPoint &pos, QTableView *tableView, TableViewVariant tableVariant);
 
@@ -137,6 +145,7 @@ private:
 
     GetScheduleRevenueModal* getScheduleRevenueModal;
     GetScheduleTicketsAmount* getScheduleTicketsAmount;
+    GetPassengerAdditionalModal* getPassengerAdditionalModal;
 
     DatabaseManager* dbManager;
     Ui::MainWindow *ui;

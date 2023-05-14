@@ -30,7 +30,7 @@ class Ui_MainWindow
 {
 public:
     QWidget *centralwidget;
-    QHBoxLayout *horizontalLayout_8;
+    QVBoxLayout *verticalLayout_2;
     QStackedWidget *pagesWidget;
     QWidget *HomePage;
     QGridLayout *gridLayout;
@@ -45,6 +45,7 @@ public:
     QSpacerItem *verticalSpacer;
     QSpacerItem *verticalSpacer_3;
     QHBoxLayout *horizontalLayout_2;
+    QPushButton *miscPageButton;
     QSpacerItem *horizontalSpacer_3;
     QPushButton *logoutButton;
     QWidget *TicketPage;
@@ -109,11 +110,22 @@ public:
     QPushButton *getScheduleRevenueButton;
     QPushButton *getScheduleTicketsAmount;
     QHBoxLayout *buttonsLayout_9;
-    QPushButton *backScheduleButton_2;
+    QPushButton *backScheduleButton;
     QSpacerItem *horizontalSpacer_10;
     QSpacerItem *horizontalSpacer_11;
-    QPushButton *refreshScheduleButton_2;
-    QPushButton *addScheduleButton_2;
+    QPushButton *refreshScheduleButton;
+    QPushButton *addScheduleButton;
+    QWidget *MiscPage;
+    QVBoxLayout *verticalLayout_3;
+    QLabel *homeHeading_2;
+    QSpacerItem *verticalSpacer_2;
+    QGridLayout *redirectButtons_2;
+    QPushButton *passengerAdditionalButton;
+    QPushButton *scheduleAnyAllButton;
+    QSpacerItem *verticalSpacer_4;
+    QHBoxLayout *horizontalLayout_9;
+    QSpacerItem *horizontalSpacer_8;
+    QPushButton *backMiscPageButton;
     QStatusBar *statusbar;
 
     void setupUi(QMainWindow *MainWindow)
@@ -123,8 +135,8 @@ public:
         MainWindow->resize(750, 600);
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName("centralwidget");
-        horizontalLayout_8 = new QHBoxLayout(centralwidget);
-        horizontalLayout_8->setObjectName("horizontalLayout_8");
+        verticalLayout_2 = new QVBoxLayout(centralwidget);
+        verticalLayout_2->setObjectName("verticalLayout_2");
         pagesWidget = new QStackedWidget(centralwidget);
         pagesWidget->setObjectName("pagesWidget");
         HomePage = new QWidget();
@@ -194,6 +206,12 @@ public:
 
         horizontalLayout_2 = new QHBoxLayout();
         horizontalLayout_2->setObjectName("horizontalLayout_2");
+        miscPageButton = new QPushButton(HomePage);
+        miscPageButton->setObjectName("miscPageButton");
+        miscPageButton->setCursor(QCursor(Qt::PointingHandCursor));
+
+        horizontalLayout_2->addWidget(miscPageButton);
+
         horizontalSpacer_3 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
         horizontalLayout_2->addItem(horizontalSpacer_3);
@@ -548,11 +566,11 @@ public:
         buttonsLayout_9 = new QHBoxLayout();
         buttonsLayout_9->setSpacing(7);
         buttonsLayout_9->setObjectName("buttonsLayout_9");
-        backScheduleButton_2 = new QPushButton(SchedulePage);
-        backScheduleButton_2->setObjectName("backScheduleButton_2");
-        backScheduleButton_2->setCursor(QCursor(Qt::PointingHandCursor));
+        backScheduleButton = new QPushButton(SchedulePage);
+        backScheduleButton->setObjectName("backScheduleButton");
+        backScheduleButton->setCursor(QCursor(Qt::PointingHandCursor));
 
-        buttonsLayout_9->addWidget(backScheduleButton_2);
+        buttonsLayout_9->addWidget(backScheduleButton);
 
         horizontalSpacer_10 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
@@ -562,17 +580,17 @@ public:
 
         buttonsLayout_9->addItem(horizontalSpacer_11);
 
-        refreshScheduleButton_2 = new QPushButton(SchedulePage);
-        refreshScheduleButton_2->setObjectName("refreshScheduleButton_2");
-        refreshScheduleButton_2->setCursor(QCursor(Qt::PointingHandCursor));
+        refreshScheduleButton = new QPushButton(SchedulePage);
+        refreshScheduleButton->setObjectName("refreshScheduleButton");
+        refreshScheduleButton->setCursor(QCursor(Qt::PointingHandCursor));
 
-        buttonsLayout_9->addWidget(refreshScheduleButton_2);
+        buttonsLayout_9->addWidget(refreshScheduleButton);
 
-        addScheduleButton_2 = new QPushButton(SchedulePage);
-        addScheduleButton_2->setObjectName("addScheduleButton_2");
-        addScheduleButton_2->setCursor(QCursor(Qt::PointingHandCursor));
+        addScheduleButton = new QPushButton(SchedulePage);
+        addScheduleButton->setObjectName("addScheduleButton");
+        addScheduleButton->setCursor(QCursor(Qt::PointingHandCursor));
 
-        buttonsLayout_9->addWidget(addScheduleButton_2);
+        buttonsLayout_9->addWidget(addScheduleButton);
 
 
         verticalLayout_9->addLayout(buttonsLayout_9);
@@ -581,8 +599,58 @@ public:
         horizontalLayout_4->addLayout(verticalLayout_9);
 
         pagesWidget->addWidget(SchedulePage);
+        MiscPage = new QWidget();
+        MiscPage->setObjectName("MiscPage");
+        verticalLayout_3 = new QVBoxLayout(MiscPage);
+        verticalLayout_3->setObjectName("verticalLayout_3");
+        homeHeading_2 = new QLabel(MiscPage);
+        homeHeading_2->setObjectName("homeHeading_2");
+        homeHeading_2->setStyleSheet(QString::fromUtf8("font-size: 12pt; font-weight: 700;"));
+        homeHeading_2->setAlignment(Qt::AlignCenter);
 
-        horizontalLayout_8->addWidget(pagesWidget);
+        verticalLayout_3->addWidget(homeHeading_2);
+
+        verticalSpacer_2 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        verticalLayout_3->addItem(verticalSpacer_2);
+
+        redirectButtons_2 = new QGridLayout();
+        redirectButtons_2->setObjectName("redirectButtons_2");
+        passengerAdditionalButton = new QPushButton(MiscPage);
+        passengerAdditionalButton->setObjectName("passengerAdditionalButton");
+        passengerAdditionalButton->setCursor(QCursor(Qt::PointingHandCursor));
+
+        redirectButtons_2->addWidget(passengerAdditionalButton, 0, 0, 1, 1);
+
+        scheduleAnyAllButton = new QPushButton(MiscPage);
+        scheduleAnyAllButton->setObjectName("scheduleAnyAllButton");
+
+        redirectButtons_2->addWidget(scheduleAnyAllButton, 1, 0, 1, 1);
+
+
+        verticalLayout_3->addLayout(redirectButtons_2);
+
+        verticalSpacer_4 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        verticalLayout_3->addItem(verticalSpacer_4);
+
+        horizontalLayout_9 = new QHBoxLayout();
+        horizontalLayout_9->setObjectName("horizontalLayout_9");
+        horizontalSpacer_8 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_9->addItem(horizontalSpacer_8);
+
+        backMiscPageButton = new QPushButton(MiscPage);
+        backMiscPageButton->setObjectName("backMiscPageButton");
+
+        horizontalLayout_9->addWidget(backMiscPageButton);
+
+
+        verticalLayout_3->addLayout(horizontalLayout_9);
+
+        pagesWidget->addWidget(MiscPage);
+
+        verticalLayout_2->addWidget(pagesWidget);
 
         MainWindow->setCentralWidget(centralwidget);
         statusbar = new QStatusBar(MainWindow);
@@ -591,7 +659,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        pagesWidget->setCurrentIndex(6);
+        pagesWidget->setCurrentIndex(7);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -607,6 +675,7 @@ public:
         ticketPageButton->setText(QCoreApplication::translate("MainWindow", "\320\221\320\270\320\273\320\265\321\202\321\213", nullptr));
         passengerPageButton->setText(QCoreApplication::translate("MainWindow", "\320\237\320\260\321\201\321\201\320\260\320\266\320\270\321\200\321\213", nullptr));
         schedulePageButton->setText(QCoreApplication::translate("MainWindow", "\320\240\320\260\321\201\320\277\320\270\321\201\320\260\320\275\320\270\320\265", nullptr));
+        miscPageButton->setText(QCoreApplication::translate("MainWindow", "\320\224\320\276\320\277\320\276\320\273\320\275\320\270\321\202\320\265\320\273\321\214\320\275\320\276", nullptr));
         logoutButton->setText(QCoreApplication::translate("MainWindow", "\320\241\320\274\320\265\320\275\320\270\321\202\321\214 \320\277\320\276\320\273\321\214\320\267\320\276\320\262\320\260\321\202\320\265\320\273\321\217", nullptr));
         heading->setText(QCoreApplication::translate("MainWindow", "\320\221\320\270\320\273\320\265\321\202\321\213", nullptr));
         backTicketButton->setText(QCoreApplication::translate("MainWindow", "\320\235\320\260\320\267\320\260\320\264", nullptr));
@@ -632,9 +701,13 @@ public:
         heading_8->setText(QCoreApplication::translate("MainWindow", "\320\240\320\260\321\201\320\277\320\270\321\201\320\260\320\275\320\270\320\265", nullptr));
         getScheduleRevenueButton->setText(QCoreApplication::translate("MainWindow", "\320\222\321\213\321\200\321\203\321\207\320\272\320\260 \321\201 \320\272\320\260\320\266\320\264\320\276\320\263\320\276 \321\200\320\265\320\271\321\201\320\260", nullptr));
         getScheduleTicketsAmount->setText(QCoreApplication::translate("MainWindow", "\320\232\320\276\320\273\320\270\321\207\320\265\321\201\321\202\320\262\320\276 \320\277\321\200\320\276\320\264\320\260\320\275\320\275\321\213\321\205 \320\261\320\270\320\273\320\265\321\202\320\276\320\262", nullptr));
-        backScheduleButton_2->setText(QCoreApplication::translate("MainWindow", "\320\235\320\260\320\267\320\260\320\264", nullptr));
-        refreshScheduleButton_2->setText(QCoreApplication::translate("MainWindow", "\320\236\320\261\320\275\320\276\320\262\320\270\321\202\321\214", nullptr));
-        addScheduleButton_2->setText(QCoreApplication::translate("MainWindow", "\320\224\320\276\320\261\320\260\320\262\320\270\321\202\321\214", nullptr));
+        backScheduleButton->setText(QCoreApplication::translate("MainWindow", "\320\235\320\260\320\267\320\260\320\264", nullptr));
+        refreshScheduleButton->setText(QCoreApplication::translate("MainWindow", "\320\236\320\261\320\275\320\276\320\262\320\270\321\202\321\214", nullptr));
+        addScheduleButton->setText(QCoreApplication::translate("MainWindow", "\320\224\320\276\320\261\320\260\320\262\320\270\321\202\321\214", nullptr));
+        homeHeading_2->setText(QCoreApplication::translate("MainWindow", "\320\224\320\276\320\277\320\276\320\273\320\275\320\270\321\202\320\265\320\273\321\214\320\275\321\213\320\265 \320\267\320\260\320\277\321\200\320\276\321\201\321\213", nullptr));
+        passengerAdditionalButton->setText(QCoreApplication::translate("MainWindow", "\320\237\320\260\321\201\321\201\320\260\320\266\320\270\321\200\321\213 (\320\264\320\276\320\277\320\276\320\273\320\275\320\270\321\202\320\265\320\273\321\214\320\275\320\276)", nullptr));
+        scheduleAnyAllButton->setText(QCoreApplication::translate("MainWindow", "\320\240\320\265\320\271\321\201\321\213 (any/all)", nullptr));
+        backMiscPageButton->setText(QCoreApplication::translate("MainWindow", "\320\235\320\260\320\267\320\260\320\264", nullptr));
     } // retranslateUi
 
 };
