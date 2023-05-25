@@ -57,3 +57,26 @@ BEGIN
   HAVING COUNT(*) >= ROUND(t.railcar_capacity * t.railcars_amount * percentage / 100);
 END;
 $$ LANGUAGE plpgsql;
+
+
+DROP FUNCTION get_routes_that_starts_in_city;
+CREATE OR REPLACE FUNCTION get_routes_that_starts_in_city(in_city VARCHAR) 
+RETURNS TABLE (
+  route_name VARCHAR,
+  departure_city VARCHAR,
+  arrival_city VARCHAR
+) AS $$
+BEGIN
+  RETURN QUERY 
+  SELECT sel_route.name as route_name, deps.city as departure_city, arrs.city as arrival_city
+  FROM (SELECT name, departure_station_id, arrival_station_id
+      FROM route
+      WHERE departure_station_id = (
+          SELECT id
+          FROM station
+          WHERE city = in_city
+      )) AS sel_route
+  JOIN station AS deps ON deps.id = sel_route.departure_station_id
+  JOIN station AS arrs ON arrs.id = sel_route.arrival_station_id;
+END;
+$$ LANGUAGE plpgsql;

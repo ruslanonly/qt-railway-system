@@ -18,6 +18,7 @@ SOURCES += \
     modals/addpassengermodal.cpp \
     modals/addroutemodal.cpp \
     modals/addschedulemodal.cpp \
+    modals/addscheduleviewmodal.cpp \
     modals/addstationmodal.cpp \
     modals/addticketmodal.cpp \
     modals/addtrainmodal.cpp \
@@ -25,9 +26,11 @@ SOURCES += \
     modals/getpassengeradditionalmodal.cpp \
     modals/getschedulerevenuemodal.cpp \
     modals/getscheduleticketsamount.cpp \
+    modals/scheduleviewmodal.cpp \
     modals/updatepassengermodal.cpp \
     modals/updateroutemodal.cpp \
     modals/updateschedulemodal.cpp \
+    modals/updatescheduleviewmodal.cpp \
     modals/updatestationmodal.cpp \
     modals/updateticketmodal.cpp \
     modals/updatetrainmodal.cpp \
@@ -42,6 +45,7 @@ HEADERS += \
     modals/addpassengermodal.h \
     modals/addroutemodal.h \
     modals/addschedulemodal.h \
+    modals/addscheduleviewmodal.h \
     modals/addstationmodal.h \
     modals/addticketmodal.h \
     modals/addtrainmodal.h \
@@ -49,9 +53,11 @@ HEADERS += \
     modals/getpassengeradditionalmodal.h \
     modals/getschedulerevenuemodal.h \
     modals/getscheduleticketsamount.h \
+    modals/scheduleviewmodal.h \
     modals/updatepassengermodal.h \
     modals/updateroutemodal.h \
     modals/updateschedulemodal.h \
+    modals/updatescheduleviewmodal.h \
     modals/updatestationmodal.h \
     modals/updateticketmodal.h \
     modals/updatetrainmodal.h \
@@ -63,6 +69,7 @@ FORMS += \
     modals/addpassengermodal.ui \
     modals/addroutemodal.ui \
     modals/addschedulemodal.ui \
+    modals/addscheduleviewmodal.ui \
     modals/addstationmodal.ui \
     modals/addticketmodal.ui \
     modals/addtrainmodal.ui \
@@ -70,9 +77,11 @@ FORMS += \
     modals/getpassengeradditionalmodal.ui \
     modals/getschedulerevenuemodal.ui \
     modals/getscheduleticketsamount.ui \
+    modals/scheduleviewmodal.ui \
     modals/updatepassengermodal.ui \
     modals/updateroutemodal.ui \
     modals/updateschedulemodal.ui \
+    modals/updatescheduleviewmodal.ui \
     modals/updatestationmodal.ui \
     modals/updateticketmodal.ui \
     modals/updatetrainmodal.ui

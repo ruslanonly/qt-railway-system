@@ -7,6 +7,7 @@ release/mainwindow.o
 release/addpassengermodal.o
 release/addroutemodal.o
 release/addschedulemodal.o
+release/addscheduleviewmodal.o
 release/addstationmodal.o
 release/addticketmodal.o
 release/addtrainmodal.o
@@ -14,9 +15,11 @@ release/bookticketmodal.o
 release/getpassengeradditionalmodal.o
 release/getschedulerevenuemodal.o
 release/getscheduleticketsamount.o
+release/scheduleviewmodal.o
 release/updatepassengermodal.o
 release/updateroutemodal.o
 release/updateschedulemodal.o
+release/updatescheduleviewmodal.o
 release/updatestationmodal.o
 release/updateticketmodal.o
 release/updatetrainmodal.o
@@ -26,6 +29,7 @@ release/moc_mainwindow.o
 release/moc_addpassengermodal.o
 release/moc_addroutemodal.o
 release/moc_addschedulemodal.o
+release/moc_addscheduleviewmodal.o
 release/moc_addstationmodal.o
 release/moc_addticketmodal.o
 release/moc_addtrainmodal.o
@@ -33,9 +37,11 @@ release/moc_bookticketmodal.o
 release/moc_getpassengeradditionalmodal.o
 release/moc_getschedulerevenuemodal.o
 release/moc_getscheduleticketsamount.o
+release/moc_scheduleviewmodal.o
 release/moc_updatepassengermodal.o
 release/moc_updateroutemodal.o
 release/moc_updateschedulemodal.o
+release/moc_updatescheduleviewmodal.o
 release/moc_updatestationmodal.o
 release/moc_updateticketmodal.o
 release/moc_updatetrainmodal.o

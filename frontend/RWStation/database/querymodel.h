@@ -30,6 +30,7 @@ public:
     QSqlQueryModel* passengerSelectAllList();
 
     QSqlQueryModel* trainSelectAllForRoute(int routeID);
+    QSqlQueryModel* trainSelectAllForRouteName(QString routeName);
     QSqlQueryModel* seatsSelectAllForScheduleAndRailcar(int scheduleID, int railcarNo);
     QSqlQueryModel* railcarsSelectAllNumbersForSchedule(int scheduleID);
 
@@ -39,6 +40,8 @@ public:
     // all any selects
     QSqlQueryModel* selectPassengerWithSeveralTickets();
     QSqlQueryModel* selectPassengersWithTicketsAmount();
+
+    QSqlQueryModel* selectScheduleView();
 
 
 private:

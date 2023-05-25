@@ -7,6 +7,7 @@ debug/mainwindow.o
 debug/addpassengermodal.o
 debug/addroutemodal.o
 debug/addschedulemodal.o
+debug/addscheduleviewmodal.o
 debug/addstationmodal.o
 debug/addticketmodal.o
 debug/addtrainmodal.o
@@ -14,9 +15,11 @@ debug/bookticketmodal.o
 debug/getpassengeradditionalmodal.o
 debug/getschedulerevenuemodal.o
 debug/getscheduleticketsamount.o
+debug/scheduleviewmodal.o
 debug/updatepassengermodal.o
 debug/updateroutemodal.o
 debug/updateschedulemodal.o
+debug/updatescheduleviewmodal.o
 debug/updatestationmodal.o
 debug/updateticketmodal.o
 debug/updatetrainmodal.o
@@ -26,6 +29,7 @@ debug/moc_mainwindow.o
 debug/moc_addpassengermodal.o
 debug/moc_addroutemodal.o
 debug/moc_addschedulemodal.o
+debug/moc_addscheduleviewmodal.o
 debug/moc_addstationmodal.o
 debug/moc_addticketmodal.o
 debug/moc_addtrainmodal.o
@@ -33,9 +37,11 @@ debug/moc_bookticketmodal.o
 debug/moc_getpassengeradditionalmodal.o
 debug/moc_getschedulerevenuemodal.o
 debug/moc_getscheduleticketsamount.o
+debug/moc_scheduleviewmodal.o
 debug/moc_updatepassengermodal.o
 debug/moc_updateroutemodal.o
 debug/moc_updateschedulemodal.o
+debug/moc_updatescheduleviewmodal.o
 debug/moc_updatestationmodal.o
 debug/moc_updateticketmodal.o
 debug/moc_updatetrainmodal.o

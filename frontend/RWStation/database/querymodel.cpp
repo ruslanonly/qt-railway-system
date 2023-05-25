@@ -136,6 +136,20 @@ QSqlQueryModel* QueryModel::trainSelectAllForRoute(int routeID) {
     return model;
 }
 
+QSqlQueryModel* QueryModel::trainSelectAllForRouteName(QString routeName) {
+    QSqlQueryModel *model = new QSqlQueryModel;
+    QSqlQuery query;
+    query.prepare("SELECT tr.id, tr.route_id, tr.name, tr.type, tr.railcar_capacity, tr.railcars_amount, "
+                  "tr.first_class_price, tr.second_class_price FROM train tr INNER JOIN route r ON r.id = tr.route_id "
+                  "WHERE r.name = :RouteName");
+    query.bindValue(":RouteName", routeName);
+    if (!query.exec()) {
+        qDebug() << query.lastError().text();
+    }
+    model->setQuery(query);
+    return model;
+}
+
 QSqlQueryModel* QueryModel::railcarsSelectAllNumbersForSchedule(int scheduleID) {
     QSqlQueryModel *model = new QSqlQueryModel;
     QSqlQuery query;
@@ -213,4 +227,16 @@ QSqlQueryModel* QueryModel::selectPassengersWithTicketsAmount() {
     model->setQuery(query);
     return model;
 }
+
+QSqlQueryModel* QueryModel::selectScheduleView() {
+    QSqlQueryModel *model = new QSqlQueryModel;
+    QSqlQuery query;
+    query.prepare("SELECT * FROM schedule_view");
+    if (!query.exec()) {
+        qDebug() << query.lastError().text();
+    }
+    model->setQuery(query);
+    return model;
+}
+
 

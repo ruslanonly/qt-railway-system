@@ -230,6 +230,12 @@ void MainWindow::on_passengerAdditionalButton_clicked()
     this->getPassengerAdditionalModal->show();
 }
 
+void MainWindow::on_scheduleViewButton_clicked()
+{
+    this->scheduleViewModal = new ScheduleViewModal();
+    this->scheduleViewModal->show();
+}
+
 
 void MainWindow::on_logoutButton_clicked()
 {
@@ -401,6 +407,9 @@ void MainWindow::DeleteRequestedAction(int selectedID, TableViewVariant selected
         qDebug() << query.lastError().text();
     }
 }
+
+
+
 
 
 
