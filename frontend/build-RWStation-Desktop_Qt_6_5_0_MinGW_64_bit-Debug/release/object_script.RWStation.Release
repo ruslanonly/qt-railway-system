@@ -12,7 +12,10 @@ release/addstationmodal.o
 release/addticketmodal.o
 release/addtrainmodal.o
 release/bookticketmodal.o
+release/getcorrelatedqueriesmodal.o
 release/getpassengeradditionalmodal.o
+release/getrouteallquerymodal.o
+release/getroutestartsincitymodal.o
 release/getschedulerevenuemodal.o
 release/getscheduleticketsamount.o
 release/scheduleviewmodal.o
@@ -34,7 +37,10 @@ release/moc_addstationmodal.o
 release/moc_addticketmodal.o
 release/moc_addtrainmodal.o
 release/moc_bookticketmodal.o
+release/moc_getcorrelatedqueriesmodal.o
 release/moc_getpassengeradditionalmodal.o
+release/moc_getrouteallquerymodal.o
+release/moc_getroutestartsincitymodal.o
 release/moc_getschedulerevenuemodal.o
 release/moc_getscheduleticketsamount.o
 release/moc_scheduleviewmodal.o

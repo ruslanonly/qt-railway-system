@@ -3,14 +3,30 @@ DECLARE
   total_seats INTEGER;
   booked_seats INTEGER;
   available_seats INTEGER;
+  train_railcar_capacity INTEGER;
+  train_railcars_amount INTEGER;
 BEGIN
-  SELECT t.railcar_capacity * t.railcars_amount INTO total_seats FROM train t
+
+ 
+
+  SELECT 
+  t.railcar_capacity * t.railcars_amount, 
+  t.railcar_capacity,
+  t.railcars_amount INTO total_seats, train_railcar_capacity, train_railcars_amount
+  FROM train t
   WHERE t.id = (SELECT s.train_id FROM schedule s
                 JOIN ticket ti ON ti.schedule_id = s.id
                 WHERE ti.id = NEW.id);
 
   SELECT COUNT(*) INTO booked_seats FROM ticket ti
   WHERE ti.schedule_id = NEW.schedule_id;
+
+  IF (NEW.seat_no > train_railcar_capacity) 
+    THEN RAISE EXCEPTION 'Номер места больше вместимости вагона';
+  END IF;
+  IF (NEW.railcar_no > train_railcars_amount) 
+    THEN RAISE EXCEPTION 'Номер вагона больше чем количество вагонов в поезде';
+  END IF;
 
   available_seats := total_seats - booked_seats;
 

@@ -23,7 +23,10 @@ SOURCES += \
     modals/addticketmodal.cpp \
     modals/addtrainmodal.cpp \
     modals/bookticketmodal.cpp \
+    modals/getcorrelatedqueriesmodal.cpp \
     modals/getpassengeradditionalmodal.cpp \
+    modals/getrouteallquerymodal.cpp \
+    modals/getroutestartsincitymodal.cpp \
     modals/getschedulerevenuemodal.cpp \
     modals/getscheduleticketsamount.cpp \
     modals/scheduleviewmodal.cpp \
@@ -50,7 +53,10 @@ HEADERS += \
     modals/addticketmodal.h \
     modals/addtrainmodal.h \
     modals/bookticketmodal.h \
+    modals/getcorrelatedqueriesmodal.h \
     modals/getpassengeradditionalmodal.h \
+    modals/getrouteallquerymodal.h \
+    modals/getroutestartsincitymodal.h \
     modals/getschedulerevenuemodal.h \
     modals/getscheduleticketsamount.h \
     modals/scheduleviewmodal.h \
@@ -74,7 +80,10 @@ FORMS += \
     modals/addticketmodal.ui \
     modals/addtrainmodal.ui \
     modals/bookticketmodal.ui \
+    modals/getcorrelatedqueriesmodal.ui \
     modals/getpassengeradditionalmodal.ui \
+    modals/getrouteallquerymodal.ui \
+    modals/getroutestartsincitymodal.ui \
     modals/getschedulerevenuemodal.ui \
     modals/getscheduleticketsamount.ui \
     modals/scheduleviewmodal.ui \

@@ -83,6 +83,13 @@ Makefile: ../RWStation/RWStation.pro ../../../../Qt/6.5.0/mingw_64/mkspecs/win32
 		../../../../Qt/6.5.0/mingw_64/mkspecs/modules/qt_ext_freetype.pri \
 		../../../../Qt/6.5.0/mingw_64/mkspecs/modules/qt_ext_libjpeg.pri \
 		../../../../Qt/6.5.0/mingw_64/mkspecs/modules/qt_ext_libpng.pri \
+		../../../../Qt/6.5.0/mingw_64/mkspecs/modules/qt_lib_activeqt.pri \
+		../../../../Qt/6.5.0/mingw_64/mkspecs/modules/qt_lib_activeqt_private.pri \
+		../../../../Qt/6.5.0/mingw_64/mkspecs/modules/qt_lib_axbase_private.pri \
+		../../../../Qt/6.5.0/mingw_64/mkspecs/modules/qt_lib_axcontainer.pri \
+		../../../../Qt/6.5.0/mingw_64/mkspecs/modules/qt_lib_axcontainer_private.pri \
+		../../../../Qt/6.5.0/mingw_64/mkspecs/modules/qt_lib_axserver.pri \
+		../../../../Qt/6.5.0/mingw_64/mkspecs/modules/qt_lib_axserver_private.pri \
 		../../../../Qt/6.5.0/mingw_64/mkspecs/modules/qt_lib_concurrent.pri \
 		../../../../Qt/6.5.0/mingw_64/mkspecs/modules/qt_lib_concurrent_private.pri \
 		../../../../Qt/6.5.0/mingw_64/mkspecs/modules/qt_lib_core.pri \
@@ -236,6 +243,13 @@ Makefile: ../RWStation/RWStation.pro ../../../../Qt/6.5.0/mingw_64/mkspecs/win32
 ../../../../Qt/6.5.0/mingw_64/mkspecs/modules/qt_ext_freetype.pri:
 ../../../../Qt/6.5.0/mingw_64/mkspecs/modules/qt_ext_libjpeg.pri:
 ../../../../Qt/6.5.0/mingw_64/mkspecs/modules/qt_ext_libpng.pri:
+../../../../Qt/6.5.0/mingw_64/mkspecs/modules/qt_lib_activeqt.pri:
+../../../../Qt/6.5.0/mingw_64/mkspecs/modules/qt_lib_activeqt_private.pri:
+../../../../Qt/6.5.0/mingw_64/mkspecs/modules/qt_lib_axbase_private.pri:
+../../../../Qt/6.5.0/mingw_64/mkspecs/modules/qt_lib_axcontainer.pri:
+../../../../Qt/6.5.0/mingw_64/mkspecs/modules/qt_lib_axcontainer_private.pri:
+../../../../Qt/6.5.0/mingw_64/mkspecs/modules/qt_lib_axserver.pri:
+../../../../Qt/6.5.0/mingw_64/mkspecs/modules/qt_lib_axserver_private.pri:
 ../../../../Qt/6.5.0/mingw_64/mkspecs/modules/qt_lib_concurrent.pri:
 ../../../../Qt/6.5.0/mingw_64/mkspecs/modules/qt_lib_concurrent_private.pri:
 ../../../../Qt/6.5.0/mingw_64/mkspecs/modules/qt_lib_core.pri:

@@ -236,6 +236,24 @@ void MainWindow::on_scheduleViewButton_clicked()
     this->scheduleViewModal->show();
 }
 
+void MainWindow::on_routeGetThatStartsInTownButton_clicked()
+{
+    this->getRouteStartsInCityModal = new GetRouteStartsInCityModal();
+    this->getRouteStartsInCityModal->show();
+}
+
+void MainWindow::on_correlatedQueriesButton_clicked()
+{
+    this->getCorrelatedQueriesModal = new GetCorrelatedQueriesModal();
+    this->getCorrelatedQueriesModal->show();
+}
+
+void MainWindow::on_routeScheduleStatusButton_clicked()
+{
+    this->getRouteAllQueryModal = new GetRouteAllQueryModal();
+    this->getRouteAllQueryModal->show();
+}
+
 
 void MainWindow::on_logoutButton_clicked()
 {
@@ -407,12 +425,5 @@ void MainWindow::DeleteRequestedAction(int selectedID, TableViewVariant selected
         qDebug() << query.lastError().text();
     }
 }
-
-
-
-
-
-
-
 
 

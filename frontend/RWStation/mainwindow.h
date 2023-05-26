@@ -36,6 +36,11 @@
 
 #include "modals/scheduleviewmodal.h"
 
+#include "modals/getroutestartsincitymodal.h"
+
+#include "modals/getcorrelatedqueriesmodal.h"
+#include "modals/getrouteallquerymodal.h"
+
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -128,6 +133,12 @@ private slots:
 
     void on_scheduleViewButton_clicked();
 
+    void on_routeGetThatStartsInTownButton_clicked();
+
+    void on_correlatedQueriesButton_clicked();
+
+    void on_routeScheduleStatusButton_clicked();
+
 private:
     void showCustomContextMenu(const QPoint &pos, QTableView *tableView, TableViewVariant tableVariant);
 
@@ -150,6 +161,11 @@ private:
     GetScheduleRevenueModal* getScheduleRevenueModal;
     GetScheduleTicketsAmount* getScheduleTicketsAmount;
     GetPassengerAdditionalModal* getPassengerAdditionalModal;
+    GetRouteStartsInCityModal* getRouteStartsInCityModal;
+
+    GetRouteAllQueryModal* getRouteAllQueryModal;
+
+    GetCorrelatedQueriesModal* getCorrelatedQueriesModal;
 
     ScheduleViewModal* scheduleViewModal;
 

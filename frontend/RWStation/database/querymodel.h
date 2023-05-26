@@ -33,12 +33,18 @@ public:
     QSqlQueryModel* trainSelectAllForRouteName(QString routeName);
     QSqlQueryModel* seatsSelectAllForScheduleAndRailcar(int scheduleID, int railcarNo);
     QSqlQueryModel* railcarsSelectAllNumbersForSchedule(int scheduleID);
+    QSqlQueryModel* getRoutesThatStartsInCity(QString departureCity);
+
+    QSqlQueryModel* getCorrelatedMaxRouteFirstClassPrice();
+    QSqlQueryModel* getCorrelatedTicketForPassengerName(QString passengerName);
+    QSqlQueryModel* getCorrelatedPassengersWaitingForSchedule();
 
     QSqlQueryModel* selectScheduleTicketsAmount(int percentage);
     QSqlQueryModel* selectSchedulesRevenue();
 
     // all any selects
     QSqlQueryModel* selectPassengerWithSeveralTickets();
+    QSqlQueryModel* selectAllRoutesWhereAllSchedulesWithStatus(QString status);
     QSqlQueryModel* selectPassengersWithTicketsAmount();
 
     QSqlQueryModel* selectScheduleView();

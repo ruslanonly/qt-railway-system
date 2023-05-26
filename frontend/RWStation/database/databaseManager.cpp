@@ -13,6 +13,7 @@ DatabaseManager::~DatabaseManager() {
 
 bool DatabaseManager::openConnection(QString username, QString password) {
     db = QSqlDatabase::addDatabase("QPSQL");
+
     db.setHostName("localhost");
     db.setPort(5436);
     db.setDatabaseName("railway");

@@ -1,72 +1,29 @@
--- INSERT INTO station (name, city, country) VALUES
---   ('Moscow', 'Moscow', 'Russia'),
---   ('St. Petersburg', 'St. Petersburg', 'Russia'),
---   ('Kazan', 'Kazan', 'Russia'),
---   ('Novosibirsk', 'Novosibirsk', 'Russia'),
---   ('Yekaterinburg', 'Yekaterinburg', 'Russia');
-
--- INSERT INTO route (name, departure_station_id, arrival_station_id) VALUES
---   ('Moscow - St. Petersburg', 1, 2),
---   ('Moscow - Kazan', 1, 3),
---   ('Moscow - Novosibirsk', 1, 4),
---   ('St. Petersburg - Kazan', 2, 3),
---   ('St. Petersburg - Novosibirsk', 2, 4);
-  
--- INSERT INTO route (name, departure_station_id, arrival_station_id) VALUES
---   ('Moscow | St. Petersburg', 1, 2),
---   ('Moscow | Kazan', 1, 3),
---   ('Moscow | Novosibirsk', 1, 4),
---   ('St. Petersburg | Kazan', 2, 3),
---   ('St. Petersburg | Novosibirsk', 2, 4);
-
--- -- -- Insert data into the train table
--- INSERT INTO train (route_id, name, type, railcar_capacity, railcars_amount, first_class_price, second_class_price) VALUES
---   (1, 'Sapsan', 'скоростной-пассажирский', 64, 10, 5000, 2500),
---   (2, 'Strizh', 'скорый-пассажирский', 56, 15, 4000, 2000),
---   (3, 'Rossiya', 'пассажирский', 72, 12, 3000, 1500),
---   (4, 'Red Arrow', 'скорый-пассажирский', 48, 20, 3500, 1750),
---   (5, 'Baikal', 'пассажирский', 64, 8, 3500, 1750);
-
--- -- -- Insert data into the schedule table
--- INSERT INTO schedule (route_id, train_id, departure_date, arrival_date) VALUES
---   (1, 1, '2023-05-10 08:00:00', '2023-05-10 13:00:00'),
---   (2, 2, '2023-05-12 09:30:00', '2023-05-12 16:00:00'),
---   (3, 3, '2023-05-14 12:00:00', '2023-05-16 16:30:00'),
---   (4, 4, '2023-05-16 10:00:00', '2023-05-17 14:30:00'),
---   (5, 5, '2023-05-18 15:00:00', '2023-05-20 19:30:00');
-
--- INSERT INTO passenger (first_name, middle_name, last_name, passport_serial_no, passport_code)
--- VALUES
---   ('Иван', 'Петрович', 'Сидоров', 1234, 567890),
---   ('Мария', 'Ивановна', 'Кузнецова', 5678, 123456),
---   ('Петр', 'Сергеевич', 'Иванов', 4321, 987654),
---   ('Елена', 'Дмитриевна', 'Козлова', 8765, 456789),
---   ('Дмитрий', 'Александрович', 'Соколов', 2468, 135790);
--- INSERT INTO passenger (first_name, middle_name, last_name, passport_serial_no, passport_code)
--- VALUES
---   ('TestИван', 'Петрович', 'Сидоров', 1234, 567890),
---   ('TestМария', 'Ивановна', 'Кузнецова', 5678, 123456),
---   ('TestПетр', 'Сергеевич', 'Иванов', 4321, 987654),
---   ('TestЕлена', 'Дмитриевна', 'Козлова', 8765, 456789),
---   ('TestДмитрий', 'Александрович', 'Соколов', 2468, 135790);
-
--- INSERT INTO ticket (schedule_id, passenger_id, seat_no, railcar_no, railcar_class)
--- VALUES
---   (1, 1, 12, 1, 1),
---   (2, 2, 7, 2, 2),
---   (3, 3, 23, 1, 2),
---   (4, 4, 16, 3, 1),
---   (5, 5, 3, 4, 2);
--- INSERT INTO ticket (schedule_id, passenger_id, seat_no, railcar_no, railcar_class)
--- VALUES
---   (1, 2, 12, 1, 1);
-
 INSERT INTO station (name, city, country) VALUES
   ('Moscow', 'Moscow', 'Russia'),
   ('St. Petersburg', 'St. Petersburg', 'Russia'),
   ('Kazan', 'Kazan', 'Russia'),
   ('Novosibirsk', 'Novosibirsk', 'Russia'),
   ('Yekaterinburg', 'Yekaterinburg', 'Russia'),
+  ('Samara', 'Samara', 'Russia'),
+  ('Nizhny Novgorod', 'Nizhny Novgorod', 'Russia'),
+  ('Krasnodar', 'Krasnodar', 'Russia'),
+  ('Rostov-on-Don', 'Rostov-on-Don', 'Russia'),
+  ('Krasnoyarsk', 'Krasnoyarsk', 'Russia'),
+  ('Ufa', 'Ufa', 'Russia'),
+  ('Perm', 'Perm', 'Russia'),
+  ('Volgograd', 'Volgograd', 'Russia'),
+  ('Omsk', 'Omsk', 'Russia'),
+  ('Vladivostok', 'Vladivostok', 'Russia'),
+  ('Irkutsk', 'Irkutsk', 'Russia'),
+  ('Tyumen', 'Tyumen', 'Russia'),
+  ('Khabarovsk', 'Khabarovsk', 'Russia'),
+  ('Barnaul', 'Barnaul', 'Russia'),
+  ('Voronezh', 'Voronezh', 'Russia'),
+  ('Kursk', 'Kursk', 'Russia'),
+  ('Kemerovo', 'Kemerovo', 'Russia'),
+  ('Novokuznetsk', 'Novokuznetsk', 'Russia'),
+  ('Belgorod', 'Belgorod', 'Russia'),
+  ('Kaliningrad', 'Kaliningrad', 'Russia'),
   ('Воронеж', 'Воронеж', 'Russia');
 
 INSERT INTO route (name, departure_station_id, arrival_station_id) VALUES
@@ -75,7 +32,15 @@ INSERT INTO route (name, departure_station_id, arrival_station_id) VALUES
   ('Moscow - Novosibirsk', 1, 4),
   ('St. Petersburg - Kazan', 2, 3),
   ('St. Petersburg - Novosibirsk', 2, 4),
-  ('Воронеж - Novosibirsk', 2, 6);
+  ('Воронеж - Novosibirsk', 2, 6),
+  ('Kazan - Yekaterinburg', 3, 5),
+  ('Samara - Nizhny Novgorod', 6, 7),
+  ('Krasnodar - Rostov-on-Don', 8, 9),
+  ('Krasnoyarsk - Ufa', 10, 11),
+  ('Perm - Volgograd', 12, 13),
+  ('Omsk - Vladivostok', 14, 15),
+  ('Irkutsk - Tyumen', 16, 17),
+  ('Khabarovsk - Barnaul', 18, 19);
 
 -- -- Insert data into the train table
 INSERT INTO train (route_id, name, type, railcar_capacity, railcars_amount, first_class_price, second_class_price) VALUES
@@ -83,7 +48,20 @@ INSERT INTO train (route_id, name, type, railcar_capacity, railcars_amount, firs
   (2, 'Strizh', 'скорый-пассажирский', 56, 15, 4000, 2000),
   (3, 'Rossiya', 'пассажирский', 72, 12, 3000, 1500),
   (4, 'Red Arrow', 'скорый-пассажирский', 7, 1, 3500, 1750),
-  (6, 'Ворон', 'пассажирский', 5, 1, 3500, 1750);
+  (6, 'Ворон-1', 'пассажирский', 5, 1, 3500, 1750),
+  (6, 'Ворон-2', 'пассажирский', 5, 1, 3500, 1750),
+  (6, 'Ворон-3', 'пассажирский', 5, 1, 3500, 1750),
+  (5, 'Express', 'пассажирский', 60, 8, 3200, 1600),
+  (7, 'Aurora', 'скоростной-пассажирский', 68, 9, 4200, 2100),
+  (8, 'Volga', 'пассажирский', 64, 7, 3000, 1500),
+  (9, 'Ural-1', 'пассажирский', 54, 6, 2800, 1400),
+  (9, 'Ural-2', 'пассажирский', 54, 6, 2800, 1400),
+  (10, 'Siberian', 'скорый-пассажирский', 58, 8, 3800, 1900),
+  (11, 'Bashkiria', 'пассажирский', 66, 10, 3400, 1700),
+  (12, 'Vega', 'пассажирский', 62, 7, 3100, 1550),
+  (13, 'Don', 'скоростной-пассажирский', 70, 9, 4000, 2000),
+  (14, 'Baikal', 'пассажирский', 52, 6, 2700, 1350),
+  (14, 'Amur', 'пассажирский', 56, 7, 2900, 1450);
 
 -- -- Insert data into the schedule table
 INSERT INTO schedule (route_id, train_id, departure_date, arrival_date) VALUES
@@ -91,8 +69,23 @@ INSERT INTO schedule (route_id, train_id, departure_date, arrival_date) VALUES
   (2, 2, '2023-05-12 09:30:00', '2023-05-12 16:00:00'),
   (3, 3, '2023-05-14 12:00:00', '2023-05-16 16:30:00'),
   (4, 4, '2023-05-16 10:00:00', '2023-05-17 14:30:00'),
+  (6, 5, '2023-05-18 15:00:00', '2023-05-20 19:30:00'),
+  (6, 6, '2023-05-18 15:00:00', '2023-05-20 19:30:00'),
+  (6, 7, '2023-05-22 14:30:00', '2023-05-22 19:00:00'),
+  (8, 8, '2023-05-24 08:45:00', '2023-05-24 15:30:00'),
+  (9, 9, '2023-05-26 11:20:00', '2023-05-27 15:45:00'),
+  (10, 10, '2023-05-28 09:10:00', '2023-05-29 14:00:00'),
+  (11, 11, '2023-05-30 13:15:00', '2023-05-31 17:30:00'),
+  (12, 12, '2023-06-01 16:40:00', '2023-06-02 21:10:00'),
+  (13, 13, '2023-06-03 10:25:00', '2023-06-04 13:30:00'),
+  (14, 14, '2023-06-05 12:50:00', '2023-06-06 17:20:00'),
+  (9, 9, '2023-06-11 14:55:00', '2023-06-12 19:30:00'),
+  (9, 9, '2023-06-13 08:20:00', '2023-06-13 14:10:00'),
+  (9, 9, '2023-06-15 10:45:00', '2023-06-16 14:55:00'),
+  (9, 5, '2023-06-17 13:10:00', '2023-06-18 17:40:00'),
+  (9, 5, '2023-06-19 15:35:00', '2023-06-20 20:10:00'),
   (5, 5, '2023-05-18 15:00:00', '2023-05-20 19:30:00'),
-  (6, 5, '2023-05-18 15:00:00', '2023-05-20 19:30:00');
+  (7, 5, '2023-05-18 15:00:00', '2023-05-20 19:30:00');
 
 
 INSERT INTO passenger (first_name, middle_name, last_name, passport_serial_no, passport_code)
@@ -101,12 +94,50 @@ VALUES
   ('Мария', 'Ивановна', 'Кузнецова', 5678, 123456),
   ('Петр', 'Сергеевич', 'Иванов', 4321, 987654),
   ('Елена', 'Дмитриевна', 'Козлова', 8765, 456789),
-  ('Дмитрий', 'Александрович', 'Соколов', 2468, 135790);
+  ('Дмитрий', 'Александрович', 'Соколов', 2468, 135790),
+  ('Анна', 'Алексеевна', 'Петрова', 9876, 543210),
+  ('Алексей', 'Владимирович', 'Смирнов', 7890, 321456),
+  ('Екатерина', 'Ивановна', 'Волкова', 6543, 908172),
+  ('Сергей', 'Александрович', 'Михайлов', 5678, 456123),
+  ('Ольга', 'Петровна', 'Федорова', 8765, 135792),
+  ('Михаил', 'Игоревич', 'Ковалев', 4321, 987655),
+  ('Анастасия', 'Сергеевна', 'Соловьева', 1234, 654321),
+  ('Александр', 'Николаевич', 'Богданов', 1357, 246813),
+  ('Наталья', 'Андреевна', 'Тимофеева', 2468, 975310),
+  ('Владимир', 'Алексеевич', 'Кузьмин', 7890, 654789);
 
 INSERT INTO ticket (schedule_id, passenger_id, seat_no, railcar_no, railcar_class)
 VALUES
-  (1, 1, 12, 1, 1),
+  (1, 1, 5, 1, 1),
   (2, 2, 7, 2, 2),
-  (3, 3, 23, 1, 2),
-  (4, 4, 16, 3, 1),
-  (5, 5, 3, 4, 2);
+  (3, 3, 5, 1, 2),
+  (4, 4, 5, 1, 1),
+  (5, 5, 1, 1, 2),
+  (5, 5, 2, 1, 2),
+  (5, 5, 3, 1, 2),
+  (5, 5, 4, 1, 2),
+  (5, 5, 5, 1, 2),
+  (6, 6, 1, 1, 1),
+  (6, 6, 2, 1, 1),
+  (6, 6, 3, 1, 1),
+  (6, 7, 4, 1, 1),
+  (6, 9, 5, 1, 1),
+  (7, 7, 1, 1, 2),
+  (7, 7, 2, 1, 2),
+  (7, 7, 3, 1, 2),
+  (7, 7, 4, 1, 2),
+  (7, 7, 5, 1, 2),
+  (8, 8, 5, 5, 1),
+  (9, 9, 5, 4, 2),
+  (10, 10, 8, 5, 1),
+  (11, 11, 5, 4, 2),
+  (12, 12, 4, 4, 1),
+  (13, 13, 5, 4, 2),
+  (14, 14, 1, 4, 1),
+  (14, 14, 2, 4, 1),
+  (14, 14, 3, 4, 1),
+  (14, 14, 4, 4, 1),
+  (14, 14, 5, 4, 1),
+  (14, 14, 6, 4, 1),
+  (15, 14, 1, 1, 1),
+  (16, 14, 1, 1, 1);

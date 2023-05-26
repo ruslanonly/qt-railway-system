@@ -215,6 +215,24 @@ QSqlQueryModel* QueryModel::selectPassengerWithSeveralTickets() {
     return model;
 }
 
+QSqlQueryModel* QueryModel::selectAllRoutesWhereAllSchedulesWithStatus(QString status) {
+    QSqlQueryModel *model = new QSqlQueryModel;
+    QSqlQuery query;
+    query.prepare("SELECT r.name, r.id "
+                  "FROM route r "
+                  "WHERE :Status = ALL( "
+                    "SELECT schedule.status "
+                    "FROM schedule WHERE schedule.route_id = r.id);"
+                  );
+    query.bindValue(":Status", status);
+
+    if (!query.exec()) {
+        qDebug() << query.lastError().text();
+    }
+    model->setQuery(query);
+    return model;
+}
+
 QSqlQueryModel* QueryModel::selectPassengersWithTicketsAmount() {
     QSqlQueryModel *model = new QSqlQueryModel;
     QSqlQuery query;
@@ -227,6 +245,59 @@ QSqlQueryModel* QueryModel::selectPassengersWithTicketsAmount() {
     model->setQuery(query);
     return model;
 }
+
+QSqlQueryModel* QueryModel::getRoutesThatStartsInCity(QString departureCity) {
+    QSqlQueryModel *model = new QSqlQueryModel;
+    QSqlQuery query;
+    query.prepare("SELECT * from get_routes_that_starts_in_city(:DepartureCity)");
+    query.bindValue(":DepartureCity", departureCity);
+
+    if (!query.exec()) {
+        qDebug() << query.lastError().text();
+    }
+    model->setQuery(query);
+    return model;
+}
+
+QSqlQueryModel* QueryModel::getCorrelatedMaxRouteFirstClassPrice() {
+    QSqlQueryModel *model = new QSqlQueryModel;
+    QSqlQuery query;
+    query.prepare("SELECT * from get_correlated_max_route_first_class_price()");
+
+    if (!query.exec()) {
+        qDebug() << query.lastError().text();
+    }
+    model->setQuery(query);
+    return model;
+}
+
+QSqlQueryModel* QueryModel::getCorrelatedTicketForPassengerName(QString passengerName) {
+    QSqlQueryModel *model = new QSqlQueryModel;
+    QSqlQuery query;
+    query.prepare("SELECT * from get_correlated_ticket_for_passenger_name(:PassengerName)");
+    query.bindValue(":PassengerName", passengerName);
+
+    if (!query.exec()) {
+        qDebug() << query.lastError().text();
+    }
+    model->setQuery(query);
+    return model;
+}
+
+
+QSqlQueryModel* QueryModel::getCorrelatedPassengersWaitingForSchedule() {
+    QSqlQueryModel *model = new QSqlQueryModel;
+    QSqlQuery query;
+    query.prepare("SELECT * from get_correlated_passengers_waiting_for_schedule()");
+
+    if (!query.exec()) {
+        qDebug() << query.lastError().text();
+    }
+    model->setQuery(query);
+    return model;
+}
+
+
 
 QSqlQueryModel* QueryModel::selectScheduleView() {
     QSqlQueryModel *model = new QSqlQueryModel;

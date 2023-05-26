@@ -120,9 +120,11 @@ public:
     QLabel *homeHeading_2;
     QSpacerItem *verticalSpacer_2;
     QGridLayout *redirectButtons_2;
-    QPushButton *passengerAdditionalButton;
-    QPushButton *scheduleAnyAllButton;
+    QPushButton *routeGetThatStartsInTownButton;
     QPushButton *scheduleViewButton;
+    QPushButton *correlatedQueriesButton;
+    QPushButton *passengerAdditionalButton;
+    QPushButton *routeScheduleStatusButton;
     QSpacerItem *verticalSpacer_4;
     QHBoxLayout *horizontalLayout_9;
     QSpacerItem *horizontalSpacer_8;
@@ -617,22 +619,32 @@ public:
 
         redirectButtons_2 = new QGridLayout();
         redirectButtons_2->setObjectName("redirectButtons_2");
-        passengerAdditionalButton = new QPushButton(MiscPage);
-        passengerAdditionalButton->setObjectName("passengerAdditionalButton");
-        passengerAdditionalButton->setCursor(QCursor(Qt::PointingHandCursor));
+        routeGetThatStartsInTownButton = new QPushButton(MiscPage);
+        routeGetThatStartsInTownButton->setObjectName("routeGetThatStartsInTownButton");
 
-        redirectButtons_2->addWidget(passengerAdditionalButton, 0, 1, 1, 1);
-
-        scheduleAnyAllButton = new QPushButton(MiscPage);
-        scheduleAnyAllButton->setObjectName("scheduleAnyAllButton");
-
-        redirectButtons_2->addWidget(scheduleAnyAllButton, 0, 2, 1, 1);
+        redirectButtons_2->addWidget(routeGetThatStartsInTownButton, 1, 0, 1, 1);
 
         scheduleViewButton = new QPushButton(MiscPage);
         scheduleViewButton->setObjectName("scheduleViewButton");
         scheduleViewButton->setCursor(QCursor(Qt::PointingHandCursor));
 
         redirectButtons_2->addWidget(scheduleViewButton, 0, 0, 1, 1);
+
+        correlatedQueriesButton = new QPushButton(MiscPage);
+        correlatedQueriesButton->setObjectName("correlatedQueriesButton");
+
+        redirectButtons_2->addWidget(correlatedQueriesButton, 1, 1, 1, 1);
+
+        passengerAdditionalButton = new QPushButton(MiscPage);
+        passengerAdditionalButton->setObjectName("passengerAdditionalButton");
+        passengerAdditionalButton->setCursor(QCursor(Qt::PointingHandCursor));
+
+        redirectButtons_2->addWidget(passengerAdditionalButton, 0, 1, 1, 1);
+
+        routeScheduleStatusButton = new QPushButton(MiscPage);
+        routeScheduleStatusButton->setObjectName("routeScheduleStatusButton");
+
+        redirectButtons_2->addWidget(routeScheduleStatusButton, 2, 0, 1, 1);
 
 
         verticalLayout_3->addLayout(redirectButtons_2);
@@ -712,9 +724,11 @@ public:
         refreshScheduleButton->setText(QCoreApplication::translate("MainWindow", "\320\236\320\261\320\275\320\276\320\262\320\270\321\202\321\214", nullptr));
         addScheduleButton->setText(QCoreApplication::translate("MainWindow", "\320\224\320\276\320\261\320\260\320\262\320\270\321\202\321\214", nullptr));
         homeHeading_2->setText(QCoreApplication::translate("MainWindow", "\320\224\320\276\320\277\320\276\320\273\320\275\320\270\321\202\320\265\320\273\321\214\320\275\321\213\320\265 \320\267\320\260\320\277\321\200\320\276\321\201\321\213", nullptr));
-        passengerAdditionalButton->setText(QCoreApplication::translate("MainWindow", "\320\237\320\260\321\201\321\201\320\260\320\266\320\270\321\200\321\213 (\320\264\320\276\320\277\320\276\320\273\320\275\320\270\321\202\320\265\320\273\321\214\320\275\320\276)", nullptr));
-        scheduleAnyAllButton->setText(QCoreApplication::translate("MainWindow", "\320\240\320\265\320\271\321\201\321\213 (any/all)", nullptr));
+        routeGetThatStartsInTownButton->setText(QCoreApplication::translate("MainWindow", "\320\234\320\260\321\200\321\210\321\200\321\203\321\202\321\213 (\320\237\320\276\320\270\321\201\320\272 \320\277\320\276 \320\263\320\276\321\200\320\276\320\264\321\203)", nullptr));
         scheduleViewButton->setText(QCoreApplication::translate("MainWindow", "\320\240\320\260\321\201\320\277\320\270\321\201\320\260\320\275\320\270\320\265", nullptr));
+        correlatedQueriesButton->setText(QCoreApplication::translate("MainWindow", "\320\232\320\276\321\200\321\200\320\265\320\273\320\270\321\200\320\276\320\262\320\260\320\275\320\275\321\213\320\265 \320\277\320\276\320\264\320\267\320\260\320\277\321\200\320\276\321\201\321\213", nullptr));
+        passengerAdditionalButton->setText(QCoreApplication::translate("MainWindow", "\320\237\320\260\321\201\321\201\320\260\320\266\320\270\321\200\321\213 (\320\264\320\276\320\277\320\276\320\273\320\275\320\270\321\202\320\265\320\273\321\214\320\275\320\276)", nullptr));
+        routeScheduleStatusButton->setText(QCoreApplication::translate("MainWindow", "\320\234\320\260\321\200\321\210\321\200\321\203\321\202\321\213 (\320\237\320\276 \321\201\321\202\320\260\321\202\321\203\321\201\321\203 \321\200\320\265\320\271\321\201\320\276\320\262 \320\275\320\260 \320\275\320\270\321\205)", nullptr));
         backMiscPageButton->setText(QCoreApplication::translate("MainWindow", "\320\235\320\260\320\267\320\260\320\264", nullptr));
     } // retranslateUi
 

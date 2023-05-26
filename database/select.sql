@@ -39,32 +39,21 @@ WHERE EXTRACT(YEAR FROM departure_date) = 2022;
 
 /* Коррелированные подзапросы (минимум 3 запроса). */
 
-SELECT *
-FROM passenger p1
-WHERE passport_serial_no < ANY (
-  SELECT passport_serial_no
-  FROM passenger p2
-  WHERE p1.last_name = p2.last_name AND p1.id <> p2.id
-);
 
-SELECT *
-FROM route r
-WHERE EXISTS (
-  SELECT 1
-  FROM train t
-  WHERE t.route_id = r.id AND t.railcars_amount > (
-    SELECT AVG(railcars_amount)
-    FROM train
-  )
-);
 
-SELECT *
-FROM train t
-WHERE t.route_id = ANY (
-  SELECT route_id
-  FROM ticket
-  WHERE railcar_class = 1
-);
+SELECT first_name as 'Имя', last_name as 'Фамилия', middle_name as 'Отчество',
+(SELECT COUNT(*) FROM ticket WHERE passenger_id = passenger.id) AS 'Количество билетов'
+FROM passenger;
+
+SELECT r.name, (
+  SELECT MAX(tr.first_class_price)
+  FROM ticket t
+  JOIN schedule s ON t.schedule_id = s.id
+  JOIN train tr ON tr.id = s.train_id
+  WHERE s.route_id = r.id
+) AS max_ticket_price
+FROM route r;
+
 
 /* Многотабличный запрос, содержащий группировку записей, агрегатные
 функции и параметр, используемый в разделе HAVING */
@@ -90,8 +79,14 @@ WHERE passenger_id = ANY (
 );
 
 
-SELECT * FROM passenger
-WHERE id = ALL(
-  SELECT passenger_id FROM ticket
-  WHERE train_id IN (SELECT id FROM train WHERE first_class_price > 500 OR second_class_price > 500)
-)
+SELECT r.name, r.id
+FROM route r
+WHERE 'нет мест' = ALL (
+  SELECT schedule.status
+  FROM schedule
+  WHERE schedule.route_id = r.id
+);
+
+SELECT * 
+FROM passenger WHERE id = ANY (
+SELECT passenger_id FROM ticket GROUP BY passenger_id HAVING COUNT(*) > 1)

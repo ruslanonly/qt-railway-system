@@ -1,13 +1,14 @@
 all:
+	docker exec -it application-db-1 psql -U rw_user -d railway -f /home/database/drop_view.sql
 	docker exec -it application-db-1 psql -U rw_user -d railway -f /home/database/drop.sql
 	docker exec -it application-db-1 psql -U rw_user -d railway -f /home/database/schema.sql
 	docker exec -it application-db-1 psql -U rw_user -d railway -f /home/database/view.sql
+	docker exec -it application-db-1 psql -U rw_user -d railway -f /home/database/trigger.sql
 	docker exec -it application-db-1 psql -U rw_user -d railway -f /home/database/data/insert.sql
 	docker exec -it application-db-1 psql -U rw_user -d railway -f /home/database/drop_funcs.sql
 	docker exec -it application-db-1 psql -U rw_user -d railway -f /home/database/funcs.sql
 	docker exec -it application-db-1 psql -U rw_user -d railway -f /home/database/get_funcs.sql
 	docker exec -it application-db-1 psql -U rw_user -d railway -f /home/database/roles.sql
-	docker exec -it application-db-1 psql -U rw_user -d railway -f /home/database/trigger.sql
 	docker exec -it application-db-1 psql -U rw_user -d railway -f /home/database/transaction.sql
 	
 roles:

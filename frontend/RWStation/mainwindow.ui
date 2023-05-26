@@ -836,21 +836,11 @@
          </spacer>
         </item>
         <item>
-         <layout class="QGridLayout" name="redirectButtons_2" rowstretch="0,0">
-          <item row="0" column="1">
-           <widget class="QPushButton" name="passengerAdditionalButton">
-            <property name="cursor">
-             <cursorShape>PointingHandCursor</cursorShape>
-            </property>
+         <layout class="QGridLayout" name="redirectButtons_2" rowstretch="0,0,0">
+          <item row="1" column="0">
+           <widget class="QPushButton" name="routeGetThatStartsInTownButton">
             <property name="text">
-             <string>Пассажиры (дополнительно)</string>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="2">
-           <widget class="QPushButton" name="scheduleAnyAllButton">
-            <property name="text">
-             <string>Рейсы (any/all)</string>
+             <string>Маршруты (Поиск по городу)</string>
             </property>
            </widget>
           </item>
@@ -861,6 +851,30 @@
             </property>
             <property name="text">
              <string>Расписание</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QPushButton" name="correlatedQueriesButton">
+            <property name="text">
+             <string>Коррелированные подзапросы</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QPushButton" name="passengerAdditionalButton">
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
+            <property name="text">
+             <string>Пассажиры (дополнительно)</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0">
+           <widget class="QPushButton" name="routeScheduleStatusButton">
+            <property name="text">
+             <string>Маршруты (По статусу рейсов на них)</string>
             </property>
            </widget>
           </item>
