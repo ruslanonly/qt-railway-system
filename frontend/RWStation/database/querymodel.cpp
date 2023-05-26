@@ -262,7 +262,7 @@ QSqlQueryModel* QueryModel::getRoutesThatStartsInCity(QString departureCity) {
 QSqlQueryModel* QueryModel::getCorrelatedMaxRouteFirstClassPrice() {
     QSqlQueryModel *model = new QSqlQueryModel;
     QSqlQuery query;
-    query.prepare("SELECT * from get_correlated_max_route_first_class_price()");
+    query.prepare("SELECT route_name as \"Название маршрута\", route_name as \"Максимальная цена билета\" from get_correlated_max_route_first_class_price()");
 
     if (!query.exec()) {
         qDebug() << query.lastError().text();
@@ -274,7 +274,13 @@ QSqlQueryModel* QueryModel::getCorrelatedMaxRouteFirstClassPrice() {
 QSqlQueryModel* QueryModel::getCorrelatedTicketForPassengerName(QString passengerName) {
     QSqlQueryModel *model = new QSqlQueryModel;
     QSqlQuery query;
-    query.prepare("SELECT * from get_correlated_ticket_for_passenger_name(:PassengerName)");
+    query.prepare("SELECT r.name as \"Название маршрута\", tr.name as \"Название поезда\", "
+                  "seat_no as \"Номер места\", railcar_no as \"Номер вагона\", railcar_class as \"Класс обслуживания\" "
+                  "from get_correlated_ticket_for_passenger_name(:PassengerName) main "
+                  "JOIN schedule sch ON main.schedule_id = sch.id "
+                  "JOIN passenger p ON main.passenger_id = p.id "
+                  "JOIN route r ON sch.route_id = r.id "
+                  "JOIN train tr ON sch.train_id = tr.id");
     query.bindValue(":PassengerName", passengerName);
 
     if (!query.exec()) {
@@ -288,7 +294,9 @@ QSqlQueryModel* QueryModel::getCorrelatedTicketForPassengerName(QString passenge
 QSqlQueryModel* QueryModel::getCorrelatedPassengersWaitingForSchedule() {
     QSqlQueryModel *model = new QSqlQueryModel;
     QSqlQuery query;
-    query.prepare("SELECT * from get_correlated_passengers_waiting_for_schedule()");
+    query.prepare("SELECT last_name as \"Фамилия\", first_name as \"Имя\", middle_name as \"Отчество\", "
+                  "passport_serial_no as \"Серийный номер паспорта\", passport_code as \"Номер пасспорта\" "
+                  "FROM get_correlated_passengers_waiting_for_schedule()");
 
     if (!query.exec()) {
         qDebug() << query.lastError().text();

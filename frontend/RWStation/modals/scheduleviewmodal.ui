@@ -65,7 +65,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="addNeweButton">
+        <widget class="QPushButton" name="addNewButton">
          <property name="text">
           <string>Добавить</string>
          </property>

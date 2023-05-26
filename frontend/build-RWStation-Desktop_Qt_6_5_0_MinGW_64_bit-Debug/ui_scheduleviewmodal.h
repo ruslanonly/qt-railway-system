@@ -32,7 +32,7 @@ public:
     QHBoxLayout *horizontalLayout;
     QSpacerItem *horizontalSpacer;
     QPushButton *updateScheduleViewTableView;
-    QPushButton *addNeweButton;
+    QPushButton *addNewButton;
 
     void setupUi(QWidget *ScheduleViewModal)
     {
@@ -68,10 +68,10 @@ public:
 
         horizontalLayout->addWidget(updateScheduleViewTableView);
 
-        addNeweButton = new QPushButton(ScheduleViewModal);
-        addNeweButton->setObjectName("addNeweButton");
+        addNewButton = new QPushButton(ScheduleViewModal);
+        addNewButton->setObjectName("addNewButton");
 
-        horizontalLayout->addWidget(addNeweButton);
+        horizontalLayout->addWidget(addNewButton);
 
 
         verticalLayout->addLayout(horizontalLayout);
@@ -90,7 +90,7 @@ public:
         ScheduleViewModal->setWindowTitle(QCoreApplication::translate("ScheduleViewModal", "Form", nullptr));
         label->setText(QCoreApplication::translate("ScheduleViewModal", "\320\240\320\265\320\271\321\201\321\213 (view)", nullptr));
         updateScheduleViewTableView->setText(QCoreApplication::translate("ScheduleViewModal", "\320\236\320\261\320\275\320\276\320\262\320\270\321\202\321\214", nullptr));
-        addNeweButton->setText(QCoreApplication::translate("ScheduleViewModal", "\320\224\320\276\320\261\320\260\320\262\320\270\321\202\321\214", nullptr));
+        addNewButton->setText(QCoreApplication::translate("ScheduleViewModal", "\320\224\320\276\320\261\320\260\320\262\320\270\321\202\321\214", nullptr));
     } // retranslateUi
 
 };

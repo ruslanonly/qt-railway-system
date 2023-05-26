@@ -20,7 +20,7 @@
       <string notr="true">font-weight: 600; font-size: 10pt; color: black;</string>
      </property>
      <property name="text">
-      <string>Расписание</string>
+      <string>Добавление расписания (view)</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
@@ -112,14 +112,18 @@
               </widget>
              </item>
              <item>
-              <widget class="QComboBox" name="routeNameComboBox"/>
+              <widget class="QComboBox" name="routeNameComboBox">
+               <property name="editable">
+                <bool>true</bool>
+               </property>
+              </widget>
              </item>
             </layout>
            </item>
           </layout>
          </item>
          <item>
-          <layout class="QGridLayout" name="gridLayout" columnstretch="1,1">
+          <layout class="QGridLayout" name="gridLayout" columnstretch="0">
            <property name="sizeConstraint">
             <enum>QLayout::SetMinimumSize</enum>
            </property>
@@ -144,99 +148,6 @@
              </item>
             </layout>
            </item>
-           <item row="2" column="0">
-            <layout class="QVBoxLayout" name="inputGroup_11">
-             <property name="spacing">
-              <number>5</number>
-             </property>
-             <item>
-              <widget class="QLabel" name="firstClassPriceLabel">
-               <property name="text">
-                <string>Стоимость первого класса</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QSpinBox" name="firstClassPriceInput">
-               <property name="minimum">
-                <number>1</number>
-               </property>
-               <property name="maximum">
-                <number>20000</number>
-               </property>
-               <property name="singleStep">
-                <number>100</number>
-               </property>
-               <property name="value">
-                <number>100</number>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </item>
-           <item row="1" column="1">
-            <layout class="QVBoxLayout" name="inputGroup_10">
-             <property name="spacing">
-              <number>5</number>
-             </property>
-             <item>
-              <widget class="QLabel" name="trainTypeLabel">
-               <property name="text">
-                <string>Тип поезда</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QComboBox" name="trainTypeComboBox">
-               <item>
-                <property name="text">
-                 <string>пассажирский</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>скорый-пассажирский</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>скоростной-пассажирский</string>
-                </property>
-               </item>
-              </widget>
-             </item>
-            </layout>
-           </item>
-           <item row="2" column="1">
-            <layout class="QVBoxLayout" name="inputGroup_13">
-             <property name="spacing">
-              <number>5</number>
-             </property>
-             <item>
-              <widget class="QLabel" name="secondPriceClassLabel">
-               <property name="text">
-                <string>Стоимость второго класса</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QSpinBox" name="secondPriceClassInput">
-               <property name="minimum">
-                <number>1</number>
-               </property>
-               <property name="maximum">
-                <number>20000</number>
-               </property>
-               <property name="singleStep">
-                <number>100</number>
-               </property>
-               <property name="value">
-                <number>100</number>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </item>
           </layout>
          </item>
          <item>
@@ -253,7 +164,7 @@
           </spacer>
          </item>
          <item>
-          <widget class="QPushButton" name="saveChangesButton">
+          <widget class="QPushButton" name="addButton">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
              <horstretch>0</horstretch>

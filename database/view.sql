@@ -17,21 +17,32 @@ FROM schedule sch
 JOIN route r ON sch.route_id = r.id
 JOIN train t ON sch.train_id = t.id;
 
--- DROP FUNCTION insert_schedule_view;
--- CREATE OR REPLACE FUNCTION insert_schedule_view() RETURNS TRIGGER AS $$
--- DECLARE
---   v_route_id INTEGER;  
---   v_train_id INTEGER;
--- BEGIN
---   SELECT route_id, train_id INTO v_route_id, v_train_id 
---   FROM schedule WHERE id = NEW.schedule_id;
+DROP FUNCTION insert_schedule_view;
+CREATE OR REPLACE FUNCTION insert_schedule_view() RETURNS TRIGGER AS $$
+DECLARE
+  v_route_id INTEGER;  
+  v_train_id INTEGER;
+BEGIN
 
--- END;
--- $$ LANGUAGE plpgsql;
+  SELECT id INTO v_route_id FROM route r WHERE r.name = NEW.route_name;
+  IF (v_route_id = NULL) THEN
+    RAISE EXCEPTION 'Маршрут с заданным именем не найден';
+  END IF;
 
--- CREATE OR REPLACE TRIGGER insert_schedule_view_on_insert
--- INSTEAD OF INSERT ON schedule_view
--- FOR EACH ROW EXECUTE FUNCTION insert_schedule_view();
+  SELECT id INTO v_train_id FROM train tr WHERE tr.name = NEW.train_name;
+  IF (v_train_id = NULL) THEN
+    RAISE EXCEPTION 'Поезд с заданным именем не найден';
+  END IF;
+
+  PERFORM add_schedule(v_route_id, v_train_id, NEW.schedule_departure_date, NEW.schedule_arrival_date);
+
+  RETURN NULL;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE OR REPLACE TRIGGER insert_schedule_view_on_insert
+INSTEAD OF INSERT ON schedule_view
+FOR EACH ROW EXECUTE FUNCTION insert_schedule_view();
 
 DROP FUNCTION update_schedule_view;
 CREATE OR REPLACE FUNCTION update_schedule_view() RETURNS TRIGGER AS $$

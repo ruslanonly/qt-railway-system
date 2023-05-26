@@ -84,8 +84,9 @@ void ScheduleViewModal::DeleteRequestedAction(int selectedID) {
 }
 
 
-void ScheduleViewModal::on_addNeweButton_clicked()
+void ScheduleViewModal::on_addNewButton_clicked()
 {
-
+    this->addScheduleViewModal = new AddScheduleViewModal();
+    this->addScheduleViewModal->show();
 }
 

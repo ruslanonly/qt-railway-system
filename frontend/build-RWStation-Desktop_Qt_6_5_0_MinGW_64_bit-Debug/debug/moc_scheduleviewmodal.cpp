@@ -46,7 +46,7 @@ static constexpr auto qt_meta_stringdata_CLASSScheduleViewModalENDCLASS = QtMocH
     "DeleteRequestedAction",
     "on_scheduleViewTableView_customContextMenuRequested",
     "pos",
-    "on_addNeweButton_clicked"
+    "on_addNewButton_clicked"
 );
 #else  // !QT_MOC_HAS_STRING_DATA
 struct qt_meta_stringdata_CLASSScheduleViewModalENDCLASS_t {
@@ -59,7 +59,7 @@ struct qt_meta_stringdata_CLASSScheduleViewModalENDCLASS_t {
     char stringdata5[22];
     char stringdata6[52];
     char stringdata7[4];
-    char stringdata8[25];
+    char stringdata8[24];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(sizeof(qt_meta_stringdata_CLASSScheduleViewModalENDCLASS_t::offsetsAndSizes) + ofs), len 
@@ -73,7 +73,7 @@ Q_CONSTINIT static const qt_meta_stringdata_CLASSScheduleViewModalENDCLASS_t qt_
         QT_MOC_LITERAL(91, 21),  // "DeleteRequestedAction"
         QT_MOC_LITERAL(113, 51),  // "on_scheduleViewTableView_cust..."
         QT_MOC_LITERAL(165, 3),  // "pos"
-        QT_MOC_LITERAL(169, 24)   // "on_addNeweButton_clicked"
+        QT_MOC_LITERAL(169, 23)   // "on_addNewButton_clicked"
     },
     "ScheduleViewModal",
     "on_updateScheduleViewTableView_clicked",
@@ -83,7 +83,7 @@ Q_CONSTINIT static const qt_meta_stringdata_CLASSScheduleViewModalENDCLASS_t qt_
     "DeleteRequestedAction",
     "on_scheduleViewTableView_customContextMenuRequested",
     "pos",
-    "on_addNeweButton_clicked"
+    "on_addNewButton_clicked"
 };
 #undef QT_MOC_LITERAL
 #endif // !QT_MOC_HAS_STRING_DATA
@@ -139,7 +139,7 @@ Q_CONSTINIT const QMetaObject ScheduleViewModal::staticMetaObject = { {
         // method 'on_scheduleViewTableView_customContextMenuRequested'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         QtPrivate::TypeAndForceComplete<const QPoint &, std::false_type>,
-        // method 'on_addNeweButton_clicked'
+        // method 'on_addNewButton_clicked'
         QtPrivate::TypeAndForceComplete<void, std::false_type>
     >,
     nullptr
@@ -155,7 +155,7 @@ void ScheduleViewModal::qt_static_metacall(QObject *_o, QMetaObject::Call _c, in
         case 1: _t->ModifyRequestedAction((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
         case 2: _t->DeleteRequestedAction((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
         case 3: _t->on_scheduleViewTableView_customContextMenuRequested((*reinterpret_cast< std::add_pointer_t<QPoint>>(_a[1]))); break;
-        case 4: _t->on_addNeweButton_clicked(); break;
+        case 4: _t->on_addNewButton_clicked(); break;
         default: ;
         }
     }

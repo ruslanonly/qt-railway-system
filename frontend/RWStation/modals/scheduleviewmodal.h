@@ -30,7 +30,7 @@ private slots:
 
     void on_scheduleViewTableView_customContextMenuRequested(const QPoint &pos);
 
-    void on_addNeweButton_clicked();
+    void on_addNewButton_clicked();
 
 private:
     void showCustomContextMenu(const QPoint &pos, QTableView *tableView);
@@ -40,6 +40,8 @@ private:
     UpdateScheduleViewModal* updateScheduleViewModal;
 
     Ui::ScheduleViewModal *ui;
+
+    AddScheduleViewModal* addScheduleViewModal;
     QueryModel* queryModel;
 };
 
