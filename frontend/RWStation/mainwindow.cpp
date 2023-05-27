@@ -17,6 +17,13 @@ MainWindow::MainWindow(DatabaseManager* dbManager, QWidget *parent) : QMainWindo
     this->dbManager = dbManager;
     ui->setupUi(this);
 
+    ui->stationsTableView->verticalHeader()->setVisible(false);
+    ui->routesTableView->verticalHeader()->setVisible(false);
+    ui->trainsTableView->verticalHeader()->setVisible(false);
+    ui->scheduleTableView->verticalHeader()->setVisible(false);
+    ui->ticketsTableView->verticalHeader()->setVisible(false);
+    ui->passengersTableView->verticalHeader()->setVisible(false);
+
 }
 
 MainWindow::~MainWindow() {
@@ -100,12 +107,16 @@ void MainWindow::loadStationTable() {
     QTableView* tableView= this->ui->stationsTableView;
     delete tableView->model();
     this->ui->stationsTableView->setModel(queryModel->stationSelectAll());
+
+    ui->stationsTableView->hideColumn(0);
 }
 
 void MainWindow::loadRouteTable() {
     QTableView* tableView= this->ui->routesTableView;
     delete tableView->model();
     this->ui->routesTableView->setModel(queryModel->routeSelectAll());
+
+    ui->routesTableView->hideColumn(0);
 }
 
 void MainWindow::loadTrainTable() {
@@ -114,6 +125,8 @@ void MainWindow::loadTrainTable() {
 
     qDebug() << queryModel->trainSelectAll()->lastError().text();
     this->ui->trainsTableView->setModel(queryModel->trainSelectAll());
+
+    ui->trainsTableView->hideColumn(0);
 }
 
 void MainWindow::loadTicketTable() {
@@ -121,6 +134,8 @@ void MainWindow::loadTicketTable() {
     delete tableView->model();
     qDebug() << queryModel->ticketSelectAll()->lastError().text();
     this->ui->ticketsTableView->setModel(queryModel->ticketSelectAll());
+
+    ui->ticketsTableView->hideColumn(0);
 }
 
 void MainWindow::loadPassengerTable() {
@@ -128,6 +143,8 @@ void MainWindow::loadPassengerTable() {
     delete tableView->model();
     qDebug() << "passenger" <<  queryModel->passengerSelectAll()->lastError().text();
     this->ui->passengersTableView->setModel(queryModel->passengerSelectAll());
+
+    ui->passengersTableView->hideColumn(0);
 }
 
 void MainWindow::loadScheduleTable() {
@@ -135,6 +152,8 @@ void MainWindow::loadScheduleTable() {
     delete tableView->model();
     qDebug() << queryModel->scheduleSelectAll()->lastError().text();
     this->ui->scheduleTableView->setModel(queryModel->scheduleSelectAll());
+
+    ui->scheduleTableView->hideColumn(0);
 }
 
 

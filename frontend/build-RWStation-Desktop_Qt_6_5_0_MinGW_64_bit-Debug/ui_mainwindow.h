@@ -678,7 +678,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        pagesWidget->setCurrentIndex(7);
+        pagesWidget->setCurrentIndex(3);
 
 
         QMetaObject::connectSlotsByName(MainWindow);

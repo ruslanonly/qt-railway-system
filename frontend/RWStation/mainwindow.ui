@@ -18,7 +18,7 @@
     <item>
      <widget class="QStackedWidget" name="pagesWidget">
       <property name="currentIndex">
-       <number>7</number>
+       <number>3</number>
       </property>
       <widget class="QWidget" name="HomePage">
        <property name="sizePolicy">
