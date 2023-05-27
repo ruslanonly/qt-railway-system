@@ -23,6 +23,7 @@ SOURCES += \
     modals/addticketmodal.cpp \
     modals/addtrainmodal.cpp \
     modals/bookticketmodal.cpp \
+    modals/cursorupdatescheduletrainmodal.cpp \
     modals/getcorrelatedqueriesmodal.cpp \
     modals/getpassengeradditionalmodal.cpp \
     modals/getrouteallquerymodal.cpp \
@@ -53,6 +54,7 @@ HEADERS += \
     modals/addticketmodal.h \
     modals/addtrainmodal.h \
     modals/bookticketmodal.h \
+    modals/cursorupdatescheduletrainmodal.h \
     modals/getcorrelatedqueriesmodal.h \
     modals/getpassengeradditionalmodal.h \
     modals/getrouteallquerymodal.h \
@@ -80,6 +82,7 @@ FORMS += \
     modals/addticketmodal.ui \
     modals/addtrainmodal.ui \
     modals/bookticketmodal.ui \
+    modals/cursorupdatescheduletrainmodal.ui \
     modals/getcorrelatedqueriesmodal.ui \
     modals/getpassengeradditionalmodal.ui \
     modals/getrouteallquerymodal.ui \

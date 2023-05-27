@@ -12,6 +12,7 @@ debug/addstationmodal.o
 debug/addticketmodal.o
 debug/addtrainmodal.o
 debug/bookticketmodal.o
+debug/cursorupdatescheduletrainmodal.o
 debug/getcorrelatedqueriesmodal.o
 debug/getpassengeradditionalmodal.o
 debug/getrouteallquerymodal.o
@@ -37,6 +38,7 @@ debug/moc_addstationmodal.o
 debug/moc_addticketmodal.o
 debug/moc_addtrainmodal.o
 debug/moc_bookticketmodal.o
+debug/moc_cursorupdatescheduletrainmodal.o
 debug/moc_getcorrelatedqueriesmodal.o
 debug/moc_getpassengeradditionalmodal.o
 debug/moc_getrouteallquerymodal.o

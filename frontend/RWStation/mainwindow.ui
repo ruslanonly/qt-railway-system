@@ -18,7 +18,7 @@
     <item>
      <widget class="QStackedWidget" name="pagesWidget">
       <property name="currentIndex">
-       <number>3</number>
+       <number>6</number>
       </property>
       <widget class="QWidget" name="HomePage">
        <property name="sizePolicy">
@@ -767,6 +767,13 @@
                </size>
               </property>
              </spacer>
+            </item>
+            <item>
+             <widget class="QPushButton" name="replaceScheduleTrainCursorButton">
+              <property name="text">
+               <string>Заменить поезда</string>
+              </property>
+             </widget>
             </item>
             <item>
              <spacer name="horizontalSpacer_11">

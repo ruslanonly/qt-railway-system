@@ -273,6 +273,12 @@ void MainWindow::on_routeScheduleStatusButton_clicked()
     this->getRouteAllQueryModal->show();
 }
 
+void MainWindow::on_replaceScheduleTrainCursorButton_clicked()
+{
+    this->cursorUpdateScheduleTrainModal = new CursorUpdateScheduleTrainModal();
+    this->cursorUpdateScheduleTrainModal->show();
+}
+
 
 void MainWindow::on_logoutButton_clicked()
 {

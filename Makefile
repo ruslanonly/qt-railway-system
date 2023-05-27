@@ -47,6 +47,9 @@ drop_funcs:
 insert:
 	docker exec -it application-db-1 psql -U rw_user -d railway -f /home/database/data/insert.sql
 
+insert_funcs:
+	docker exec -it application-db-1 psql -U rw_user -d railway -f /home/database/data/insert_funcs.sql
+
 delete_all:
 	docker exec -it application-db-1 psql -U rw_user -d railway -f /home/database/data/delete_all.sql
 

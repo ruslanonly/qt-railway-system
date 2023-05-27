@@ -40,6 +40,7 @@ void AddTicketModal::on_addButton_clicked()
     int railcarNo = railcarNoModel->data(railcarNoModel->index(ui->railCarNoComboBox->currentIndex(),0)).toInt();
     int railcarClass = this->ui->railcarClassInput->value();
     int scheduleID = scheduleModel->data(scheduleModel->index(ui->scheduleComboBox->currentIndex(),0)).toInt();
+
     int passengerID = passengerModel->data(passengerModel->index(ui->passengerComboBox->currentIndex(),0)).toInt();
 
 
@@ -92,7 +93,5 @@ void AddTicketModal::on_railCarNoComboBox_currentIndexChanged(int index)
     this->ui->seatNoComboBox->setModel(seatNoModel);
     this->ui->seatNoComboBox->setModelColumn(0);
 }
-
-
 
 

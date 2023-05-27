@@ -112,6 +112,7 @@ public:
     QHBoxLayout *buttonsLayout_9;
     QPushButton *backScheduleButton;
     QSpacerItem *horizontalSpacer_10;
+    QPushButton *replaceScheduleTrainCursorButton;
     QSpacerItem *horizontalSpacer_11;
     QPushButton *refreshScheduleButton;
     QPushButton *addScheduleButton;
@@ -579,6 +580,11 @@ public:
 
         buttonsLayout_9->addItem(horizontalSpacer_10);
 
+        replaceScheduleTrainCursorButton = new QPushButton(SchedulePage);
+        replaceScheduleTrainCursorButton->setObjectName("replaceScheduleTrainCursorButton");
+
+        buttonsLayout_9->addWidget(replaceScheduleTrainCursorButton);
+
         horizontalSpacer_11 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
         buttonsLayout_9->addItem(horizontalSpacer_11);
@@ -678,7 +684,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        pagesWidget->setCurrentIndex(3);
+        pagesWidget->setCurrentIndex(6);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -721,6 +727,7 @@ public:
         getScheduleRevenueButton->setText(QCoreApplication::translate("MainWindow", "\320\222\321\213\321\200\321\203\321\207\320\272\320\260 \321\201 \320\272\320\260\320\266\320\264\320\276\320\263\320\276 \321\200\320\265\320\271\321\201\320\260", nullptr));
         getScheduleTicketsAmount->setText(QCoreApplication::translate("MainWindow", "\320\232\320\276\320\273\320\270\321\207\320\265\321\201\321\202\320\262\320\276 \320\277\321\200\320\276\320\264\320\260\320\275\320\275\321\213\321\205 \320\261\320\270\320\273\320\265\321\202\320\276\320\262", nullptr));
         backScheduleButton->setText(QCoreApplication::translate("MainWindow", "\320\235\320\260\320\267\320\260\320\264", nullptr));
+        replaceScheduleTrainCursorButton->setText(QCoreApplication::translate("MainWindow", "\320\227\320\260\320\274\320\265\320\275\320\270\321\202\321\214 \320\277\320\276\320\265\320\267\320\264\320\260", nullptr));
         refreshScheduleButton->setText(QCoreApplication::translate("MainWindow", "\320\236\320\261\320\275\320\276\320\262\320\270\321\202\321\214", nullptr));
         addScheduleButton->setText(QCoreApplication::translate("MainWindow", "\320\224\320\276\320\261\320\260\320\262\320\270\321\202\321\214", nullptr));
         homeHeading_2->setText(QCoreApplication::translate("MainWindow", "\320\224\320\276\320\277\320\276\320\273\320\275\320\270\321\202\320\265\320\273\321\214\320\275\321\213\320\265 \320\267\320\260\320\277\321\200\320\276\321\201\321\213", nullptr));

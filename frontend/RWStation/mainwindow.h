@@ -41,6 +41,8 @@
 #include "modals/getcorrelatedqueriesmodal.h"
 #include "modals/getrouteallquerymodal.h"
 
+#include "modals/cursorupdatescheduletrainmodal.h"
+
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -139,6 +141,8 @@ private slots:
 
     void on_routeScheduleStatusButton_clicked();
 
+    void on_replaceScheduleTrainCursorButton_clicked();
+
 private:
     void showCustomContextMenu(const QPoint &pos, QTableView *tableView, TableViewVariant tableVariant);
 
@@ -166,6 +170,8 @@ private:
     GetRouteAllQueryModal* getRouteAllQueryModal;
 
     GetCorrelatedQueriesModal* getCorrelatedQueriesModal;
+
+    CursorUpdateScheduleTrainModal* cursorUpdateScheduleTrainModal;
 
     ScheduleViewModal* scheduleViewModal;
 
