@@ -416,6 +416,7 @@ void MainWindow::DeleteRequestedAction(int selectedID, TableViewVariant selected
     QString table = mapTableVariantToName(selectedTable);
 
     QSqlQuery query;
+
     query.prepare("SELECT delete_" + table + "(:ID)");
     query.bindValue(":ID", selectedID);
 
